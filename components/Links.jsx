@@ -1,7 +1,7 @@
 import Link from "next/link"
 import { useState } from "react"
 import { BsChevronUp, BsChevronDown } from "react-icons/bs"
-import { links } from "../../clientServices/links"
+import { links } from "../clientServices/links"
 
 export default function Links() {
 

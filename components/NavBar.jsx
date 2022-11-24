@@ -1,10 +1,10 @@
 import Link from "next/link"
 import { useState, useEffect } from "react"
-import Links from "./navbar/links"
-import Mybutton from "./navbar/MyButton"
+import Links from "./links"
+import Mybutton from "./MyButton"
 import { GiHamburgerMenu } from 'react-icons/gi'
 import { AiOutlineClose } from 'react-icons/ai'
-import LinksCecyt from "./navbar/LinksCecyt"
+import LinksCecyt from "./LinksCecyt"
 
 export default function NavBar({ carrear }) {
   const [open, setOpen] = useState(false)
