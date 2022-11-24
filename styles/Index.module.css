@@ -1,0 +1,112 @@
+.nav{
+    display: flex;
+    width: 100%;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 5px 0;
+}
+
+.nav ul{
+    flex: 1;
+    text-align: right;
+    padding-left: 30px;
+
+}
+
+.nav ul li{
+    display: inline-block;
+    list-style: none;
+    margin: 10px 30px;
+}
+
+.nav ul li a{
+    color: rgb(0, 0, 0);
+    text-decoration: none;
+    position: relative;
+    font-size: 20px;
+}
+
+.nav ul li a::after{
+    content: '';
+    width: 0;
+    height: 3px;
+    position: absolute;
+    bottom: -5px;
+    left: 50%;
+    transform: translateX(-50%);    
+    background: rgb(0, 0, 0);
+    transition: width 0.3s;
+}
+
+.nav ul li a:hover::after{
+    width: 50%;
+}
+
+.textBox{
+    color: rgb(0, 0, 0);
+    position: absolute;
+    bottom: 8%;
+}
+.container{
+    width: 100%;
+    height: 100vh;
+    background-image: linear-gradient(rgb(0,0,0,0.3),transparent),url(/img/fondo.jpg);
+    background-size: cover;
+    background-position: center;
+    padding: 0 8%;
+    position: relative;
+}
+
+
+
+.textBox h1{
+    font-size: 190px;
+    line-height: 160px;
+    margin-left: -10px;
+    color: transparent;
+    -webkit-text-stroke: 3px rgb(0, 0, 0);
+    background: url(/img/back1.png);
+    -webkit-background-clip: text;
+    background-position: 0 0;
+    animation: back 20s linear infinite;
+
+}
+@keyframes back{
+    100%{
+        background-position: 2000px 0;
+    }
+}
+
+.textBox h3{
+    font-size: 30px;
+    font-weight: 500;
+    color: rgb(0, 0, 0);
+    
+}
+.textBox h4{
+    
+    color: rgb(0, 0, 0);
+    
+}
+.row{
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-top: 30px;
+}
+
+.textBox a{
+    color: rgb(0, 0, 0);
+    text-decoration: none;
+    padding: 10px 20px;
+    margin-right: 20px;
+    border: 2px solid rgb(0, 0, 0);
+    display: flex;
+    align-items: center;
+}
+
+.textBox a span{
+    font-size: 30px;
+    line-height: 15px;
+    margin-left: 5px;
+}
