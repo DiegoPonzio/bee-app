@@ -1,4 +1,4 @@
-import Principal from "../components/otherUsers/Principal"
+import Principal from "../components/OtherUsers/Principal"
 //import withSessionCecyt from "../lib/cecyt"
 
 export default function Main () {
