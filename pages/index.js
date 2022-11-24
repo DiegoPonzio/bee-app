@@ -1,12 +1,15 @@
 import Layout from "../components/Layout"
 import NavBar from "../components/NavBar"
 import Footer from "../components/Footer"
+import withSessionCecyt from "../lib/cecyt"
 
-export default function Home() {
+export default function Home({ cecyt }) {
+  const { carrear, name } = cecyt
+
   return (
     <>
-      <Layout title={"hola"} />
-      <NavBar />
+      <Layout title={name} />
+      <NavBar carrear={carrear} />
       <div className='py-5 px-10'>
         
         <div className="grid gird-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-5 items-center justify-items-center">
@@ -28,3 +31,19 @@ export default function Home() {
     </>
   )
 }
+
+export const getServerSideProps = withSessionCecyt(async function ({ req, res }) {
+  const cecyt = req.session.get("cecyt")
+
+  if (cecyt === undefined) {
+    res.setHeader("location", "/principal")
+    res.statusCode = 302
+    res.end()
+    return { props: {} }
+  }
+
+  return {
+    props: { cecyt: cecyt }
+  }
+
+})

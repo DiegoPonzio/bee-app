@@ -1,5 +1,5 @@
 import Principal from "../components/OtherUsers/Principal"
-//import withSessionCecyt from "../lib/cecyt"
+import withSessionCecyt from "../lib/cecyt"
 
 export default function Main () {
 
@@ -9,7 +9,7 @@ export default function Main () {
 
 }
 
-/*export const getServerSideProps = withSessionCecyt(async function ({ req, res }) {
+export const getServerSideProps = withSessionCecyt(async function ({ req, res }) {
     const user = req.session.get("cecyt")
 
     if (user !== undefined) {
@@ -23,4 +23,4 @@ export default function Main () {
         props: { }
     }
 
-})*/
+})
