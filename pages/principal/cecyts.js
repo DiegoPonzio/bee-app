@@ -1,7 +1,7 @@
 //import NavAdmin from "../../components/admin/NavAdmin"
 import Layout from "../../components/Layout"
 import NavBar from "../../components/NavBar"
-import Seleccionar from "../../components/otherUsers/Seleccionar"
+import Seleccionar from "../../components/OtherUsers/Seleccionar"
 //import withSessionCecyt from "../../lib/cecyt"
 
 export default function Cecyts() {
