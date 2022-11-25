@@ -1,8 +1,6 @@
 import withSession from "../../lib/session";
 
-export default withSession(async (req, res) => {
+export default withSession((req, res) => {
     req.session.destroy();
-    res.status(200).json({
-        res: "OK"
-    })
+    res.redirect(308,'/')
 })
