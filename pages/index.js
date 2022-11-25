@@ -9,7 +9,7 @@ import Spinners from "../components/Spinners"
 export default function Home({ cecyt }) {
   const { carrear, name } = cecyt
   const [posts, setPosts] = useState()
-  const [error, setError] = useState()
+  const [error, setError] = useState(false)
   const URL = `https://bee-pruebas.herokuapp.com/api/showAll/byCecyt/${name}`
 
   const fetchPosts = async () => {
@@ -35,12 +35,12 @@ export default function Home({ cecyt }) {
             return <Cards name={post.pub_titulo} body={post.pub_descripcion} date={post.pub_fecha} hour={post.pub_horainicio} place={post.pub_locacion} key={post.pub_id} />
           })}
         </div>
-        {error && !posts && (
+        {error && (
           <div className="p-4 mb-4 text-sm text-red-700 bg-red-100 rounded-lg" role="alert">
             <span className="font-medium">Lo sentimos!!</span> No encontramos comunicados  
           </div>
         )}
-        {posts && (
+        {posts &&  !error && (
           <>
             <br />
             <br />
