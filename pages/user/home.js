@@ -7,7 +7,7 @@ import Solicitar from "../../components/OtherUsers/Solicitar";
 import ShowPost from "../../components/OtherUsers/ShowPost";
 import Solicitud from "../../components/Admin/Solicitud";
 import { useEffect, useState } from "react";
-import Spinners from "../../components/spinners";
+import Spinners from "../../components/Spinners";
 import { NotificationContainer } from "react-notifications"
 
 // empresa, egresado y admin
