@@ -16,7 +16,7 @@ export default function Home({ cecyt }) {
     const response = await fetch(URL)
       .then(response => response.json())
       .then(responseJSON => {
-        setError(false)
+        //setError(false)
         setPosts(responseJSON)
       })
       .catch(() => setError(true))
