@@ -2,5 +2,7 @@ import withSession from "../../lib/session";
 
 export default withSession(async (req, res) => {
     req.session.destroy();
-    res.redirect('/', 308)
+    res.setHeader("location", "/")
+    res.statusCode = 302
+    res.end()
 })
