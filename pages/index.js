@@ -2,6 +2,7 @@ import Layout from "../components/Layout"
 import NavBar from "../components/NavBar"
 import Footer from "../components/Footer"
 import withSessionCecyt from "../lib/cecyt"
+import Slider1 from "../components/Slider1"
 
 export default function Home({ cecyt }) {
   const { carrear, name } = cecyt
@@ -11,7 +12,7 @@ export default function Home({ cecyt }) {
       <Layout title={name} />
       <NavBar carrear={carrear} />
       <div className='py-5 px-10'>
-        
+        <Slider1 />
         <div className="grid gird-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-5 items-center justify-items-center">
           {/*!posts && <Spinners />*/}
           {/*posts && posts.result && posts.result.map(post => {
