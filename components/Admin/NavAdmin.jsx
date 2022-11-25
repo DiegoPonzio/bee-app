@@ -3,6 +3,9 @@ import { BiUserCircle } from "react-icons/bi";
 import Link from "next/link";
 import {GiHamburgerMenu} from 'react-icons/gi'
 import {AiOutlineClose} from 'react-icons/ai'
+import axios from 'axios'
+import Router from 'next/router'
+import { NotificationManager } from 'react-notifications'
 
 export default function NavAdmin({ type }) {
   const [status, setStatus] = useState(false)
@@ -36,6 +39,12 @@ export default function NavAdmin({ type }) {
     }
   }, [open])
 
+  const logOut = async () => {
+    const res = await axios.get('/api/logout')
+    .then( () => Router.replace('/'))
+    .catch( () => NotificationManager.error('Error!!', 'Ocurrio un problema al eliminar', 5000) )
+  }
+
   return (
     <nav className={`bg-amber-300 z-50 ${status && "fixed w-full"}`}>
       <div className="flex items-center font-medium justify-around">
@@ -62,10 +71,7 @@ export default function NavAdmin({ type }) {
           <li><Link href="/user/admin/Solicitudes" legacyBehavior><a className="text-black  hover:text-yellow-200">Solicitudes</a></Link></li>
           <li><Link href="/user/home" legacyBehavior><a className="text-black  hover:text-yellow-200">Publicaciones</a></Link></li>
           <div className="md:hidden flex uppercase items-end gap-8">
-          <Link href="/api/logout" legacyBehavior><a className="text-black  hover:text-yellow-200 ">
-            <BiUserCircle size={50} />
-            <span className="sr-only">Usuario</span>
-          </a></Link>
+            <BiUserCircle size={50} onClick={ () => logOut()} />
         </div>
         </ul>
       </div>
