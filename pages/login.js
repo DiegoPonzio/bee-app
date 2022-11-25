@@ -87,7 +87,7 @@ export default function Login() {
                         </div>
                     </form>
                     <p className="text-center text-gray-500 text-xs">
-                        &copy;2020 BEE Assistant
+                        &copy;2022 BEE Assistant
                     </p>
                 </div>
             </div>
