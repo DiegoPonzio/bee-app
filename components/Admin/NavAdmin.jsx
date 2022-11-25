@@ -63,7 +63,7 @@ export default function NavAdmin({ type }) {
         <ul className={`md:hidden bg-amber-300 absolute w-full h-full bottom-0 py-24 pl-4 duration-500 z-20 ${open ? 'left-0' : 'left-[-100%]'}`}>
           <li><Link href="/user/admin/Solicitudes" legacyBehavior><a className="text-black  hover:text-yellow-200">Solicitudes</a></Link></li>
           <li><Link href="/user/home" legacyBehavior><a className="text-black  hover:text-yellow-200">Publicaciones</a></Link></li>
-          <div className="md:hidden flex uppercase items-end gap-8" onClick={ () => axios.get('/api/logout').then( () => Router.replace('/') )}>
+          <div className="md:hidden flex uppercase items-end gap-8" onClick={ () => axios.get('/api/logout').then( () => Router.replace('/') ).catch(console.log)}>
             <BiUserCircle size={50} />
             <span className="sr-only">Usuario</span>
           </div>
