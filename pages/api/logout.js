@@ -1,6 +1,7 @@
 import withSession from "../../lib/session";
+import Router from "next/router"
 
 export default withSession(async (req, res) => {
     req.session.destroy();
-    res.redirect('/')
+    Router.replace("/")
 })
