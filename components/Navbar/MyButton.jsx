@@ -30,8 +30,8 @@ export default function Mybutton() {
                                     <li className='text-sm text-gray-600 my-2.5'>
                                         <Link href={"/signout"} legacyBehavior><a className='hover:text-orange-900'>Registarse</a></Link>
                                     </li>
-                                    <li className='text-sm text-gray-600 my-2.5'>
-                                        <Link href={"/api/outCecyt"} legacyBehavior><a className='hover:text-orange-900' onClick={ () => window.location.reload()}>Elejir CECyT</a></Link>
+                                    <li className='text-sm text-gray-600 my-2.5' onClick={ () => window.location.reload()}>
+                                        <Link href={"/api/outCecyt"} legacyBehavior><a className='hover:text-orange-900'>Elejir CECyT</a></Link>
                                     </li>
                                 </ul>
                             </div>
