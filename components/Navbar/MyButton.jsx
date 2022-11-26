@@ -40,9 +40,9 @@ export default function Mybutton() {
                                     </li>
                                     <li className='text-sm text-gray-600 my-2.5'>
                                         {/* className='hover:text-orange-900' */}
-                                        <button onClick={() => logOut()} className={"className='hover:text-orange-900"} >
+                                        <div onClick={() => logOut()} className={"hover:text-orange-900"} >
                                             Elejir CECyT
-                                        </button>
+                                        </div>
                                     </li>
                                 </ul>
                             </div>
@@ -62,7 +62,7 @@ export default function Mybutton() {
                                         <Link href={"/signout"} legacyBehavior><a className='hover:text-orange-900'>Registarse</a></Link>
                                     </li>
                                     <li className='py-3 pl-14'>
-                                        <button onClick={() => logOut()} className={"hover:text-orange-900"} >
+                                        <button className={"hover:text-orange-900"}  onClick={() => logOut()} >
                                             Elejir CECyT
                                         </button>
                                     </li>
