@@ -34,7 +34,7 @@ export default function SignUp() {
             setStateFile(true)
         }
 
-        reader.readAsBinaryString(file)
+        reader.readAsDataURL(file)
     }
 
     const Errors = e => {
