@@ -3,10 +3,18 @@ import withSessionCecyt from "../../lib/cecyt";
 export default withSessionCecyt(async (req, res) => {
     switch (req.method) {
         case "GET":
-            req.session.destroy();
-            res.redirect('/')
+            try {
+                req.session.destroy();
+                return res.status(200).json({
+                    response: "OK"
+                })
+            } catch (error) {
+                return res.status(400).json({
+                    reponse: "Error"
+                })
+            }
 
         default:
-            return res.status(400).json({ message: "Bad request", status: 400 })
+            return res.status(400).json({ message: "Bad request" })
     }
 })

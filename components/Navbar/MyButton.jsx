@@ -1,10 +1,18 @@
 import { BiUserCircle } from 'react-icons/bi'
 import { useState } from 'react'
 import Link from 'next/link'
+import { NotificationManager } from 'react-notifications'
+import Router from 'next/router'
 
 export default function Mybutton() {
     //const router = useRouter()
     const [heading, setHeading] = useState("")
+    const logOut = async () => {
+        const res = await axios.get('/api/outCecyt')
+          .then(() => Router.replace('/principal'))
+          .catch(() => NotificationManager.error('Error!!', 'Ocurrio un problema al eliminar', 5000))
+      }
+    
 
     return (
         <div className="px-3 text-left  md:cursor-pointer group">
@@ -31,7 +39,10 @@ export default function Mybutton() {
                                         <Link href={"/signout"} legacyBehavior><a className='hover:text-orange-900'>Registarse</a></Link>
                                     </li>
                                     <li className='text-sm text-gray-600 my-2.5'>
-                                        <Link href={"/api/outCecyt"} legacyBehavior><a className='hover:text-orange-900'>Elejir CECyT</a></Link>
+                                        {/* className='hover:text-orange-900' */}
+                                        <button type="submit" onClick={() => logOut()} className={"className='hover:text-orange-900"} >
+                                            Elejir CECyT
+                                        </button>
                                     </li>
                                 </ul>
                             </div>
@@ -51,7 +62,9 @@ export default function Mybutton() {
                                         <Link href={"/signout"} legacyBehavior><a className='hover:text-orange-900'>Registarse</a></Link>
                                     </li>
                                     <li className='py-3 pl-14'>
-                                        <Link href={"/api/outCecyt"} legacyBehavior><a className='hover:text-orange-900'>Elejir CECyT</a></Link>
+                                        <button type="submit" onClick={() => logOut()} className={"className='hover:text-orange-900"} >
+                                            Elejir CECyT
+                                        </button>
                                     </li>
                                 </ul>
                             </div>
