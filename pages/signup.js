@@ -38,7 +38,7 @@ export default function SignUp() {
     }
 
     const Errors = e => {
-        console.log(e);
+        //console.log(e);
         setHideButton(false)
         setDublEmail(false)
         setErrorPassword(false)
