@@ -61,18 +61,16 @@ export default function NavAdmin({ type }) {
           <li><Link href="/user/home" legacyBehavior><a className="text-black  hover:text-yellow-200">Publicaciones</a></Link></li>
         </ul>
         <div className="md:flex hidden uppercase items-end gap-8">
-          <Link href="/api/logout" legacyBehavior><a className="text-black  hover:text-yellow-200 ">
+          <button type="submit" onClick={() => logOut()} >
             <BiUserCircle size={50} />
-            <span className="sr-only">Usuario</span>
-          </a></Link>
+          </button>
         </div>
         {/*mobile navbar*/}
         <ul className={`md:hidden bg-amber-300 absolute w-full h-full bottom-0 py-24 pl-4 duration-500 z-20 ${open ? 'left-0' : 'left-[-100%]'}`}>
           <li><Link href="/user/admin/Solicitudes" legacyBehavior><a className="text-black  hover:text-yellow-200">Solicitudes</a></Link></li>
           <li><Link href="/user/home" legacyBehavior><a className="text-black  hover:text-yellow-200">Publicaciones</a></Link></li>
           <div className="md:hidden flex uppercase items-end gap-8">
-            <form onSubmit={ () => logOut()}></form>
-            <button type="submit">
+            <button type="submit" onClick={() => logOut()} >
               <BiUserCircle size={50} />
             </button>
           </div>
