@@ -36,7 +36,7 @@ export default function Mybutton() {
                                         <Link href={"/login"} legacyBehavior><a className='hover:text-orange-900'>Iniciar Sesion</a></Link>
                                     </li>
                                     <li className='text-sm text-gray-600 my-2.5'>
-                                        <Link href={"/signout"} legacyBehavior><a className='hover:text-orange-900'>Registarse</a></Link>
+                                        <Link href={"/signup"} legacyBehavior><a className='hover:text-orange-900'>Registarse</a></Link>
                                     </li>
                                     <li className='text-sm text-gray-600 my-2.5' onClick={() => logOut()}>
                                         {/* className='hover:text-orange-900' */}
