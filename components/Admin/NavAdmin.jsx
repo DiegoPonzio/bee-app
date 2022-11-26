@@ -61,7 +61,7 @@ export default function NavAdmin({ type }) {
           <li><Link href="/user/home" legacyBehavior><a className="text-black  hover:text-yellow-200">Publicaciones</a></Link></li>
         </ul>
         <div className="md:flex hidden uppercase items-end gap-8">
-          <button type="submit" onClick={() => logOut()} >
+          <button type="submit" onClick={() => logOut()} className={"hover:text-yellow-200"}>
             <BiUserCircle size={50} />
           </button>
         </div>
@@ -70,7 +70,7 @@ export default function NavAdmin({ type }) {
           <li><Link href="/user/admin/Solicitudes" legacyBehavior><a className="text-black  hover:text-yellow-200">Solicitudes</a></Link></li>
           <li><Link href="/user/home" legacyBehavior><a className="text-black  hover:text-yellow-200">Publicaciones</a></Link></li>
           <div className="md:hidden flex uppercase items-end gap-8">
-            <button type="submit" onClick={() => logOut()} >
+            <button type="submit" onClick={() => logOut()} className={"hover:text-yellow-200"} >
               <BiUserCircle size={50} />
             </button>
           </div>
