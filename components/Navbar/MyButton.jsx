@@ -62,7 +62,7 @@ export default function Mybutton() {
                                         <Link href={"/signout"} legacyBehavior><a className='hover:text-orange-900'>Registarse</a></Link>
                                     </li>
                                     <li className='py-3 pl-14'>
-                                        <button onClick={() => logOut()} className={"className='hover:text-orange-900"} >
+                                        <button onClick={() => logOut()} className={"hover:text-orange-900"} >
                                             Elejir CECyT
                                         </button>
                                     </li>
