@@ -9,10 +9,10 @@ export default function Mybutton() {
     const [heading, setHeading] = useState("")
     const logOut = async () => {
         const res = await axios.get('/api/outCecyt')
-          .then(() => Router.replace('/principal'))
-          .catch(() => NotificationManager.error('Error!!', 'Ocurrio un problema al eliminar', 5000))
-      }
-    
+            .then(() => Router.replace('/principal'))
+            .catch(() => NotificationManager.error('Error!!', 'Ocurrio un problema', 5000))
+    }
+
 
     return (
         <div className="px-3 text-left  md:cursor-pointer group">
@@ -40,7 +40,7 @@ export default function Mybutton() {
                                     </li>
                                     <li className='text-sm text-gray-600 my-2.5'>
                                         {/* className='hover:text-orange-900' */}
-                                        <button type="submit" onClick={() => logOut()} className={"className='hover:text-orange-900"} >
+                                        <button onClick={() => logOut()} className={"className='hover:text-orange-900"} >
                                             Elejir CECyT
                                         </button>
                                     </li>
@@ -62,7 +62,7 @@ export default function Mybutton() {
                                         <Link href={"/signout"} legacyBehavior><a className='hover:text-orange-900'>Registarse</a></Link>
                                     </li>
                                     <li className='py-3 pl-14'>
-                                        <button type="submit" onClick={() => logOut()} className={"className='hover:text-orange-900"} >
+                                        <button onClick={() => logOut()} className={"className='hover:text-orange-900"} >
                                             Elejir CECyT
                                         </button>
                                     </li>

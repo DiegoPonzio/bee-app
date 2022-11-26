@@ -42,7 +42,7 @@ export default function NavAdmin({ type }) {
   const logOut = async () => {
     const res = await axios.get('/api/logout')
       .then(() => Router.replace('/'))
-      .catch(() => NotificationManager.error('Error!!', 'Ocurrio un problema al eliminar', 5000))
+      .catch(() => NotificationManager.error('Error!!', 'Ocurrio un problema', 5000))
   }
 
   return (

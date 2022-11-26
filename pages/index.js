@@ -3,8 +3,9 @@ import NavBar from "../components/NavBar"
 import Footer from "../components/Footer"
 import withSessionCecyt from "../lib/cecyt"
 import Slider1 from "../components/Slider1"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import Spinners from "../components/Spinners"
+import { NotificationContainer } from "react-notifications"
 
 export default function Home({ cecyt }) {
   const { carrear, name } = cecyt
@@ -22,10 +23,15 @@ export default function Home({ cecyt }) {
       .catch(() => setError(true))
   }
 
+  useEffect( () => {
+    fetchPosts()
+  })
+
   return (
     <>
       <Layout title={name} />
       <NavBar carrear={carrear} />
+      <NotificationContainer />
       <div className='py-5 px-10'>
         <Slider1 />
         <div className="grid gird-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-5 items-center justify-items-center">
