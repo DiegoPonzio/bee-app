@@ -1,6 +1,6 @@
 import withSessionCecyt from "../../lib/cecyt";
 
-export default withSessionCecyt(async (req, res) => {
+export default withSessionCecyt((req, res) => {
     switch (req.method) {
         case "GET":
             try {
