@@ -36,7 +36,7 @@ export default function Solicitud({ user }) {
       setStateFile(true)
     }
 
-    reader.readAsBinaryString(file)
+    reader.readAsDataURL(file)
   }
 
 
@@ -185,6 +185,7 @@ export default function Solicitud({ user }) {
                   </label>
                 </div>)}
               {stateFile && <p className="text-green-500 text-xs italic">Se ha cargado adecuadamente el archivo {fileName} <a href="#" onClick={() => setStateFile(false)} className="hover:text-lime-700">Elejir uno nuevo</a></p>}
+              {stateFile && <img src={file} alt="preview" />}
               <div className="mb-6">
                 <label
                   htmlFor="message"
