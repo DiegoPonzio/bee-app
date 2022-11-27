@@ -14,7 +14,6 @@ export default withSession(async (req, res) => {
                     username
                 ])
                 const [response] = await pool.query(query)
-                pool.end()
                 if (response.length !== 0) {
                     const { usu_contraseña } = response[0]
                     const bytesString = String.fromCharCode(...usu_contraseña)
