@@ -4,6 +4,7 @@ import NavBar from '../../components/NavBar'
 import withSessionCecyt from '../../lib/cecyt'
 import { useEffect, useState } from 'react'
 import Cards from '../../components/Cards'
+import axios from 'axios'
 
 const Description = ({ cecyt }) => {
   const router = useRouter()
@@ -11,17 +12,16 @@ const Description = ({ cecyt }) => {
   const { name, carrear } = cecyt
   const [post, setPost] = useState()
   const [error, setError] = useState(false)
-  const URL = desc === "De Carrera" ? `https://bee-pruebas.herokuapp.com/api/showAll/byCecyt/${name}/byEspId/${id}` : `https://bee-pruebas.herokuapp.com/api/showAll/byCecyt/${name}/byEsp/${id}`
+  const URL = desc === "De Carrera" ? `/api/showAll/byCecyt/${name}/byEspId/${id}` : `/api/showAll/byCecyt/${name}/byEsp/${id}`
   const fetchEsp = async () => {
-    const fetchEsp = await fetch(URL)
-      .then(response => response.json())
-      .then(responseJSON => setPost(responseJSON.result))
+    const fetchEsp = await axios.get(URL)
+      .then(responseJSON => setPost(responseJSON.data.result))
       .catch(() => setError(true))
   }
 
   useEffect(() => {
-    fetchEsp()
-  })
+    !post && fetchEsp()
+  }, [post])
 
   return (
     <>
@@ -30,7 +30,7 @@ const Description = ({ cecyt }) => {
       <div className='py-5 px-10'>
         <div className="grid gird-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-5 items-center justify-items-center">
           {!error && post && post.map(post => (
-            <Cards key={id} name={post.pub_titulo} body={post.pub_descripcion} date={post.pub_fecha} hour={post.pub_horainicio} place={post.pub_locacion}></Cards>
+            <Cards key={id} img={String.fromCharCode(...post.pub_media.data)} name={post.pub_titulo} body={post.pub_descripcion} date={post.pub_fecha} hour={post.pub_horainicio} place={post.pub_locacion}></Cards>
           ))}
         </div>
       </div>
