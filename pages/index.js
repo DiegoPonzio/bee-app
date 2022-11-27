@@ -16,7 +16,7 @@ export default function Home({ cecyt }) {
 
   const fetchPosts = async () => {
     const response = await axios.get(URL)
-      .then(console.log)
+      .then(setPosts)
       .catch(() => setError(true))
   }
 
