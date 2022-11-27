@@ -22,10 +22,12 @@ export default function Login() {
         const res = await axios.post('/api/auth', {
             username,
             password
-        }).then(Veryfy).catch(console.log)
+        }).then(Veryfy)
+        .catch(console.log)
     }
 
     const Veryfy = async (status) => {
+        console.log(status);
         setStatus(status)
         try {
             if (await status !== null) {
