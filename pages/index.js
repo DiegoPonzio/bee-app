@@ -6,15 +6,16 @@ import Slider1 from "../components/Slider1"
 import { useEffect, useState } from "react"
 import Spinners from "../components/Spinners"
 import { NotificationContainer } from "react-notifications"
+import axios from "axios"
 
 export default function Home({ cecyt }) {
   const { carrear, name } = cecyt
   const [posts, setPosts] = useState()
   const [error, setError] = useState(false)
-  const URL = `https://bee-pruebas.herokuapp.com/api/showAll/byCecyt/${name}`
+  const URL = `/api/showAll/byCecyt/${name}`
 
   const fetchPosts = async () => {
-    const response = await fetch(URL)
+    const response = await axios.get(URL)
       .then(response => response.json())
       .then(responseJSON => {
         //setError(false)
