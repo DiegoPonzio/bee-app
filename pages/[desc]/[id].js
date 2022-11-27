@@ -16,7 +16,7 @@ const Description = ({ cecyt }) => {
   const fetchEsp = async () => {
     const fetchEsp = await axios.get(URL)
       .then(responseJSON => setPost(responseJSON.data.result))
-      .catch(() => setError(true))
+      .catch(console.log)
   }
 
   useEffect(() => {
@@ -36,7 +36,7 @@ const Description = ({ cecyt }) => {
       </div>
       {error && !post && (
         <div className={`p-4 mb-4 text-sm text-red-700 bg-red-100 rounded-lg col-span-2 text-center`} role="alert">
-          <span className="font-medium">Error!!</span> La descripción es demasiado grande un minimo de 300 caracteres
+          <span className="font-medium">Error!!</span> No encontramos comunicados 
         </div>
       )}
     </>

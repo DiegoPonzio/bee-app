@@ -15,7 +15,6 @@ export default async function ShowByArea (req, res) {
                 cecyt
             ])
             const [response] = await pool.query(q)
-            pool.end()
             //validar el cecyt
             //validar el area
 
