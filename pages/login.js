@@ -27,7 +27,7 @@ export default function Login() {
     }
 
     const Veryfy = async (status) => {
-        console.log(status);
+        //console.log(status);
         setStatus(status)
         try {
             if (await status !== null) {
