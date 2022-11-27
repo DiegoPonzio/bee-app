@@ -35,8 +35,8 @@ export default function Home({ cecyt }) {
         <div className="grid gird-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-5 items-center justify-items-center">
           {!posts && !error && <Spinners />}
           {posts && !error && posts.data.result && posts.data.result.map(post => {
-            //console.log(bufferToBinaryString(post.pub_media.data))
-            return <Cards img={String.fromCharCode(...post.pub_media)} name={post.pub_titulo} body={post.pub_descripcion} date={post.pub_fecha} hour={post.pub_horainicio} place={post.pub_locacion} key={post.pub_id} />
+            console.log(String.fromCharCode(...post.pub_media))
+            return <Cards name={post.pub_titulo} body={post.pub_descripcion} date={post.pub_fecha} hour={post.pub_horainicio} place={post.pub_locacion} key={post.pub_id} />
           })}
         </div>
         {error && (
