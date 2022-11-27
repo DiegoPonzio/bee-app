@@ -20,7 +20,7 @@ export default function Home({ cecyt }) {
         //setError(false)
         setPosts(responseJSON)
       })
-      .catch(() => setError(true))
+      .catch(console.log)
   }
 
   useEffect( () => {
