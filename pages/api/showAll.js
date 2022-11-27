@@ -9,7 +9,6 @@ export default async function ShowAll(req, res) {
             const { serch } = req.query
             const { fetchAll } = MyQuerys
             const [response] = await pool.query(fetchAll)
-            pool.end()
             switch(serch) {
                 case "Escolar":
                     return res.status(200).json(

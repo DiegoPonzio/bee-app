@@ -11,7 +11,6 @@ export default async function ShowTempById(req, res) {
                 id
             ])
             const [response] = await pool.query(q)
-            pool.end()
             //validar si es que tiene los permisos el usuario
 
             //si esta vacio
