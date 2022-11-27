@@ -48,6 +48,7 @@ export default function Login() {
                 }
             }
         } catch (err) {
+            console.error(err);
             setState2(true)
             setState(false)
         }
