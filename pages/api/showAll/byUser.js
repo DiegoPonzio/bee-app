@@ -9,7 +9,7 @@ export default async function ShowByUser(req, res) {
         case "GET":
             const { fetchByAllUsers } = MyQuerys
             const [response] = await pool.query(fetchByAllUsers)
-            
+            pool.end()
             //validar si es que tiene los permisos el usuario
 
             //si esta vacio

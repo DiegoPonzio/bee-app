@@ -14,7 +14,7 @@ export default async function ShowByID(req, res) {
                 id
             ])
             const [response] = await pool.query(q)
-
+            pool.end()
 
             //si esta vacio
             if ( response.length === 0 ) {

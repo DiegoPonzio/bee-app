@@ -14,7 +14,7 @@ export default async function ShowByUser(req, res) {
                 user
             ])
             const [response] = await pool.query(q)
-            
+            pool.end()
             //validar si es que tiene los permisos el usuario
 
             //si esta vacio

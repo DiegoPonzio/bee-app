@@ -15,7 +15,7 @@ export default async function ShowByEsp (req, res) {
                 cecyt
             ])
             const [response] = await pool.query(q)
-
+            pool.end()
             //validacion si lo escrito no es un cecyt como tal
 
             //si esta vacio
