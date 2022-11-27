@@ -7,6 +7,7 @@ import { useEffect, useState } from "react"
 import Spinners from "../components/Spinners"
 import { NotificationContainer } from "react-notifications"
 import axios from "axios"
+import Cards from "../components/Cards"
 
 export default function Home({ cecyt }) {
   const { carrear, name } = cecyt
