@@ -22,8 +22,8 @@ export default function Home({ cecyt }) {
   }
 
   useEffect( () => {
-    window.onload(fetchPosts())
-  }, [])
+    !posts && fetchPosts()
+  }, [posts])
 
   return (
     <>
