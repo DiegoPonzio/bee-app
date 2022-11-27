@@ -43,7 +43,7 @@ export default function Home({ user }) {
                             {!posts && !error && <Spinners />}
                             {!error && posts && posts.map(post => {
                                 //console.log(bufferToBinaryString(post.pub_media.data))
-                                return <CardAdmin title={post.pub_titulo} body={post.pub_descripcion} date={post.pub_fecha} hour={post.pub_horainicio} place={post.pub_locacion} key={post.pub_id} id={post.pub_id} />
+                                return <CardAdmin img={String.fromCharCode(...post.pub_media.data)} title={post.pub_titulo} body={post.pub_descripcion} date={post.pub_fecha} hour={post.pub_horainicio} place={post.pub_locacion} key={post.pub_id} id={post.pub_id} />
                             })}
                         </div>
                         {!error && posts && (

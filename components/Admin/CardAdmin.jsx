@@ -6,7 +6,7 @@ import Link from 'next/link'
 import axios from 'axios'
 import { NotificationManager } from 'react-notifications'
 
-export default function CardAdmin({ status, id, title, body, date, hour, place }) {
+export default function CardAdmin({ status, id, title, body, date, hour, place, img }) {
 
     const onDelete = async () => {
         const res = axios.delete(`/api/deletePost/${id}`)
@@ -25,7 +25,7 @@ export default function CardAdmin({ status, id, title, body, date, hour, place }
     // 
     return (
         <div className="max-w-sm rounded overflow-hidden shadow-lg md:cursor-pointer mx-30px mt-10">
-            <img className="w-full" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRZhLHBfMTrKT4HCY7Lyue8ul7R_G5S24zHBT73LSjA2Fi536zNOPBM33V3SbVsSzaY3Uc&usqp=CAU" alt="Sunset in the mountains" />
+            <img className="w-full" src={img} alt="Sunset in the mountains" />
             <div className="px-6 py-4">
                 <div className="font-bold text-xl mb-2 ">{title} <div className='float-right mt-1'> <a href="#" className="text-gray-500 hover:text-yellow-200 ">
                     {!status && <BsTrash size={23} onClick={ () => onDelete() } />}
