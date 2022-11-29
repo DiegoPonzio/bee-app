@@ -28,7 +28,7 @@ const Description = ({ cecyt }) => {
     const { desc, id } = router.query 
     const URL = desc === "De Carrera" ? `/api/showAll/byCecyt/${name}/byEspId/${id}` : `/api/showAll/byCecyt/${name}/byEsp/${id}`
     setURL(URL)
-    !post && (esp !== id || esp === "") && fetchEsp()
+    !post && (esp !== id || esp === "") && URL !== "" && fetchEsp()
   }, [post, esp, aera, router])
 
   return (
