@@ -19,8 +19,8 @@ const Description = ({ cecyt }) => {
     const fetchEsp = await axios.get(URL)
       .then(response => {
         setPost(response)
-        setEsp(desc)
-        setArea(id)
+        setEsp(id)
+        setArea(desc)
       })
       .catch( () => setError(true))
   }
