@@ -26,8 +26,7 @@ const Description = ({ cecyt }) => {
   }
 
   useEffect(() => {
-    (esp !== id || esp === "") && (aera !== desc || aera === "") && window.location.reload()
-    !post && fetchEsp()
+    !post && (esp !== id || esp === "") && (aera !== desc || aera === "") && fetchEsp()
   }, [post, esp, aera])
 
   return (
