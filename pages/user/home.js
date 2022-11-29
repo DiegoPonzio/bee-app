@@ -26,8 +26,8 @@ export default function Home({ user }) {
     }
 
     useEffect(() => {
-        fetchAll()
-    })
+        !posts  && fetchAll()
+    }, [posts])
 
     return (
         <>
