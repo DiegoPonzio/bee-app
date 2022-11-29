@@ -13,7 +13,7 @@ const Description = ({ cecyt }) => {
   const [ aera, setArea ] = useState("")
   const [post, setPost] = useState()
   const [error, setError] = useState(false)
-  const [URL, setURL] = use7()
+  const [URL, setURL] = useState("")
   const fetchEsp = async () => {
     const fetchEsp = await axios.get(URL)
       .then(response => {
