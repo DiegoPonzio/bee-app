@@ -3,6 +3,7 @@ import { useState } from "react";
 import { BsPlusSquareDotted } from "react-icons/bs";
 import { cecyts } from "../../clientServices/Cecyts";
 import { useForm } from "react-hook-form";
+import Spinners from "../Spinners"
 
 export default function Solicitud({ user }) {
 
@@ -16,6 +17,7 @@ export default function Solicitud({ user }) {
   const [errorStatus, setErrorStatus] = useState(false)
   const [errorTitle, setErrorTitle] = useState(false)
   const [errorDesc, setErrorDesc] = useState(false)
+  const [loading, setLoading] = useState(false)
 
   const tt = Date.now();
   const hoy = new Date(tt);
@@ -66,7 +68,7 @@ export default function Solicitud({ user }) {
   }
 
   const Veryfy = (status) => {
-    console.log(status);
+    setLoading(true)
     setErrorStatus(false)
     if (status.data.status === 200) {
       const reset = document.querySelector('#reset')
@@ -76,12 +78,14 @@ export default function Solicitud({ user }) {
       setErrorDesc(false)
       setErrorStatus(false)
       setErrorTitle(false)
+      setLoading(false)
     } else if (status.data.status === 408 && status.data.result.message === "Data too long for column 'pub_media' at row 1") {
       setStateFile(false)
       setErrorStatus(true)
       setState(false)
       setErrorDesc(false)
       setState2(false)
+      setLoading(false)
     } else if (status.data.status === 408 && status.data.result.message === "Data too long for column 'pub_titulo' at row 1") {
       setStateFile(true)
       setErrorStatus(false)
@@ -89,6 +93,7 @@ export default function Solicitud({ user }) {
       setErrorDesc(false)
       setState(false)
       setState2(false)
+      setLoading(false)
     } else if (status.data.status === 408 && status.data.result.message === "Data too long for column 'pub_descripcion' at row 1") {
       setStateFile(true)
       setErrorStatus(false)
@@ -96,14 +101,17 @@ export default function Solicitud({ user }) {
       setErrorDesc(true)
       setState(false)
       setState2(false)
+      setLoading(false)
     }
   }
 
   const Error = res => {
+    setLoading(true)
     const { message } = res
     if (message === "Request failed with status code 413") {
       setErrorStatus(true)
       setStateFile(false)
+      setLoading(false)
     }
   }
 
@@ -324,9 +332,14 @@ export default function Solicitud({ user }) {
                 </div>
               </div>
               <div className="grid gap-6 mb-8 md:grid-cols-2 justify">
-                <button
+                {!loading && (
+                  <button
                   type="submit"
                   className="text-black bg-yellow-200 hover:bg-yellow-100 focus:ring-4 focus:outline-none focus:ring-yellow-300 font-medium rounded-lg text-sm w-full sm:w-auto py-2.5 text-center">Agregar</button>
+                )}
+                {loading && (
+                  <Spinners />
+                )}
                 <button
                   id="reset"
                   type="reset"
