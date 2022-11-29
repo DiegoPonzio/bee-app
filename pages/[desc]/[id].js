@@ -8,28 +8,24 @@ import axios from 'axios'
 
 const Description = ({ cecyt }) => {
   const router = useRouter()
+  const { desc, id } = router.query 
   const { name, carrear } = cecyt
   const [ esp, setEsp ] = useState("")
   const [ aera, setArea ] = useState("")
   const [post, setPost] = useState()
   const [error, setError] = useState(false)
-  const [URL, setURL] = useState("")
+  const URL = desc === "De Carrera" ? `/api/showAll/byCecyt/${name}/byEspId/${id}` : `/api/showAll/byCecyt/${name}/byEsp/${id}`
   const fetchEsp = async () => {
     const fetchEsp = await axios.get(URL)
       .then(response => {
         setPost(response)
-        setEsp(id)
-        setArea(desc)
       })
       .catch( () => setError(true))
   }
 
   useEffect(() => {
-    const { desc, id } = router.query 
-    const URL = desc === "De Carrera" ? `/api/showAll/byCecyt/${name}/byEspId/${id}` : `/api/showAll/byCecyt/${name}/byEsp/${id}`
-    setURL(URL)
-    !post && (esp !== id || esp === "") && URL !== "" && fetchEsp()
-  }, [post, esp, aera, router])
+    fetchEsp()
+  }, [])
 
   return (
     <>
