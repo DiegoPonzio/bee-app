@@ -8,13 +8,12 @@ import axios from 'axios'
 
 const Description = ({ cecyt }) => {
   const router = useRouter()
-  const { desc, id } = router.query 
   const { name, carrear } = cecyt
   const [ esp, setEsp ] = useState("")
   const [ aera, setArea ] = useState("")
   const [post, setPost] = useState()
   const [error, setError] = useState(false)
-  const URL = desc === "De Carrera" ? `/api/showAll/byCecyt/${name}/byEspId/${id}` : `/api/showAll/byCecyt/${name}/byEsp/${id}`
+  const [URL, setURL] = use7()
   const fetchEsp = async () => {
     const fetchEsp = await axios.get(URL)
       .then(response => {
@@ -26,8 +25,11 @@ const Description = ({ cecyt }) => {
   }
 
   useEffect(() => {
+    const { desc, id } = router.query 
+    const URL = desc === "De Carrera" ? `/api/showAll/byCecyt/${name}/byEspId/${id}` : `/api/showAll/byCecyt/${name}/byEsp/${id}`
+    setURL(URL)
     !post && (esp !== id || esp === "") && fetchEsp()
-  }, [post, esp, aera])
+  }, [post, esp, aera, router])
 
   return (
     <>
