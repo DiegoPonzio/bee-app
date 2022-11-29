@@ -10,19 +10,23 @@ const Description = ({ cecyt }) => {
   const router = useRouter()
   const { desc, id } = router.query 
   const { name, carrear } = cecyt
-  const [ esp, setEsp ] = useState(id)
-  const [ aera, setArea ] = useState(desc)
+  const [ esp, setEsp ] = useState(false)
+  const [ aera, setArea ] = useState(false)
   const [post, setPost] = useState()
   const [error, setError] = useState(false)
   const URL = desc === "De Carrera" ? `/api/showAll/byCecyt/${name}/byEspId/${id}` : `/api/showAll/byCecyt/${name}/byEsp/${id}`
   const fetchEsp = async () => {
     const fetchEsp = await axios.get(URL)
-      .then(response => setPost(response))
+      .then(response => {
+        setPost(response)
+        setEsp(true)
+        setArea(true)
+      })
       .catch( () => setError(true))
   }
 
   useEffect(() => {
-    !post && fetchEsp()
+    !post && !aera && !esp && fetchEsp()
   }, [post, esp, aera])
 
   return (
