@@ -26,6 +26,7 @@ const Description = ({ cecyt }) => {
   }
 
   useEffect(() => {
+    post && window.location.reload()
     !post && !aera && !esp && fetchEsp()
   }, [post, esp, aera])
 
