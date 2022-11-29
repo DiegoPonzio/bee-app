@@ -26,7 +26,7 @@ const Description = ({ cecyt }) => {
   }
 
   useEffect(() => {
-    !post && (esp !== id || esp === "") && (aera !== desc || aera === "") && fetchEsp()
+    !post && (esp !== id || esp === "") && fetchEsp()
   }, [post, esp, aera])
 
   return (
