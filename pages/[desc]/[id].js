@@ -25,7 +25,7 @@ const Description = ({ cecyt }) => {
 
   useEffect(() => {
     !post && fetchEsp()
-  }, [])
+  }, [post])
 
   return (
     <>
