@@ -8,7 +8,7 @@ import Estrategias from '../../components/Estrategias'
 export default function Nosotros () {
   return (
     <>
-      <Layout title="Conocenos" />
+      <Layout title="Conócenos" />
       <NavBar />
       <div className="py-5 px-5">
         <Conoce />

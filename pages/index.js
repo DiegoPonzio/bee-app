@@ -41,7 +41,7 @@ export default function Home({ cecyt }) {
         </div>
         {error && (
           <div className="p-4 mb-4 text-sm text-red-700 bg-red-100 rounded-lg" role="alert">
-            <span className="font-medium">Lo sentimos!!</span> No encontramos comunicados  
+            <span className="font-medium">Lo sentimos😿!!</span> No se encontrarón comunicados en este apartado.  
           </div>
         )}
         {posts &&  !error && (

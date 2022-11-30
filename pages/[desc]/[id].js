@@ -40,7 +40,7 @@ const Description = ({ cecyt }) => {
       </div>
       {error && !post && (
         <div className={`p-4 mb-4 text-sm text-red-700 bg-red-100 rounded-lg col-span-2 text-center`} role="alert">
-          <span className="font-medium">Error!!</span> No encontramos comunicados 
+          <span className="font-medium">Lo sentimos😿!!</span> No se encontrarón comunicados en este apartado. 
         </div>
       )}
     </>

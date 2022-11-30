@@ -11,7 +11,7 @@ export default function CardAdmin({ status, id, title, body, date, hour, place, 
     const onDelete = async () => {
         const res = axios.delete(`/api/deletePost/${id}`)
             .then( () =>  NotificationManager.success('Se ha eliminado correctamente', 'Exito!!', 5000) )
-            .catch( () => NotificationManager.error('Error!!', 'Ocurrio un problema al eliminar', 5000) )
+            .catch( () => NotificationManager.error( 'Ocurrió un problema al eliminar', 'Error!!', 5000) )
     }
 
     const onDeny = async () => {
@@ -20,7 +20,7 @@ export default function CardAdmin({ status, id, title, body, date, hour, place, 
             status: 3
         })
             .then( () =>  NotificationManager.success('Se ha Negado la solicitud', 'Exito!!', 5000) )
-            .catch( () => NotificationManager.error('Error!!', 'Ocurrio un problema al eliminar', 5000) )
+            .catch( () => NotificationManager.error('Ocurrió un problema al negar la solicitud', 'Error!!', 5000) )
     }
     // 
     return (
