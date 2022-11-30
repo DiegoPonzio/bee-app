@@ -94,7 +94,7 @@ export default function Editar({ id, user }) {
                       rows="4"
                       className={`block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 ${errors.descripcion && 'border-red-500'}`}
                       placeholder="Descripcion detallada del evento (de qué trata, características, requerimientos, etc)"
-                      defaultValue={post.pub_titulo}
+                      defaultValue={post.pub_descripcion}
                       {...register("descripcion", { required: true })}
                     ></textarea>
                     {errors.descripcion && <p className="text-red-500 text-xs italic">La descripción de la actividad es requerida</p>}
