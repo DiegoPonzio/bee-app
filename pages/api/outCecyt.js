@@ -13,7 +13,6 @@ export default withSessionCecyt((req, res) => {
                     reponse: "Error"
                 })
             }
-
         default:
             return res.status(400).json({ message: "Bad request" })
     }

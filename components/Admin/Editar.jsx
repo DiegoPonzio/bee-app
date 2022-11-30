@@ -25,7 +25,7 @@ export default function Editar({ id, user }) {
   }
 
   useEffect(() => {
-    fetchPost()
+    !post && fetchPost()
   })
 
   const onDelete = async () => {

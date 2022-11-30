@@ -38,12 +38,9 @@ export default function Mybutton() {
                                     <li className='text-sm text-gray-600 my-2.5'>
                                         <Link href={"/signup"} legacyBehavior><a className='hover:text-orange-900'>Registarse</a></Link>
                                     </li>
-                                    <li className='text-sm text-gray-600 my-2.5' onClick={() => logOut()}>
-                                        {/* className='hover:text-orange-900' */}
-                                        <div className={"hover:text-orange-900"} >
-                                            Elejir CECyT
-                                        </div>
-                                    </li>
+                                    <button type="submit" onClick={() => logOut()}>
+                                        Elegir CECyT
+                                    </button>
                                 </ul>
                             </div>
                         </div>
@@ -61,11 +58,9 @@ export default function Mybutton() {
                                     <li className='py-3 pl-14'>
                                         <Link href={"/sigup"} legacyBehavior><a className='hover:text-orange-900'>Registarse</a></Link>
                                     </li>
-                                    <li className='py-3 pl-14'>
-                                        <button className={"hover:text-orange-900"}  onClick={() => logOut()} >
-                                            Elejir CECyT
-                                        </button>
-                                    </li>
+                                    <button className={"hover:text-orange-900"} onClick={() => logOut()} >
+                                        Elegir CECyT
+                                    </button>
                                 </ul>
                             </div>
                         </div>
