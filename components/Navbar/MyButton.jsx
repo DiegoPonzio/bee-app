@@ -3,6 +3,7 @@ import { useState } from 'react'
 import Link from 'next/link'
 import { NotificationManager } from 'react-notifications'
 import Router from 'next/router'
+import axios from 'axios'
 
 export default function Mybutton() {
     //const router = useRouter()
@@ -12,7 +13,6 @@ export default function Mybutton() {
             .then(() => Router.replace('/principal'))
             .catch(() => NotificationManager.error('Error!!', 'Ocurrio un problema', 5000))
     }
-
 
     return (
         <div className="px-3 text-left  md:cursor-pointer group">
@@ -38,9 +38,12 @@ export default function Mybutton() {
                                     <li className='text-sm text-gray-600 my-2.5'>
                                         <Link href={"/signup"} legacyBehavior><a className='hover:text-orange-900'>Registarse</a></Link>
                                     </li>
-                                    <button type="submit" onClick={() => logOut()}>
-                                        Elegir CECyT
-                                    </button>
+                                    <li className='text-sm text-gray-600 my-2.5' onClick={() => logOut()}>
+                                        {/* className='hover:text-orange-900' */}
+                                        <div className={"hover:text-orange-900"} >
+                                            Elegir CECyT
+                                        </div>
+                                    </li>
                                 </ul>
                             </div>
                         </div>
@@ -58,9 +61,11 @@ export default function Mybutton() {
                                     <li className='py-3 pl-14'>
                                         <Link href={"/sigup"} legacyBehavior><a className='hover:text-orange-900'>Registarse</a></Link>
                                     </li>
-                                    <button className={"hover:text-orange-900"} onClick={() => logOut()} >
-                                        Elegir CECyT
-                                    </button>
+                                    <li className='py-3 pl-14'>
+                                        <button className={"hover:text-orange-900"}  onClick={() => logOut()} >
+                                            Elegir CECyT
+                                        </button>
+                                    </li>
                                 </ul>
                             </div>
                         </div>
