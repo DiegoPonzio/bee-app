@@ -12,13 +12,13 @@ export default function Footer() {
                     <a href="#" className="mr-4 hover:underline md:mr-6 "></a>
                 </li>
                 <li>
-                    <a href="#" className="mr-4 hover:underline md:mr-6">Politica de privacidad</a>
+                    <a href="#" className="mr-4 hover:underline md:mr-6">Política de Privacidad</a>
                 </li>
                 <li>
                     <a href="#" className="mr-4 hover:underline md:mr-6">Licencia</a>
                 </li>
                 <li>
-                    <a href="#" className="hover:underline">Contactanos</a>
+                    <a href="#" className="hover:underline">Contáctanos</a>
                 </li>
             </ul>
             <div className="flex mt-4 space-x-6 sm:justify-center sm:mt-0">

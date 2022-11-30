@@ -2,7 +2,7 @@ export default function Estrategias(){
     return(
         <div className="bg-transparent h-2/4 w-3/4 text-justify ml-48">
         <h1 className="text-3xl text-amber-300 font-bold">Slogan</h1>
-        <h5 className="text-2xl mt-10 mb-10">“Bee, la abeja que te informa”. </h5>
+        <h5 className="text-2xl mt-10 mb-10">“Bee, la abeja que te informa.” </h5>
         
          
         

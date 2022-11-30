@@ -198,7 +198,7 @@ export default function Solicitud({ user }) {
                 <label
                   htmlFor="message"
                   className="block mb-2 text-sm font-medium text-gray-900">
-                  Descripcion de la actividad:
+                  Descripción de la actividad:
                 </label>
                 <textarea
                   id="descripcion"
@@ -283,7 +283,7 @@ export default function Solicitud({ user }) {
                 <div>
                   <label
                     htmlFor="website"
-                    className="block mb-2 text-sm font-medium text-gray-900">Fecha de publicacion: </label>
+                    className="block mb-2 text-sm font-medium text-gray-900">Fecha de publicacin: </label>
                   <input
                     type="date"
                     id="publicacion"
@@ -315,7 +315,7 @@ export default function Solicitud({ user }) {
                     id="organizador"
                     className={`bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ${errors.organizador && 'border-red-500'}`}
                     placeholder="Introduce tu nombre o el de empresa"
-                    {...register("organizador", { required: true, pattern: /^[a-zA-Z\u00C0-\u017f\s]+$/ })} />
+                    {...register("organizador", { required: true, pattern: /^[a-zA-Z\u00C0-\u017f\s]+?[0-9]{0,2}$/ })} />
                   {errors.organizador && <p className="text-red-500 text-xs italic">El organizador no es válido</p>}
                 </div>
                 <div>
