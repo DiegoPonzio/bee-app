@@ -4,7 +4,7 @@ const links = [
         subMenu: true,
         subLinks: [
             { name: 'Avisos', link: '/Escolar/Avisos' },
-            { name: 'Fechas de Exámenes', link: '/Escolar/Fechas de Exámenes' },
+            { name: 'Exámenes', link: '/Escolar/Examenes' },
             { name: 'Saberes Previos', link: '/Escolar/Saberes Previos' },
             { name: 'Certificaciones y Titulación', link: '/Escolar/Certificaciones y Titulación' }
         ]
