@@ -29,7 +29,7 @@ export default function Cards({ img = "https://encrypted-tbn0.gstatic.com/images
                 <div  onClick={() => setComment(!comment)}>
                     <div className='flex justify-between'>
                         <AiOutlineComment size={20} />
-                        <h5 className='justify-center'>Comentarios</h5>
+                        <h5 className='justify-center'> &nbsp;&nbsp;&nbsp; Comentarios</h5>
                     </div>
                 </div>
                 {comment && (
