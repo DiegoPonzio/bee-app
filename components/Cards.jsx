@@ -25,13 +25,14 @@ export default function Cards({ img = "https://encrypted-tbn0.gstatic.com/images
                 <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">Hora: {hour}</span>
                 <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">Lugar: {place}</span>
             </div>
-            <div className='rounded grid grid-cols-1'>
-                <h5 className='justify-center' onClick={() => setComment(!comment)}><AiOutlineComment size={20} />Comentarios</h5>
+            <div className='rounded grid grid-cols-2 place-items-center'>
+                <AiOutlineComment size={20}/>
+                <h5 className='justify-center' onClick={() => setComment(!comment)}>Comentarios</h5>
                 {comment && (
-                    <>
+                    <div className='col-span-2'>
                         <PostComment />
                         <Comments />
-                    </>
+                    </div>
                 )}
             </div>
         </div>
