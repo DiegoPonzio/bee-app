@@ -3,6 +3,7 @@ import { FaHeart } from 'react-icons/fa'
 import { FiHeart } from 'react-icons/fi'
 import PostComment from './OtherUsers/PostComment'
 import Comments from './OtherUsers/Comments'
+import { AiOutlineComment } from "react-icons/ai"
 
 export default function Cards({ img = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRZhLHBfMTrKT4HCY7Lyue8ul7R_G5S24zHBT73LSjA2Fi536zNOPBM33V3SbVsSzaY3Uc&usqp=CAU", name, body, date, hour, place }) {
 
@@ -24,8 +25,8 @@ export default function Cards({ img = "https://encrypted-tbn0.gstatic.com/images
                 <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">Hora: {hour}</span>
                 <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">Lugar: {place}</span>
             </div>
-            <div className='bg-amber-100 rounded grid grid-cols-1' onClick={ () => setComment(!comment)}>
-                <h1 className='justify-center'>Comentarios</h1>
+            <div className='bg-amber-100 rounded grid grid-cols-1'>
+                <h5 className='justify-center' onClick={() => setComment(!comment)}><AiOutlineComment />Comentarios</h5>
                 {comment && (
                     <>
                         <PostComment />
