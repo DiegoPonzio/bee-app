@@ -25,7 +25,7 @@ export default function Cards({ img = "https://encrypted-tbn0.gstatic.com/images
                 <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">Hora: {hour}</span>
                 <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">Lugar: {place}</span>
             </div>
-            <div className='rounded grid grid-cols-1 place-items-center'>
+            <div className='rounded grid grid-cols-1 place-items-center gap-2'>
                 <div  onClick={() => setComment(!comment)}>
                     <div className='flex justify-between'>
                         <AiOutlineComment size={20} />
