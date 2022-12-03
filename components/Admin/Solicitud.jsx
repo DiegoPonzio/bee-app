@@ -180,7 +180,7 @@ export default function Solicitud({ user }) {
                           d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"></path>
                       </svg>
                       <p className="mb-2 text-sm text-gray-500">
-                        <span className="font-semibold">Haga click para subir un archivo</span> o arrastre y suelte
+                        <span className="font-semibold">Haz click para subir un archivo</span> o arrastra y suelta
                       </p>
                       <p className="text-xs text-gray-500">
                         SVG, PNG, JPG or GIF (MAX. 800x400px)</p>
@@ -192,7 +192,7 @@ export default function Solicitud({ user }) {
                     }}>Selecciona un Archivo</button>
                   </label>
                 </div>)}
-              {stateFile && <p className="text-green-500 text-xs italic">Se ha cargado adecuadamente el archivo {fileName} <a href="#" onClick={() => setStateFile(false)} className="hover:text-lime-700">Elejir uno nuevo</a></p>}
+              {stateFile && <p className="text-green-500 text-xs italic">Se ha cargado correctamente el archivo {fileName} <a href="#" onClick={() => setStateFile(false)} className="hover:text-lime-700">Elejir uno nuevo</a></p>}
               {stateFile && <img src={file} alt="preview" />}
               <div className="mb-6">
                 <label
@@ -220,7 +220,7 @@ export default function Solicitud({ user }) {
                   <select
                     className={`bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ${errors.escuela && 'border-red-500'}`}
                     id="escuela" {...register("escuela", { required: true })}>
-                    <option selected disabled>Elije un CECyT</option>
+                    <option selected disabled>Elije un CECyT: </option>
                     {cecyts.map(cecyt => (
                       <option key={cecyt.name} defaultValue={cecyt.id}>{cecyt.name}</option>))}
                   </select>
@@ -250,7 +250,7 @@ export default function Solicitud({ user }) {
                   <select
                     className={`bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ${errors.especialidad && 'border-red-500'}`}
                     id="last_name" {...register("especialidad", { required: true })} >
-                    <option selected disabled>Elije una especialidad</option>
+                    <option selected disabled>Elije una especialidad: </option>
                     {espState && espState.map(esp => (
                       <option key={esp.id} defaultValue={esp.id}>{esp.name}</option>
                     ))}
@@ -267,7 +267,7 @@ export default function Solicitud({ user }) {
                     placeholder={hoy}
                     {...register("desde", { required: true })}
                   />
-                  {errors.desde && <p className="text-red-500 text-xs italic">Elige una fecha</p>}
+                  {errors.desde && <p className="text-red-500 text-xs italic">Elige una fecha: </p>}
                 </div>
                 <div>
                   <label
@@ -278,12 +278,12 @@ export default function Solicitud({ user }) {
                     placeholder={hoy}
                     {...register("hasta", { required: true })}
                   />
-                  {errors.hasta && <p className="text-red-500 text-xs italic">Elige una fecha</p>}
+                  {errors.hasta && <p className="text-red-500 text-xs italic">Elige una fecha: </p>}
                 </div>
                 <div>
                   <label
                     htmlFor="website"
-                    className="block mb-2 text-sm font-medium text-gray-900">Fecha de publicacin: </label>
+                    className="block mb-2 text-sm font-medium text-gray-900">Fecha de publicación: </label>
                   <input
                     type="date"
                     id="publicacion"
