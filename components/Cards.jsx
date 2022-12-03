@@ -24,7 +24,7 @@ export default function Cards({ img = "https://encrypted-tbn0.gstatic.com/images
                 <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">Hora: {hour}</span>
                 <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">Lugar: {place}</span>
             </div>
-            <div className='bg-amber-300 rounded' onClick={ () => setComment(!comment)}>
+            <div className='bg-gray-300 rounded hover:bg-amber-100' onClick={ () => setComment(!comment)}>
                 Area de comentarios
                 {comment && (
                     <>
