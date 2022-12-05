@@ -36,7 +36,7 @@ export default function Home({ cecyt }) {
           {!posts && !error && <Spinners />}
           {posts && !error && posts.data.result && posts.data.result.map(post => {
             //console.log(bufferToBinaryString(post.pub_media.data))
-            return <Cards img={String.fromCharCode(...post.pub_media.data)} name={post.pub_titulo} body={post.pub_descripcion} date={post.pub_fecha} hour={post.pub_horainicio} place={post.pub_locacion} key={post.pub_id} id={post.pub_id} link={post.pub_fuente} />
+            return <Cards img={String.fromCharCode(...post.pub_media.data)} name={post.pub_titulo} body={post.pub_descripcion} date={post.pub_fecha} hour={post.pub_horainicio} place={post.pub_locacion} key={post.pub_id} id={post.pub_id} link={post.pub_fuente} who={post.pub_encargado} />
           })}
         </div>
         {error && (
