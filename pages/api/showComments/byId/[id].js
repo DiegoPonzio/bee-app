@@ -11,7 +11,7 @@ export default async function showCommentById(req, res) {
 
                 const query = format(fetchComments, [id])
 
-                const result = await pool.query(query)
+                const [result] = await pool.query(query)
 
                 return res.status(200).json({ message: "Exito", result, status: 200 })
             } catch (err) {
