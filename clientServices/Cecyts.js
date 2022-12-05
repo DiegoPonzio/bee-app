@@ -354,7 +354,7 @@ const cecyts = [
   {
     id: 5,
     name: "CECyT 5",
-    img:"https://www.dnfa.dfie.ipn.mx/librerias/img/media/cecyt5.png",
+    img:"https://www.saes.cecyt5.ipn.mx/Images/logos/05.png",
     area: {
       escolar: [
         {
