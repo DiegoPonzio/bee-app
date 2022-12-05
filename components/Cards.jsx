@@ -1,15 +1,28 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { FaHeart } from 'react-icons/fa'
 import { FiHeart } from 'react-icons/fi'
 import PostComment from './OtherUsers/PostComment'
 import Comments from './OtherUsers/Comments'
 import { AiOutlineComment } from "react-icons/ai"
+import axios from 'axios'
 
 export default function Cards({ img = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRZhLHBfMTrKT4HCY7Lyue8ul7R_G5S24zHBT73LSjA2Fi536zNOPBM33V3SbVsSzaY3Uc&usqp=CAU", name, body, date, hour, place, id }) {
 
     const [like, setLike] = useState(false);
     const [comment, setComment] = useState(false);
+    const [posts, setPosts] = useState()
+    const [error, setError] = useState(false)
+    const URL = `/api/showComments/byId/${id}`
 
+    const fetchComments = async () => {
+        const response = await axios.get(URL)
+            .then(setPosts)
+            .catch( () => setError(true))
+    }
+
+    useEffect( () => {
+        !posts && fetchComments()
+    }, [posts])
 
     return (
         <div className="max-w-sm rounded overflow-hidden shadow-lg md:cursor-pointer mx-30px mt-4">
@@ -35,7 +48,10 @@ export default function Cards({ img = "https://encrypted-tbn0.gstatic.com/images
                 {comment && (
                     <div>
                         <PostComment id={id}/>
-                        <Comments />
+                        { posts && posts.data.result.map( post => (
+                            <Comments user={post.com_nombre} text={post.com_desc} key={`comment_${post.com_id}`}
+                             />
+                        )) }
                     </div>
                 )}
             </div>
