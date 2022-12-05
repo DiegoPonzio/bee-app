@@ -13,7 +13,7 @@ export default function SolicitudAdmin({ user }) {
     const [error, setError] = useState(false)
     const [post, setPost] = useState()
 
-    const URL = 'http://localhost:3000/api/showAll/byUser'
+    const URL = 'https://bee-pruebas.herokuapp.com/api/showAll/byUser'
 
     const fetchUsers = async () => {
         const response = await fetch(URL)

@@ -8,7 +8,7 @@ export default function ShowPost({ user, userName }) {
     const [myPost, setMyPost] = useState()
     const [error, setError] = useState(false)
     const [spinner, setSpinner] = useState(true)
-    const URL = `http://localhost:3000/api/showAll/byUser/${user}`
+    const URL = `https://bee-pruebas.herokuapp.com/api/showAll/byUser/${user}`
 
     const fetchMyPost = async () => {
         const myPosts = await fetch(URL)

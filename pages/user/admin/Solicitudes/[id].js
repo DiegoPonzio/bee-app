@@ -17,7 +17,7 @@ const EditPropost = ({ user }) => {
     const { status, nombre, descripcion } = errores[1]
     const [post, setPost] = useState(false)
     const [error404, setError404] = useState(false)
-    const URL = `http://localhost:3000/api/showAll/temp/byId/${id}`
+    const URL = `https://bee-pruebas.herokuapp.com/api/showAll/temp/byId/${id}`
 
     const fetchPost = async () => {
         const response = await fetch(URL)
