@@ -39,7 +39,7 @@ export default function PostComment({ id }) {
 
                 <br />
 
-                <button type="submit" className="inline-flex items-center py-2.5 px-4 text-xs font-medium text-center text-white bg-yellow-300 hover:bg-yellow-20 rounded-lg focus:border-amber-500 ">
+                <button type="submit" className="inline-flex items-center py-2.5 px-4 text-xs font-medium text-center text-white bg-amber-300 hover:bg-yellow-200 rounded-lg focus:border-amber-500">
                     Publicar Comentario
                 </button>
 
