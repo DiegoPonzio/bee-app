@@ -102,9 +102,10 @@ export default function Solicitar({ usuario }) {
                   id="nombre"
                   className={`bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ${errors.nombre && 'border-red-500'}`}
                   placeholder="comunicado/evento"
-                  {...register("nombre", { required: true, pattern: /^[a-zA-Z\u00C0-\u017f\s]+$/ })}
+                  {...register("nombre", { required: true, maxLength: 50, pattern: /^[a-zA-Z\u00C0-\u017f\s]+$/ })}
                 />
                 {errors.nombre && <p className="text-red-500 text-xs italic">El nombre del evento no es válido</p>}
+                {errors.nombre?.type === 'maxLength' && <p className="text-red-500 text-xs italic">El nombre del evento es muy largo, debe ser menor a 50 caracteres</p>}
               </div>
               <div className={"flex justify-center items-center w-full"}>
                 {!stateFile && (
@@ -152,16 +153,17 @@ export default function Solicitar({ usuario }) {
                   <label
                     htmlFor="message"
                     className="block mb-2 text-sm font-medium text-gray-900">
-                    Descripcion de la actividad:
+                    Descripción de la actividad:
                   </label>
                   <textarea
                     id="descripcion"
                     rows="4"
                     className={`block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 ${errors.descripcion && 'border-red-500'}`}
                     placeholder="Descripcion detallada del evento (de qué trata, características, requerimientos, etc)"
-                    {...register("descripcion", { required: true })}
+                    {...register("descripcion", { required: true, maxLength: 300 })}
                   ></textarea>
                   {errors.descripcion && <p className="text-red-500 text-xs italic">La descripción de la actividad es requerida</p>}
+                  {errors.descripcion?.type === 'maxLength' && <p className="text-red-500 text-xs italic">La descripción del evento es muy larga, debe ser menor a 300 caracteres</p>}
                 </div>
                 <div>
                   <label
@@ -210,7 +212,7 @@ export default function Solicitar({ usuario }) {
                 )}
                 {errorTitle && (
                   <div className={`p-4 mb-4 text-sm text-red-700 bg-red-100 rounded-lg col-span-2 text-center`} role="alert">
-                    <span className="font-medium">Error!!</span> El título es demasiado grande un minimo de 50 caracteres
+                    <span className="font-medium">Error!!</span> El título es demasiado grande, un minimo de 50 caracteres
                   </div>
                 )}
                 {errorDesc && (

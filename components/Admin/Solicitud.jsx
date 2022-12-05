@@ -156,9 +156,10 @@ export default function Solicitud({ user }) {
                   id="nombre"
                   className={`bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ${errors.nombre && 'border-red-500'}`}
                   placeholder="comunicado/evento"
-                  {...register("nombre", { required: true, pattern: /^[a-zA-Z\u00C0-\u017f\s]+$/ })}
+                  {...register("nombre", { required: true, maxLength: 50, pattern: /^[a-zA-Z\u00C0-\u017f\s]+$/ })}
                 />
                 {errors.nombre && <p className="text-red-500 text-xs italic">El nombre del evento no es válido</p>}
+                {errors.nombre?.type === 'maxLength' && <p className="text-red-500 text-xs italic">El nombre del evento es muy largo, debe ser menor a 50 caracteres</p>}
               </div>
               {!stateFile && (
                 <div className={"flex justify-center items-center w-full"}>
@@ -192,7 +193,7 @@ export default function Solicitud({ user }) {
                     }}>Selecciona un Archivo</button>
                   </label>
                 </div>)}
-              {stateFile && <p className="text-green-500 text-xs italic">Se ha cargado correctamente el archivo {fileName} <a href="#" onClick={() => setStateFile(false)} className="hover:text-lime-700">Elejir uno nuevo</a></p>}
+              {stateFile && <p className="text-green-500 text-xs italic">Se ha cargado correctamente el archivo {fileName} <a href="#" onClick={() => setStateFile(false)} className="hover:text-lime-700">Elegir uno nuevo</a></p>}
               {stateFile && <img src={file} alt="preview" />}
               <div className="mb-6">
                 <label
@@ -205,9 +206,10 @@ export default function Solicitud({ user }) {
                   rows="4"
                   className={`block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 ${errors.descripcion && 'border-red-500'}`}
                   placeholder="Descripcion detallada del evento (de qué trata, características, requerimientos, etc)"
-                  {...register("descripcion", { required: true })}
+                  {...register("descripcion", { required: true, maxLength: 300 })}
                 ></textarea>
                 {errors.descripcion && <p className="text-red-500 text-xs italic">La descripción de la actividad es requerida</p>}
+                {errors.descripcion?.type === 'maxLength' && <p className="text-red-500 text-xs italic">La descripción es muy larga, debe ser menor a 300 caracteres</p>}
               </div>
             </div>
             <div>
@@ -229,7 +231,7 @@ export default function Solicitud({ user }) {
                 <div>
                   <label
                     htmlFor="last_name"
-                    className="block mb-2 text-sm font-medium text-gray-900">Area:</label>
+                    className="block mb-2 text-sm font-medium text-gray-900">Área:</label>
                   <select className={`bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ${errors.area && 'border-red-500'}`}
                     id="area" {...register("area", { required: true })}
                     onChange={e => especialidadesFetch(e.target.value)}>
@@ -267,7 +269,7 @@ export default function Solicitud({ user }) {
                     placeholder={hoy}
                     {...register("desde", { required: true })}
                   />
-                  {errors.desde && <p className="text-red-500 text-xs italic">Elige una fecha: </p>}
+                  {errors.desde && <p className="text-red-500 text-xs italic">Elige una fecha</p>}
                 </div>
                 <div>
                   <label
@@ -278,7 +280,7 @@ export default function Solicitud({ user }) {
                     placeholder={hoy}
                     {...register("hasta", { required: true })}
                   />
-                  {errors.hasta && <p className="text-red-500 text-xs italic">Elige una fecha: </p>}
+                  {errors.hasta && <p className="text-red-500 text-xs italic">Elige una fecha</p>}
                 </div>
                 <div>
                   <label
@@ -296,39 +298,42 @@ export default function Solicitud({ user }) {
                 <div>
                   <label
                     htmlFor="visitors"
-                    className="block mb-2 text-sm font-medium text-gray-900">Lugar o cede: </label>
+                    className="block mb-2 text-sm font-medium text-gray-900">Lugar/Cede: </label>
                   <input
                     type="text"
                     id="lugar"
                     className={`bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ${errors.lugar && 'border-red-500'}`}
                     placeholder="Centro Cultural Jaime Torres Bodet"
-                    {...register("lugar", { required: true })}
+                    {...register("lugar", { required: true, maxLength: 100 })}
                   />
                   {errors.lugar && <p className="text-red-500 text-xs italic">El lugar es requerido</p>}
+                  {errors.lugar?.type === 'maxLength' && <p className="text-red-500 text-xs italic">El lugar es muy largo, debe ser menor a 100 caracteres</p>}
                 </div>
                 <div>
                   <label
                     htmlFor="dirigido"
-                    className="block mb-2 text-sm font-medium text-gray-900">Organizador: </label>
+                    className="block mb-2 text-sm font-medium text-gray-900">Organizador/Encargado: </label>
                   <input
                     type="text"
                     id="organizador"
                     className={`bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ${errors.organizador && 'border-red-500'}`}
                     placeholder="Introduce tu nombre o el de empresa"
-                    {...register("organizador", { required: true, pattern: /^[a-zA-Z\u00C0-\u017f\s]+?[0-9]{0,2}$/ })} />
-                  {errors.organizador && <p className="text-red-500 text-xs italic">El organizador no es válido</p>}
+                    {...register("organizador", { required: true, maxLength: 60, pattern: /^[a-zA-Z\u00C0-\u017f\s]+?[0-9]{0,4}$/ })} />
+                  {errors.organizador && <p className="text-red-500 text-xs italic">El organizador/encargado no es válido</p>}
+                  {errors.organizador?.type === 'maxLength' && <p className="text-red-500 text-xs italic">El organizador/encargado es muy largo, debe ser menor a 60 caracteres</p>}
                 </div>
                 <div>
                   <label
                     htmlFor="last_name"
-                    className="block mb-2 text-sm font-medium text-gray-900">Url: </label>
+                    className="block mb-2 text-sm font-medium text-gray-900">URL/Medio original: </label>
                   <input
                     type="url"
                     id="url"
                     className={`bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ${errors.url && 'border-red-500'}`}
                     placeholder="https://www.cecyt9.ipn.mx/"
-                    {...register("url", { required: true, pattern: /^https?:\/\/[\w\-]+(\.[\w\-]+)+[/#?]?.*$/ })} />
+                    {...register("url", { required: true, maxLength: 100, pattern: /^https?:\/\/[\w\-]+(\.[\w\-]+)+[/#?]?.*$/ })} />
                   {errors.url && <p className="text-red-500 text-xs italic">El URL no es válido</p>}
+                  {errors.url?.type === 'maxLength' && <p className="text-red-500 text-xs italic">El URL es muy largo, debe ser menor a 100 caracteres</p>}
                 </div>
               </div>
               <div className="grid gap-6 mb-8 md:grid-cols-2 justify">

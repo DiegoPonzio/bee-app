@@ -32,7 +32,7 @@ export default function Editar({ id, user }) {
     Router.replace("/user/home")
     const res = await axios.delete(`/api/deletePost/${id}`)
       .then(() => NotificationManager.success('Se ha eliminado correctamente', 'Exito!!', 5000))
-      .catch(() => NotificationManager.error('Error!!', 'Ocurrio un problema al eliminar', 5000))
+      .catch(() => NotificationManager.error('Ocurrió un problema al eliminar', 'Error!!', 5000))
   }
 
   const actionHandler = async e => {
@@ -79,15 +79,16 @@ export default function Editar({ id, user }) {
                       className={`bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ${errors.nombre && 'border-red-500'}`}
                       placeholder="comunicado/evento"
                       defaultValue={post.pub_titulo}
-                      {...register("nombre", { required: true, pattern: /^[a-zA-Z\u00C0-\u017f\s]+$/ })}
+                      {...register("nombre", { required: true, maxLength: 50, pattern: /^[a-zA-Z\u00C0-\u017f\s]+$/ })}
                     />
                     {errors.nombre && <p className="text-red-500 text-xs italic">El nombre del evento no es válido</p>}
+                    {errors.nombre?.type === 'maxLength' && <p className="text-red-500 text-xs italic">El nombre del evento es muy largo, debe ser menor a 50 caracteres</p>}
                   </div>
                   <div className="mb-6">
                     <label
                       htmlFor="message"
                       className="block mb-2 text-sm font-medium text-gray-900">
-                      Descripcion de la actividad:
+                      Descripción de la actividad:
                     </label>
                     <textarea
                       id="descripcion"
@@ -95,9 +96,10 @@ export default function Editar({ id, user }) {
                       className={`block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 ${errors.descripcion && 'border-red-500'}`}
                       placeholder="Descripcion detallada del evento (de qué trata, características, requerimientos, etc)"
                       defaultValue={post.pub_descripcion}
-                      {...register("descripcion", { required: true })}
+                      {...register("descripcion", { required: true, maxLength: 300 })}
                     ></textarea>
                     {errors.descripcion && <p className="text-red-500 text-xs italic">La descripción de la actividad es requerida</p>}
+                    {errors.descripcion?.type === 'maxLength' && <p className="text-red-500 text-xs italic">La descripción es muy larga, debe ser menor a 300 caracteres</p>}
                   </div>
                 </div>
                 <div>
@@ -125,7 +127,7 @@ export default function Editar({ id, user }) {
                     <div>
                       <label
                         htmlFor="website"
-                        className="block mb-2 text-sm font-medium text-gray-900">Fecha de publicacion: </label>
+                        className="block mb-2 text-sm font-medium text-gray-900">Fecha de publicación: </label>
                       <input
                         type="date"
                         id="publicacion"
@@ -137,29 +139,31 @@ export default function Editar({ id, user }) {
                     <div>
                       <label
                         htmlFor="visitors"
-                        className="block mb-2 text-sm font-medium text-gray-900">Lugar o cede: </label>
+                        className="block mb-2 text-sm font-medium text-gray-900">Lugar/Cede: </label>
                       <input
                         type="text"
                         id="lugar"
                         className={`bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ${errors.lugar && 'border-red-500'}`}
                         defaultValue={post.pub_locacion}
                         placeholder="Centro Cultural Jaime Torres Bodet"
-                        {...register("lugar", { required: true })}
+                        {...register("lugar", { required: true, maxLength: 100 })}
                       />
                       {errors.lugar && <p className="text-red-500 text-xs italic">El lugar es requerido</p>}
+                      {errors.lugar?.type === 'maxLength' && <p className="text-red-500 text-xs italic">El lugar es muy largo, debe ser menor a 100 caracteres</p>}
                     </div>
                     <div>
                       <label
                         htmlFor="dirigido"
-                        className="block mb-2 text-sm font-medium text-gray-900">Organizador: </label>
+                        className="block mb-2 text-sm font-medium text-gray-900">Organizador/Encargado: </label>
                       <input
                         type="text"
                         id="organizador"
                         className={`bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ${errors.organizador && 'border-red-500'}`}
                         placeholder="Introduce tu nombre o el de empresa"
                         defaultValue={post.pub_encargado}
-                        {...register("organizador", { required: true, pattern: /^[a-zA-Z\u00C0-\u017f\s]+$/ })} />
+                        {...register("organizador", { required: true, maxLength: 60, pattern: /^[a-zA-Z\u00C0-\u017f\s]+$/ })} />
                       {errors.organizador && <p className="text-red-500 text-xs italic">El organizador no es válido</p>}
+                      {errors.organizador?.type === 'maxLength' && <p className="text-red-500 text-xs italic">El organizador/encargado es muy largo, debe ser menor a 60 caracteres</p>}
                     </div>
                     <div>
                       <label
@@ -171,8 +175,9 @@ export default function Editar({ id, user }) {
                         className={`bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ${errors.url && 'border-red-500'}`}
                         placeholder="https://www.cecyt9.ipn.mx/"
                         defaultValue={post.pub_fuente}
-                        {...register("url", { required: true, pattern: /^https?:\/\/[\w\-]+(\.[\w\-]+)+[/#?]?.*$/ })} />
+                        {...register("url", { required: true, maxLength: 100, pattern: /^https?:\/\/[\w\-]+(\.[\w\-]+)+[/#?]?.*$/ })} />
                       {errors.url && <p className="text-red-500 text-xs italic">El URL no es válido</p>}
+                      {errors.url?.type === 'maxLength' && <p className="text-red-500 text-xs italic">El URL es muy largo, debe ser menor a 100 caracteres</p>}
                     </div>
                   </div>
                   <div className="grid gap-6 mb-8 md:grid-cols-2 justify">

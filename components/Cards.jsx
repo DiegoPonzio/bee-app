@@ -5,7 +5,7 @@ import PostComment from './OtherUsers/PostComment'
 import Comments from './OtherUsers/Comments'
 import { AiOutlineComment } from "react-icons/ai"
 
-export default function Cards({ img = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRZhLHBfMTrKT4HCY7Lyue8ul7R_G5S24zHBT73LSjA2Fi536zNOPBM33V3SbVsSzaY3Uc&usqp=CAU", name, body, date, hour, place }) {
+export default function Cards({ img = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRZhLHBfMTrKT4HCY7Lyue8ul7R_G5S24zHBT73LSjA2Fi536zNOPBM33V3SbVsSzaY3Uc&usqp=CAU", name, body, date, hour, place, id }) {
 
     const [like, setLike] = useState(false);
     const [comment, setComment] = useState(false);
@@ -34,7 +34,7 @@ export default function Cards({ img = "https://encrypted-tbn0.gstatic.com/images
                 </div>
                 {comment && (
                     <div>
-                        <PostComment />
+                        <PostComment id={id}/>
                         <Comments />
                     </div>
                 )}
