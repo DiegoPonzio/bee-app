@@ -17,10 +17,10 @@ export default function Cards({ img = "https://encrypted-tbn0.gstatic.com/images
     const fetchComments = async () => {
         const response = await axios.get(URL)
             .then(setPosts)
-            .catch( () => setError(true))
+            .catch(() => setError(true))
     }
 
-    useEffect( () => {
+    useEffect(() => {
         !posts && fetchComments()
     }, [posts])
 
@@ -39,20 +39,22 @@ export default function Cards({ img = "https://encrypted-tbn0.gstatic.com/images
                 <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">Lugar: {place}</span>
             </div>
             <div className='rounded grid grid-cols-1 place-items-center gap-2'>
-                <div  onClick={() => setComment(!comment)}>
+                <div onClick={() => setComment(!comment)}>
                     <div className='flex justify-between'>
                         <AiOutlineComment size={20} />
                         <h5 className='justify-center'> &nbsp;&nbsp; Comentarios</h5>
                     </div>
                 </div>
                 {comment && (
-                    <div>
-                        <PostComment id={id}/>
-                        { posts && posts.data.result.map( post => (
+                    <>
+                        <div>
+                            <PostComment id={id} />
+                        </div>
+                        {posts && posts.data.result.map(post => (
                             <Comments user={post.com_nombre} text={post.com_desc} key={`comment_${post.com_id}`}
-                             />
-                        )) }
-                    </div>
+                            />
+                        ))}
+                    </>
                 )}
             </div>
         </div>
