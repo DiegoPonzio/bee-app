@@ -23,7 +23,7 @@ export default function Login() {
             username,
             password
         }).then(Veryfy)
-        .catch(() => setState2(true))
+            .catch(() => setState2(true))
     }
 
     const Veryfy = async (status) => {
@@ -78,8 +78,8 @@ export default function Login() {
                                 Sign In
                             </button>}
                             {hideButton && <Spinners />}
-                            <Link href={"/"} legacyBehavior><a className="inline-block align-baseline  font-bold text-sm text-gray-400 hover:text-amber-300" href="#">
-                                Regresar </a></Link>
+                            <a href={"/"} className="inline-block align-baseline  font-bold text-sm text-gray-400 hover:text-amber-300">
+                                Regresar </a>
                         </div>
                         <br></br>
                         <div className={`${state ? "p-4 mb-4 text-sm text-red-700 bg-red-100 rounded-lg dark:bg-red-200 dark:text-red-800" : "hidden"}`} role="alert">
@@ -109,7 +109,7 @@ export const getServerSideProps = withSession(async function ({ req, res }) {
     }
 
     return {
-        props: { }
+        props: {}
     }
 
 })

@@ -174,9 +174,9 @@ export default function SignUp() {
                                 Sign Up
                             </button>}
                             {hideButton && <Spinners />}
-                            <Link href={"/"} legacyBehavior><a className="inline-block align-baseline  font-bold text-sm text-gray-400 hover:text-amber-300" href="#">
-                                Regresar </a></Link>
-                            <Link href="/login" legacyBehavior><a className="inline-block align-baseline font-bold text-sm text-amber-200 hover:text-gray-400" href="#">
+                            <a href={"/"}className="inline-block align-baseline  font-bold text-sm text-gray-400 hover:text-amber-300">
+                                Regresar </a>
+                            <Link href="/login" legacyBehavior><a className="inline-block align-baseline font-bold text-sm text-amber-200 hover:text-gray-400">
                                 Sign In
                             </a></Link>
                         </div>
