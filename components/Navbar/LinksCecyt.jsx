@@ -31,7 +31,7 @@ export default function LinksCecyt({ carrear }) {
                                             carrear.map(sublink => (
                                                 <div key={sublink.id}>
                                                     <li className="text-sm text-gray-600 my-2.5">
-                                                        <Link href={`/De Carrera/${sublink.id}`}><a className="hover:text-orange-900">{sublink.name}</a></Link>
+                                                        <a href={`/De Carrera/${sublink.id}`} className="hover:text-orange-900">{sublink.name}</a>
                                                     </li>
                                                 </div>
                                             ))

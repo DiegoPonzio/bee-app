@@ -34,7 +34,7 @@ export default function Links() {
                                                 link.subLinks.map(sublink => (
                                                     <div key={sublink.name}>
                                                         <li className="text-sm text-gray-600 my-2.5">
-                                                            <Link href={sublink.link} legacyBehavior><a className="hover:text-orange-900">{sublink.name}</a></Link>
+                                                            <a href={sublink.link} className="hover:text-orange-900">{sublink.name}</a>
                                                         </li>
                                                     </div>
                                                 ))
