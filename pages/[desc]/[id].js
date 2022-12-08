@@ -37,6 +37,13 @@ const Description = ({ cecyt }) => {
             <Cards key={id} img={String.fromCharCode(...post.pub_media.data)} name={post.pub_titulo} body={post.pub_descripcion} date={post.pub_fecha} hour={post.pub_horainicio} place={post.pub_locacion}></Cards>
           ))}
         </div>
+        {post && (
+          <>
+            <br/>
+            <br/>
+            <br/>
+          </>
+        )}
       </div>
       {error && !post && (
         <div className={`p-4 mb-4 text-sm text-red-700 bg-red-100 rounded-lg col-span-2 text-center`} role="alert">
