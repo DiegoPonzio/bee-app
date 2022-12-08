@@ -31,7 +31,7 @@ export default function Solicitar({ usuario }) {
       setStateFile(true)
     }
 
-    reader.readAsBinaryString(file)
+    reader.readAsDataURL(file)
   }
 
   const especialidadesFetch = value => {
@@ -101,7 +101,7 @@ export default function Solicitar({ usuario }) {
                   type="text"
                   id="nombre"
                   className={`bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ${errors.nombre && 'border-red-500'}`}
-                  placeholder="comunicado/evento"
+                  placeholder="Evento/Actividad"
                   {...register("nombre", { required: true, maxLength: 50, pattern: /^[a-zA-Z\u00C0-\u017f\s]+$/ })}
                 />
                 {errors.nombre && <p className="text-red-500 text-xs italic">El nombre del evento no es válido</p>}
@@ -142,7 +142,7 @@ export default function Solicitar({ usuario }) {
                   </label>)}
                 {stateFile && (
                   <div className={`p-4 mb-4 text-sm text-lime-600 bg-lime-200 rounded-lg col-span-2 text-cente`} role="alert">
-                    <span className="font-medium">Exito!!</span> Se ha subido correctamente el archivo {fileName} <a href="#" onClick={() => setStateFile(false)} className="hover:text-lime-700">Elejir uno nuevo</a>
+                    <span className="font-medium">Exito!!</span> Se ha subido correctamente el archivo {fileName} <a href="#" onClick={() => setStateFile(false)} className="hover:text-lime-700">Elegir uno nuevo</a>
                   </div>
                 )}
               </div>
@@ -168,7 +168,7 @@ export default function Solicitar({ usuario }) {
                 <div>
                   <label
                     htmlFor="last_name"
-                    className="block mb-2 text-sm font-medium text-gray-900">Area:</label>
+                    className="block mb-2 text-sm font-medium text-gray-900">Área:</label>
                   <select className={`bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ${errors.area && 'border-red-500'}`}
                     id="area" {...register("area", { required: true })}
                     onChange={e => especialidadesFetch(e.target.value)}>
