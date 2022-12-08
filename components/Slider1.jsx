@@ -37,7 +37,7 @@ export default function Slider1() {
               activeSlide === id ? "flex justify-center items-center" : "hidden"
             }
           >
-            <div className="grid grid-cols-4 gap-5 w-screen md:w-3/5 h-auto text-justify py-7 mb-32 bg-amber-300 rounded-md shadow-2xl">
+            <div className="grid grid-cols-4 place-items-center gap-5 w-screen md:w-3/5 h-auto text-justify py-7 mb-32 bg-amber-300 rounded-md shadow-2xl">
               <button
                 className="text-6xl border-none border-black"
                 onClick={() => prevSliderHandler(id)}
