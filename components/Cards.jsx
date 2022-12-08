@@ -48,8 +48,8 @@ export default function Cards({ img = "https://encrypted-tbn0.gstatic.com/images
             </div>
             <div className="px-6 pt-4 pb-2">
                 <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">Publicado el: {formatDate(date)}</span>
-                <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">Desde: {formatDate(hour)}</span>
-                <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">Hasta: {formatDate(hour2)}</span>
+                <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">Desde: {new Date(hour).toLocaleString()}</span>
+                <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">Hasta: {new Date(hour2).toLocaleString()}</span>
                 <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">Lugar: {place}</span>
             </div>
             <div className='px-6 pt-4 pb-2 justify-center items-center'>
