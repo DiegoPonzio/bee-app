@@ -33,7 +33,7 @@ export default function Mybutton() {
                             <div>
                                 <ul>
                                     <li className='text-sm text-gray-600 my-2.5'>
-                                        <Link href={"/login"} legacyBehavior><a className='hover:text-orange-900'>Iniciar Sesion</a></Link>
+                                        <Link href={"/login"} legacyBehavior><a className='hover:text-orange-900'>Iniciar Sesión</a></Link>
                                     </li>
                                     <li className='text-sm text-gray-600 my-2.5'>
                                         <Link href={"/signup"} legacyBehavior><a className='hover:text-orange-900'>Registarse</a></Link>
@@ -41,7 +41,7 @@ export default function Mybutton() {
                                     <li className='text-sm text-gray-600 my-2.5' onClick={() => logOut()}>
                                         {/* className='hover:text-orange-900' */}
                                         <div className={"hover:text-orange-900"} >
-                                            Elegir CECyT
+                                            Elegir Institución
                                         </div>
                                     </li>
                                 </ul>
@@ -56,14 +56,14 @@ export default function Mybutton() {
                             <div>
                                 <ul>
                                     <li className='py-3 pl-14'>
-                                        <Link href={"/login"} legacyBehavior><a className='hover:text-orange-900'>Iniciar Sesion</a></Link>
+                                        <Link href={"/login"} legacyBehavior><a className='hover:text-orange-900'>Iniciar Sesión</a></Link>
                                     </li>
                                     <li className='py-3 pl-14'>
                                         <Link href={"/signup"} legacyBehavior><a className='hover:text-orange-900'>Registarse</a></Link>
                                     </li>
                                     <li className='py-3 pl-14'>
                                         <button className={"hover:text-orange-900"}  onClick={() => logOut()} >
-                                            Elegir CECyT
+                                            Elegir Institución
                                         </button>
                                     </li>
                                 </ul>
