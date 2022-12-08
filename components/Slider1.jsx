@@ -37,14 +37,14 @@ export default function Slider1() {
               activeSlide === id ? "flex justify-center items-center" : "hidden"
             }
           >
-            <div className="flex justify-between items-center gap-5 w-screen md:w-3/5 h-72 text-justify py-7 mb-32 bg-amber-300 rounded-md shadow-2xl">
+            <div className="grid grid-cols-4 gap-5 w-screen md:w-3/5 h-72 text-justify py-7 mb-32 bg-amber-300 rounded-md shadow-2xl">
               <button
                 className="text-6xl border-none border-black"
                 onClick={() => prevSliderHandler(id)}
               >
                 <FiChevronLeft />
               </button>
-              <div><img className="h-40 w-40"src={img} alt="" /></div>
+              <div><img className="h-40 w-40" src={img} alt="" /></div>
               <div className="grid grid-cols-2">
                 <h3 className="text-2xl flex-none col-span-2 text-center font-bold my-2">{title}</h3>
                 <p className="col-span-2">{random}</p>
