@@ -86,7 +86,7 @@ export default function Solicitar({ usuario }) {
       <div>
         <div className="mb-6 cursor-pointer">
           <BsPlusSquareDotted className="float-left mr-4" size={30} />{" "}
-          <h2 className="text-3xl ml-4 ">Solicitud del Evento</h2>
+          <h2 className="text-3xl ml-4 ">Solicitud de Eventos/Actividades</h2>
         </div>
         <div>
           <form className="grid gird-cols-1 lg:grid-cols-2 gap-10" onSubmit={handleSubmit(actioHandler)} >
@@ -95,7 +95,7 @@ export default function Solicitar({ usuario }) {
                 <label
                   htmlFor="email"
                   className="block mb-2 text-sm font-medium text-gray-900">
-                  Nombre del comunicado:
+                  Nombre del Evento/Actividad:
                 </label>
                 <input
                   type="text"

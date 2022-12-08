@@ -22,7 +22,6 @@ export default withSession(async (req, res) => {
                     privId
                 ])
                 const result = await pool.query(q)
-                pool.end()
                 const session = {
                     usu_id: null,
                     usu_nombre: userName,
