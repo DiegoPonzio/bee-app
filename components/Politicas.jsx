@@ -2,7 +2,7 @@
 export default function Poli() {
     return (
         <div className="bg-transparent h-2/4 w-3/4 text-center ml-48">
-            <h1 className="text-7xl mb-9 text-amber-300 font-bold">Aviso de privacidad y Politicas</h1><br /><br />
+            <h1 className="text-7xl mb-9 text-amber-300 font-bold">Aviso de Privacidad y Políticas</h1><br /><br />
             <h5 className="text-2xl mb-9 ml-4 mr-4 text-justify ">Bee Assistant +, creado por alumnos del Centro de Estudios Científicos y Tecnológicos No. 9 de la Ciudad de México, es el responsable del tratamiento que se le dará a la información que nos sea proporcionada, la cual estará protegida por la Ley de Protección a Los Datos Personales en Posesión de Sujetos Obligados y las normas aplicables ante la presente ley vigente desde el año 2017. Por el simple hecho de acceder a BEE Assistant +, ya sea mediante un dispositivo móvil, computadora de escritorio o portátil, el usuario queda vinculado por los presentes términos de uso y aviso de privacidad que forman parte de un mismo contrato, el cual consta de un mensaje de datos que establece los términos jurídicos vinculantes que aplican al hacer uso de BEE Assistant +
 
 
