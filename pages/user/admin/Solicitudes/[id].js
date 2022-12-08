@@ -42,7 +42,7 @@ const EditPropost = ({ user }) => {
                         <div className='grid grid-cols-1 md:grid-cols-2 gap-4'>
                             <div className='place-content-center flex items-center'>
                                 {post && (
-                                    <Cards img={String.fromCharCode(...post.temp_media.data)} name={post.temp_titulo} body={post.temp_descripcion} place={post.temp_esp}/>
+                                    <Cards name={post.temp_titulo} body={post.temp_descripcion} place={post.temp_esp}/>
                                 )}
                             </div>
                             <div>

@@ -41,7 +41,7 @@ export default function SolicitudAdmin({ user }) {
 
                         <div className="grid gird-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-5 items-center justify-items-center">
                             {!error && post && post.map( post => (
-                                <CardAdmin status={true} id={post.temp_id} key={post.temp_id} title={post.temp_titulo} body={post.temp_descripcion} place={post.temp_esp}  />
+                                <CardAdmin img={String.fromCharCode(...post.temp_media.data)} status={true} id={post.temp_id} key={post.temp_id} title={post.temp_titulo} body={post.temp_descripcion} place={post.temp_esp}  />
                             ))}
                         </div>
                         <Footer />
