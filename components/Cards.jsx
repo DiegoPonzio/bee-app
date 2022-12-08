@@ -42,9 +42,9 @@ export default function Cards({ img = "https://encrypted-tbn0.gstatic.com/images
                 </p>
             </div>
             <div className="px-6 pt-4 pb-2">
-                <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">Publicado el: {new Date().toLocaleDateString(date)}</span>
-                <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">Desde: {hour}</span>
-                <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">Hasta: {hour2}</span>
+                <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">Publicado el: {new Date().toLocaleDateString(date).toString()}</span>
+                <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">Desde: {new Date().toLocalString(hour).toString()}</span>
+                <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">Hasta: {new Date().toLocalString(hour2).toString()}</span>
                 <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">Lugar: {place}</span>
             </div>
             <div className='px-6 pt-4 pb-2 justify-center items-center'>
@@ -73,6 +73,7 @@ export default function Cards({ img = "https://encrypted-tbn0.gstatic.com/images
                     </>
                 )}
             </div>
+            <br/>
         </div>
     )
 }
