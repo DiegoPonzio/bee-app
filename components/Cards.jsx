@@ -22,8 +22,7 @@ export default function Cards({ img = "https://encrypted-tbn0.gstatic.com/images
     }
 
     const formatDate = date => {
-        const res = new Date().toLocaleDateString(date)
-        console.log(res);
+        const res = new Date(date).toLocaleDateString()
         return res
     }   
 
