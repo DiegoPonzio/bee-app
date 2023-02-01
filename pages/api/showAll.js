@@ -6,73 +6,43 @@ export default async function ShowAll(req, res) {
         case "POST":
             return res.status(400).json({ message: "Bad request", status: 400 })
         case "GET":
-            const { serch } = req.query
-            const { fetchAll } = MyQuerys
-            const [response] = await pool.query(fetchAll)
-            switch(serch) {
-                case "Escolar":
-                    return res.status(200).json(
-                        {
-                            message: {
-                                Found: response.length
-                            },
-                            result: serch,
-                            status: 200
-                        }
-                    )
-                case "Extracurricular":
-                    return res.status(200).json(
-                        {
-                            message: {
-                                Found: response.length
-                            },
-                            result: serch,
-                            status: 200
-                        }
-                    )
-                case "De Carrera":
-                    return res.status(200).json(
-                        {
-                            message: {
-                                Found: response.length
-                            },
-                            result: serch,
-                            status: 200
-                        }
-                    )
+            try {
 
-                case undefined:
-                    if (response.length === 0) {
-                        return res.status(404).json(
-                            {
-                                message: {
-                                    Found: 0,
-                                    message: "Error, no posts found"
-                                },
-                                status: 404
-                            }
-                        )                    
-                    }
+                const { fetchAll } = MyQuerys
+                const [response] = await pool.query(fetchAll)
 
-                    return res.status(200).json(
+                if (response.length === 0) {
+                    return res.status(404).json(
                         {
                             message: {
                                 Found: response.length
                             },
-                            result: response,
-                            status: 200
+                            result: "Not found",
+                            status: 404
                         }
                     )
-            }
-
-            return res.status(404).json(
-                {
-                    message: {
-                        Found: response.length
-                    },
-                    result: "Not found",
-                    status: 404
                 }
-            )
+
+                return res.status(200).json(
+                    {
+                        message: {
+                            Found: response.length
+                        },
+                        result: response,
+                        status: 200
+                    }
+                )
+
+            } catch (error) {
+                return res.status(404).json(
+                    {
+                        message: {
+                            Found: response.length
+                        },
+                        result: ["Not found", error],
+                        status: 404
+                    }
+                )
+            }
     }
 }
