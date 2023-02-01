@@ -16,7 +16,7 @@ export default function Home({ user }) {
     const [posts, setPosts] = useState()
     const [error, setError] = useState(false)
     const { usu_nombre, usu_id, priv_id } = user
-    const URL = `https://bee-pruebas.herokuapp.com/api/showAll`
+    const URL = `https://bee-app.herokuapp.com/api/showAll`
 
     const fetchAll = async () => {
         const response = await fetch(URL)
