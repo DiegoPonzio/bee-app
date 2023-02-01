@@ -58,7 +58,7 @@ export default function Editar({ id, user }) {
   return (
     <>
       <div className="items-center bg-amber-300 p-10 mb-3 rounded-md ">
-        {post && (
+        {post && !error404 && (
           <>
             <div className="mb-6 cursor-pointer">
               <FiEdit className="float-left mr-4" size={30} />{" "}
