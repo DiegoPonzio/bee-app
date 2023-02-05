@@ -27,6 +27,7 @@ export default function Home({ cecyt }) {
 
   return (
     <>
+      {!cecyt && Router.replace("/")}
       <Layout title={name} />
       <NavBar carrear={carrear} />
       <NotificationContainer />

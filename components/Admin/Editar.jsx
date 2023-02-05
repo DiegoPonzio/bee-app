@@ -15,7 +15,7 @@ export default function Editar({ id, user }) {
   const { status, nombre, descripcion } = errores[1]
   const URL = `https://bee-app.herokuapp.com/api/showAll/byId/${id}`
 
-  const { register, formState: { errors }, handleSubmit, watch } = useForm();
+  const { register, formState: { errors }, handleSubmit } = useForm();
 
   const fetchPost = async () => {
     const response = await fetch(URL)
