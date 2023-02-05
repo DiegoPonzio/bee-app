@@ -15,10 +15,12 @@ export default function Solicitar({ usuario }) {
   const [file, setFile] = useState()
   const [stateFile, setStateFile] = useState(false)
   const [fileName, setFileName] = useState("")
+  const re = /:[0-9]{2}.[0-9]{3}Z/
 
   const { register, formState: { errors }, handleSubmit, watch } = useForm();
   const tt = Date.now();
   const hoy = new Date(tt);
+  const hoyString = hoy.toISOString().toString();
 
   const handlerFile = e => {
     const files = e.target.files

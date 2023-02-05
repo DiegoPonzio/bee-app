@@ -18,11 +18,11 @@ export default function Solicitud({ user }) {
   const [errorTitle, setErrorTitle] = useState(false)
   const [errorDesc, setErrorDesc] = useState(false)
   const [loading, setLoading] = useState(false)
+  const re = /:[0-9]{2}.[0-9]{3}Z/
 
   const tt = Date.now();
   const hoy = new Date(tt);
-  const hoy2 = new Date(tt);
-  const hoyString = hoy.toLocaleDateString().toString();
+  const hoyString = hoy.toISOString().toString();
 
   const { register, formState: { errors }, handleSubmit, watch } = useForm();
   const escuela = watch("escuela")
@@ -263,6 +263,7 @@ export default function Solicitud({ user }) {
                 <div>
                   <label htmlFor="company" className="block mb-2 text-sm font-medium text-gray-900">Desde: </label>
                   <input
+                    min={hoyString.split(re)[0]}
                     type="datetime-local"
                     id="desde"
                     className={`bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ${errors.desde && 'border-red-500'}`}
@@ -275,7 +276,7 @@ export default function Solicitud({ user }) {
                   <label
                     htmlFor="phone"
                     className="block mb-2 text-sm font-medium text-gray-900">Hasta: </label>
-                  <input type="datetime-local" id="hasta"
+                  <input type="datetime-local" id="hasta" min={watch('desde')}
                     className={`bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ${errors.hasta && 'border-red-500'}`}
                     placeholder={hoy}
                     {...register("hasta", { required: true })}

@@ -112,6 +112,7 @@ export default function Editar({ id, user }) {
                         className={`bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ${errors.desde && 'border-red-500'}`}
                         {...register("desde", { required: true })}
                       />
+                      <p className="text-red-500 text-xs italic">Fecha Desde guardada anteriormente: {post.pub_horainicio}</p>
                       {errors.desde && <p className="text-red-500 text-xs italic">Elige una fecha</p>}
                     </div>
                     <div>
@@ -122,6 +123,7 @@ export default function Editar({ id, user }) {
                         className={`bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ${errors.hasta && 'border-red-500'}`}
                         {...register("hasta", { required: true })}
                       />
+                      <p className="text-red-500 text-xs italic">Fecha Hasta guardada anteriormente: {post.pub_horafinal}</p>
                       {errors.hasta && <p className="text-red-500 text-xs italic">Elige una fecha</p>}
                     </div>
                     <div>
