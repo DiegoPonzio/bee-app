@@ -197,6 +197,9 @@ export default function Editar({ id, user }) {
                 </div>
               </form>
             </div>
+            <br></br>
+            <br></br>
+            <br></br>
           </>
         )}
       </div>
