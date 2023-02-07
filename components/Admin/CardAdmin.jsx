@@ -8,6 +8,11 @@ import { NotificationManager } from 'react-notifications'
 
 export default function CardAdmin({ status, id, title, body, date, hour, place, img }) {
 
+    const formatDate = date => {
+        const res = new Date(date).toLocaleDateString()
+        return res
+    } 
+
     const onDelete = async () => {
         const res = axios.delete(`/api/deletePost/${id}`)
             .then( () =>  NotificationManager.success('Se ha eliminado correctamente', 'Exito!!', 5000) )
@@ -48,7 +53,7 @@ export default function CardAdmin({ status, id, title, body, date, hour, place, 
                 </p>
             </div>
             <div className="px-6 pt-4 pb-2">
-                { date && <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">Fecha: {date}</span>}
+                { date && <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">Fecha: {formatDate(date)}</span>}
                 { hour && <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">Hora: {hour}</span>}
                 <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">{status ? "Especialidad" : "Lugar"}: {place}</span>
             </div>
