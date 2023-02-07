@@ -16,7 +16,7 @@ export default function Editar({ id, user }) {
   const URL = `https://bee-app.herokuapp.com/api/showAll/byId/${id}`
   const re = /:[0-9]{2}.[0-9]{3}Z/
 
-  const { register, formState: { errors }, handleSubmit } = useForm();
+  const { register, formState: { errors }, handleSubmit, watch } = useForm();
 
   const fetchPost = async () => {
     const response = await fetch(URL)
@@ -111,6 +111,7 @@ export default function Editar({ id, user }) {
                         type="datetime-local"
                         id="desde"
                         defaultValue= {post.pub_horainicio.split(re)[0]}
+                        min= {post.pub_horainicio.split(re)[0]}
                         className={`bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ${errors.desde && 'border-red-500'}`}
                         {...register("desde", { required: true })}
                       />
@@ -122,6 +123,8 @@ export default function Editar({ id, user }) {
                         htmlFor="hasta"
                         className="block mb-2 text-sm font-medium text-gray-900">Hasta: </label>
                       <input type="datetime-local" id="hasta"
+                        defaultValue= {post.pub_horafinal.split(re)[0]}
+                        min={watch('desde')}
                         className={`bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ${errors.hasta && 'border-red-500'}`}
                         {...register("hasta", { required: true })}
                       />
@@ -199,9 +202,6 @@ export default function Editar({ id, user }) {
                 </div>
               </form>
             </div>
-            <br></br>
-            <br></br>
-            <br></br>
           </>
         )}
       </div>

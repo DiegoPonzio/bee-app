@@ -12,7 +12,7 @@ const Edit = ({ user }) => {
     const { usu_nombre, usu_id, priv_id } = user
     const router = useRouter()
     const { id } = router.query
-    const { status, nombre, descripcion} = errores[1]
+    const { status, nombre, descripcion } = errores[1]
 
     return (
         <>
@@ -23,6 +23,9 @@ const Edit = ({ user }) => {
                     <NotificationContainer />
                     <div className="py-10 px-10">
                         <Editar id={id} user={usu_id} />
+                        <br></br>
+                        <br></br>
+                        <br></br>
                         <Footer />
                     </div>
                 </>
