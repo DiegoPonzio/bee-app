@@ -35,8 +35,8 @@ export default function Home({ cecyt }) {
         <NavBar carrear={carrear} />
         <NotificationContainer />
         <div className='py-5 px-10'>
-          <Slider1 />
-          <div className="grid gird-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-5 items-center justify-items-center">
+          {/* <Slider1 /> */}
+          <div className="grid gird-cols-1 items-center justify-items-center">
             {!posts && !error && <Spinners />}
             {posts && !error && posts.data.result && posts.data.result.map(post => {
               //console.log(bufferToBinaryString(post.pub_media.data))
@@ -55,8 +55,8 @@ export default function Home({ cecyt }) {
               <br />
             </>
           )}
-          <Footer />
         </div>
+        <Footer />
       </>
     )
   } catch (error) {
