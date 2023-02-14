@@ -10,8 +10,6 @@ const Description = ({ cecyt }) => {
   const router = useRouter()
   const { desc, id } = router.query 
   const { name, carrear } = cecyt
-  const [ esp, setEsp ] = useState("")
-  const [ aera, setArea ] = useState("")
   const [post, setPost] = useState()
   const [error, setError] = useState(false)
   const URL = desc === "De Carrera" ? `/api/showAll/byCecyt/${name}/byEspId/${id}` : `/api/showAll/byCecyt/${name}/byEsp/${id}`
@@ -37,7 +35,7 @@ const Description = ({ cecyt }) => {
             <Cards key={id} img={String.fromCharCode(...post.pub_media.data)} name={post.pub_titulo} body={post.pub_descripcion} date={post.pub_fecha} hour={post.pub_horainicio} place={post.pub_locacion}></Cards>
           ))}
         </div>
-        {post && (
+        {post && post.data.result?.length > 1 && (
           <>
             <br/>
             <br/>

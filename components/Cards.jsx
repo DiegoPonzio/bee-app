@@ -30,7 +30,7 @@ export default function Cards({ img = "https://encrypted-tbn0.gstatic.com/images
     }, [posts])
 
     return (
-        <div className='md:flex md:gap-5 rounded shadow-lg px-5 max-h-[600px]'>
+        <div className='md:flex md:gap-5 rounded shadow-lg px-5 max-h-[600px] bg-white'>
             <div className="max-w-sm md:max-w-md overflow-hidden md:cursor-pointer mx-3 mt-4">
                 <img className="w-full" src={`${img}`} alt={name} onDoubleClick={() => setLike(!like)} />
                 <div className='px-4 py-4'>
