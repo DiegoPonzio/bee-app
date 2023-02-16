@@ -7,26 +7,19 @@ import axios from 'axios'
 import Router from 'next/router'
 import { NotificationManager } from 'react-notifications'
 
-export default function NavAdmin({ type }) {
+export default function NavAdmin({ children }) {
+
   const [status, setStatus] = useState(false)
-  const [open, setOpen] = useState(false)
 
-  useEffect(() => {
-    function disableScroll() {
-      window.scrollTo(0, 0)
-    }
-    if (open) {
-      window.addEventListener('scroll', disableScroll);
-    }
-    return () => {
-      window.removeEventListener("scroll", disableScroll)
-    }
-
-  }, [open])
-
+  const logOut = async () => {
+    const res = await axios.get('/api/logout')
+      .then(() => Router.replace('/'))
+      .catch(() => NotificationManager.error('Error!!', 'Ocurrio un problema', 5000))
+  }
+  
   useEffect(() => {
     const handlerScroll = () => {
-      if (window.scrollY > 0 && !open) {
+      if (window.scrollY > 0 ) {
         setStatus(true)
       } else {
         setStatus(false)
@@ -37,45 +30,25 @@ export default function NavAdmin({ type }) {
     return () => {
       window.removeEventListener("scroll", handlerScroll)
     }
-  }, [open])
-
-  const logOut = async () => {
-    const res = await axios.get('/api/logout')
-      .then(() => Router.replace('/'))
-      .catch(() => NotificationManager.error('Error!!', 'Ocurrio un problema', 5000))
-  }
+  }, [])
 
   return (
-    <nav className={`bg-amber-300 z-50 ${status && "fixed w-full"}`}>
-      <div className="flex items-center font-medium justify-around">
-        <div className="z-50 p-5 md:w-auto w-full flex justify-between">
-          <h2 className="text-7xl cursor-pointer"><Link href={"/user/home"} legacyBehavior>BEE+</Link></h2>
-          <div className="text-3xl md:hidden" onClick={() => setOpen(!open)}>
-            {open ? <AiOutlineClose /> : <GiHamburgerMenu />}
+    <>
+      <nav className={`${status && "fixed"} bg-amber-300 z-50 w-full h-16`}>
+        <div className="grid grid-cols-2 font-medium">
+          <div className="z-50 p-3 md:w-auto w-full flex justify-start">
+            <h2 className="text-5xl cursor-pointer"><Link href={"/user/home"} legacyBehavior>BEE+</Link></h2>
           </div>
-        </div>
-        <div>
-        </div>
-        <ul className={type === 1 ? "md:flex hidden uppercase items-center gap-8 font-[Poppins]" : "hidden"}>
-          <li><Link href="/user/admin/Solicitudes" legacyBehavior><a className="text-black  hover:text-yellow-200">Solicitudes</a></Link></li>
-          <li><Link href="/user/home" legacyBehavior><a className="text-black  hover:text-yellow-200">Publicaciones</a></Link></li>
-        </ul>
-        <div className="md:flex hidden uppercase items-end gap-8">
-          <button type="submit" onClick={() => logOut()} className={"hover:text-yellow-200"}>
-            <BiUserCircle size={50} />
-          </button>
-        </div>
-        {/*mobile navbar*/}
-        <ul className={`md:hidden bg-amber-300 absolute w-full h-full bottom-0 py-24 pl-4 duration-500 z-20 ${open ? 'left-0' : 'left-[-100%]'}`}>
-          <li><Link href="/user/admin/Solicitudes" legacyBehavior><a className="text-black  hover:text-yellow-200">Solicitudes</a></Link></li>
-          <li><Link href="/user/home" legacyBehavior><a className="text-black  hover:text-yellow-200">Publicaciones</a></Link></li>
-          <div className="md:hidden flex uppercase items-end gap-8">
-            <button type="submit" onClick={() => logOut()} className={"hover:text-yellow-200"} >
-              <BiUserCircle size={50} />
+          <div className="flex uppercase items-end gap-5 justify-end p-3">
+            <button type="submit" onClick={() => logOut()} className={"hover:text-yellow-200"}>
+              <BiUserCircle className="text-5xl" />
             </button>
           </div>
-        </ul>
-      </div>
-    </nav>
+        </div>
+      </nav>
+      <main>
+        {children}
+      </main>
+    </>
   );
 }
