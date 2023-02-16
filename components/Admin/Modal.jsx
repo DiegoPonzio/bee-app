@@ -2,15 +2,20 @@ import Link from "next/link";
 import { FiLogOut } from "react-icons/fi"
 import { AiOutlineUserAdd, AiOutlineFileAdd, AiOutlineAppstore } from "react-icons/ai"
 import { BiUserCircle } from "react-icons/bi";
+import { useAdminItem } from "../../clientServices/hamburger";
+import { useContext } from "react";
 
-export default function Modal() {
+export default function Modal({userName}) {
+    const ctx = useContext(useAdminItem)
+    const { selectedItem, setSelectedItem } = ctx
+
     return(
         <div id="drawer-navigation" className="fixed z-40 h-screen p-5 overflow-y-auto w-80 bg-black" tabIndex="-1" aria-labelledby="drawer-navigation-label">
             <h5 id="drawer-navigation-label" className="text-base font-semibold text-white uppercase">¡Bienvenido!</h5>
             <div className="flex items-center p-1 text-base font-normal text-white">
                 <BiUserCircle className="w-7 h-7 text-[#FCE155]" />
                 {/* nombre del usuario */}
-                <span className="ml-3">{`nombre del admin`}</span>
+                <span className="ml-3">{`${userName}`}</span>
             </div>
             <div className="py-4 overflow-y-auto">
                 <ul className="space-y-2">
@@ -27,7 +32,7 @@ export default function Modal() {
                         </Link>
                     </li>
                     <li>
-                        <div className="flex items-center p-2 text-base font-normal cursor-pointer text-white rounded-lg hover:bg-gray-300 hover:text-gray-800">
+                        <div className="flex items-center p-2 text-base font-normal cursor-pointer text-white rounded-lg hover:bg-gray-300 hover:text-gray-800" onClick={ () => setSelectedItem(3)}>
                             <AiOutlineFileAdd className="flex-shrink-0 w-6 h-6 text-[#FCE155] transition duration-75 group-hover:text-gray-900" />
                             <span className="flex-1 ml-3 whitespace-nowrap">Agregar Comunicado</span>
                         </div>
@@ -35,7 +40,7 @@ export default function Modal() {
                     <li>
                         <div className="flex items-center p-2 text-base font-normal cursor-pointer text-white rounded-lg hover:bg-gray-300 hover:text-gray-800">
                             <AiOutlineUserAdd className="flex-shrink-0 w-6 h-6 text-[#FCE155] transition duration-75 group-hover:text-gray-900" />
-                            <span className="flex-1 ml-3 whitespace-nowrap">Agregar Alumno</span>
+                            <span className="flex-1 ml-3 whitespace-nowrap">Mi perfil</span>
                         </div>
                     </li>
                     <li>

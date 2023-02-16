@@ -10,12 +10,14 @@ import { useEffect, useState } from "react";
 import Spinners from "../../components/Spinners";
 import { NotificationContainer } from "react-notifications"
 import Modal from "../../components/Admin/Modal";
+import { useAdminItem } from "../../clientServices/hamburger"
 
 // empresa, egresado y admin
 export default function Home({ user }) {
 
     const [posts, setPosts] = useState()
     const [error, setError] = useState(false)
+    const [selectedItem, setSelectedItem] = useState(1)
     const { usu_nombre, usu_id, priv_id } = user
     const URL = `https://bee-app.herokuapp.com/api/showAll`
 
@@ -37,11 +39,13 @@ export default function Home({ user }) {
             {priv_id === 1 && (
                 <NavAdmin>
                     <div className="flex h-full w-full">
-                        <div className="max-sm:hidden w-80">
-                            <Modal />
-                        </div>
+                        <useAdminItem.Provider value={{ selectedItem, setSelectedItem }}>
+                            <div className="max-sm:hidden w-80">
+                                <Modal userName={usu_nombre} />
+                            </div>
+                        </useAdminItem.Provider>
                         <div className="w-full p-3 text-white grid place-items-center">
-                            <Solicitud />
+                            {selectedItem === 3 && <Solicitud />}
                         </div>
                     </div>
                 </NavAdmin>

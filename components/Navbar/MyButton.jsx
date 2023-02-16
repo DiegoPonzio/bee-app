@@ -33,10 +33,10 @@ export default function Mybutton() {
                             <div>
                                 <ul>
                                     <li className='text-sm text-gray-600 my-2.5'>
-                                        <Link href={"/login"} legacyBehavior><a className='hover:text-orange-900'>Iniciar Sesión</a></Link>
+                                        <a className='hover:text-orange-900' href={"/login"}>Iniciar Sesión</a>
                                     </li>
                                     <li className='text-sm text-gray-600 my-2.5'>
-                                        <Link href={"/signup"} legacyBehavior><a className='hover:text-orange-900'>Registarse</a></Link>
+                                        <a href={"/signup"} className='hover:text-orange-900'>Registarse</a>
                                     </li>
                                     <li className='text-sm text-gray-600 my-2.5' onClick={() => logOut()}>
                                         {/* className='hover:text-orange-900' */}
