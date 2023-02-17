@@ -5,9 +5,13 @@ import { AiOutlineUser } from 'react-icons/ai'
 import Link from 'next/link'
 import axios from 'axios'
 import { NotificationManager } from 'react-notifications'
+import { useContext } from 'react'
+import { useEditPost } from '../../clientServices/hamburger'
+import Editar from './Editar'
 
-export default function CardAdmin({ status, id, title, body, date, hour, place, img }) {
-
+export default function CardAdmin({ status, id, title, body, date, hour, place, img, user }) {
+    const ctx = useContext(useEditPost)
+    const { selectedEdit, setSelectedEdit } = ctx
     const formatDate = date => {
         const res = new Date(date).toLocaleDateString()
         return res
@@ -37,10 +41,10 @@ export default function CardAdmin({ status, id, title, body, date, hour, place, 
                     {status && <ImCross size={20} onClick={ () => onDeny() } />}
                     <span className="sr-only">Borrar comunicado</span>
                 </a></div>
-                    <div className='float-right mt-1 mr-4'><Link href={status ? `/user/admin/Solicitudes/${id}` : `/user/admin/edit/${id}`} legacyBehavior><a className="text-gray-500 hover:text-yellow-200 ">
+                    <div className='float-right mt-1 mr-4'><div onClick={ () => status ?  setSelectedEdit(`sol_${id}`) : setSelectedEdit(`edit_${id}`)} className="text-gray-500 hover:text-yellow-200 cursor-pointer">
                         <HiOutlinePencilAlt size={25} />
                         <span className="sr-only">Editar comunicado</span>
-                    </a></Link>
+                    </div>
                     </div>
                     {status && <div className='float-right mt-1 mr-4'><a href="#" className="text-gray-500 hover:text-yellow-200 ">
                         <AiOutlineUser size={25} />
@@ -57,6 +61,7 @@ export default function CardAdmin({ status, id, title, body, date, hour, place, 
                 { hour && <span className="inline-block bg-[#FCE155] rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">Hora: {new Date(hour).toLocaleString()}</span>}
                 <span className="inline-block bg-[#FCE155] rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">{status ? "Especialidad" : "Lugar"}: {place}</span>
             </div>
+            {selectedEdit === `edit_${id}` && <Editar id={id} user={user} />}
         </div>
     )
 }

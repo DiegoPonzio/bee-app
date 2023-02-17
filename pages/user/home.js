@@ -7,8 +7,9 @@ import Solicitud from "../../components/Admin/Solicitud";
 import { useEffect, useState } from "react";
 import { NotificationContainer } from "react-notifications"
 import Modal from "../../components/Admin/Modal";
-import { useAdminItem } from "../../clientServices/hamburger"
+import { useAdminItem, useEditPost } from "../../clientServices/hamburger"
 import SolicitudList from "../../components/Admin/SolicitudesList";
+import PostsList from "../../components/Admin/PostsList";
 
 // empresa, egresado y admin
 export default function Home({ user }) {
@@ -45,8 +46,13 @@ export default function Home({ user }) {
                         </useAdminItem.Provider>
                         <div className="w-full p-3 text-white grid place-items-center">
                             {selectedItem === 1 && <div>parte del dashboard</div>}
-                            {selectedItem === 2 && <div className="ml-12 mb-1"><SolicitudList /></div>}
+                            {selectedItem === 2 && <div className=" md:ml-12 mb-1"><SolicitudList /></div>}
                             {selectedItem === 3 && <Solicitud />}
+                            {selectedItem === 4 && (
+                                <div className="md:ml-12 mb-1">
+                                        <PostsList user={usu_id} />
+                                </div>
+                            )}
 
                         </div>
                     </div>
