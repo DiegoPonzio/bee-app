@@ -8,20 +8,15 @@ import { NotificationManager } from 'react-notifications'
 import { useContext } from 'react'
 import { useEditPost } from '../../clientServices/hamburger'
 import Editar from './Editar'
+import DeletePost from './DeletePost'
 
 export default function CardAdmin({ status, id, title, body, date, hour, place, img, user }) {
     const ctx = useContext(useEditPost)
-    const { selectedEdit, setSelectedEdit } = ctx
+    const { selectedEdit, setSelectedEdit, setSelectedDelete, selectedDelete } = ctx
     const formatDate = date => {
         const res = new Date(date).toLocaleDateString()
         return res
     } 
-
-    const onDelete = async () => {
-        const res = axios.delete(`/api/deletePost/${id}`)
-            .then( () =>  NotificationManager.success('Se ha eliminado correctamente', 'Exito!!', 5000) )
-            .catch( () => NotificationManager.error( 'Ocurrió un problema al eliminar', 'Error!!', 5000) )
-    }
 
     const onDeny = async () => {
         const res = axios.put("/api/upatePropost", {
@@ -36,11 +31,11 @@ export default function CardAdmin({ status, id, title, body, date, hour, place, 
         <div className="max-w-sm rounded overflow-hidden shadow-lg md:cursor-pointer mx-30px mt-10 bg-[#3C3838]">
             <img className="w-full" src={img} alt="Sunset in the mountains" />
             <div className="px-6 py-4">
-                <div className="font-bold text-xl mb-2 ">{title} <div className='float-right mt-1'> <a href="#" className="text-gray-500 hover:text-yellow-200 ">
-                    {!status && <BsTrash size={23} onClick={ () => onDelete() } />}
+                <div className="font-bold text-xl mb-2 ">{title} <div className='float-right mt-1'> <div className="text-gray-500 hover:text-yellow-200 cursor-pointer">
+                    {!status && <BsTrash size={23} onClick={ () => setSelectedDelete(`delete_${id}`)} />}
                     {status && <ImCross size={20} onClick={ () => onDeny() } />}
                     <span className="sr-only">Borrar comunicado</span>
-                </a></div>
+                </div></div>
                     <div className='float-right mt-1 mr-4'><div onClick={ () => status ?  setSelectedEdit(`sol_${id}`) : setSelectedEdit(`edit_${id}`)} className="text-gray-500 hover:text-yellow-200 cursor-pointer">
                         <HiOutlinePencilAlt size={25} />
                         <span className="sr-only">Editar comunicado</span>
@@ -62,6 +57,7 @@ export default function CardAdmin({ status, id, title, body, date, hour, place, 
                 <span className="inline-block bg-[#FCE155] rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">{status ? "Especialidad" : "Lugar"}: {place}</span>
             </div>
             {selectedEdit === `edit_${id}` && <Editar id={id} user={user} />}
+            {selectedDelete === `delete_${id}` && <DeletePost id={id} />}
         </div>
     )
 }

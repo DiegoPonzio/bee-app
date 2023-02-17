@@ -14,7 +14,7 @@ export default function Editar({ id, user }) {
   const [post, setPost] = useState()
   const [error404, setError404] = useState(false)
   const { status, nombre, descripcion } = errores[1]
-  const URL = `https://bee-app.herokuapp.com/api/showAll/byId/${id}`
+  const URL = `http://localhost:3000/api/showAll/byId/${id}`
   const re = /:[0-9]{2}.[0-9]{3}Z/
 
   const { register, formState: { errors }, handleSubmit, watch } = useForm();

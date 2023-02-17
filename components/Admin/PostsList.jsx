@@ -7,7 +7,8 @@ export default function PostsList({user}) {
     const [postsList, setPostsList] = useState()
     const [error, setError] = useState(false)
     const [selectedEdit, setSelectedEdit] = useState("")
-    const URL = `https://bee-app.herokuapp.com/api/showAll`
+    const [selectedDelete, setSelectedDelete] = useState("")
+    const URL = `http://localhost:3000/api/showAll`
 
     const fetchAll = async () => {
         const response = await fetch(URL)
@@ -23,7 +24,7 @@ export default function PostsList({user}) {
 
     return (
         <div className="grid gird-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-5 items-center justify-items-center">
-            <useEditPost.Provider value={{selectedEdit, setSelectedEdit, setPostsList}}>
+            <useEditPost.Provider value={{selectedEdit, setSelectedEdit, setPostsList, selectedDelete, setSelectedDelete}}>
                 <>
                     {!postsList && !error && <Spinners />}
                     {!error && postsList && postsList.map(post => {
