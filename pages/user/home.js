@@ -1,16 +1,14 @@
 import Layout from "../../components/Layout";
 import withSession from "../../lib/session";
-import CardAdmin from "../../components/Admin/CardAdmin";
-import Footer from '../../components/Footer';
 import NavAdmin from "../../components/Admin/NavAdmin";
 import Solicitar from "../../components/OtherUsers/Solicitar";
 import ShowPost from "../../components/OtherUsers/ShowPost";
 import Solicitud from "../../components/Admin/Solicitud";
 import { useEffect, useState } from "react";
-import Spinners from "../../components/Spinners";
 import { NotificationContainer } from "react-notifications"
 import Modal from "../../components/Admin/Modal";
 import { useAdminItem } from "../../clientServices/hamburger"
+import SolicitudList from "../../components/Admin/SolicitudesList";
 
 // empresa, egresado y admin
 export default function Home({ user }) {
@@ -38,6 +36,7 @@ export default function Home({ user }) {
             <Layout title={`Welcome!! ${usu_nombre}`} />
             {priv_id === 1 && (
                 <NavAdmin>
+                    <NotificationContainer />
                     <div className="flex h-full w-full">
                         <useAdminItem.Provider value={{ selectedItem, setSelectedItem }}>
                             <div className="max-sm:hidden w-80">
@@ -45,7 +44,10 @@ export default function Home({ user }) {
                             </div>
                         </useAdminItem.Provider>
                         <div className="w-full p-3 text-white grid place-items-center">
+                            {selectedItem === 1 && <div>parte del dashboard</div>}
+                            {selectedItem === 2 && <div className="ml-12 mb-1"><SolicitudList /></div>}
                             {selectedItem === 3 && <Solicitud />}
+
                         </div>
                     </div>
                 </NavAdmin>

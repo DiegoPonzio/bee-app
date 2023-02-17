@@ -29,7 +29,7 @@ export default function CardAdmin({ status, id, title, body, date, hour, place, 
     }
     // 
     return (
-        <div className="max-w-sm rounded overflow-hidden shadow-lg md:cursor-pointer mx-30px mt-10">
+        <div className="max-w-sm rounded overflow-hidden shadow-lg md:cursor-pointer mx-30px mt-10 bg-[#3C3838]">
             <img className="w-full" src={img} alt="Sunset in the mountains" />
             <div className="px-6 py-4">
                 <div className="font-bold text-xl mb-2 ">{title} <div className='float-right mt-1'> <a href="#" className="text-gray-500 hover:text-yellow-200 ">
@@ -37,7 +37,7 @@ export default function CardAdmin({ status, id, title, body, date, hour, place, 
                     {status && <ImCross size={20} onClick={ () => onDeny() } />}
                     <span className="sr-only">Borrar comunicado</span>
                 </a></div>
-                    <div className='float-right mt-1 mr-4'><Link href={status ? `/user/admin/Solicitudes/${id}` : `/user/admin/edit/${id}`}><a href="#" className="text-gray-500 hover:text-yellow-200 ">
+                    <div className='float-right mt-1 mr-4'><Link href={status ? `/user/admin/Solicitudes/${id}` : `/user/admin/edit/${id}`} legacyBehavior><a className="text-gray-500 hover:text-yellow-200 ">
                         <HiOutlinePencilAlt size={25} />
                         <span className="sr-only">Editar comunicado</span>
                     </a></Link>
@@ -48,14 +48,14 @@ export default function CardAdmin({ status, id, title, body, date, hour, place, 
                     </a>
                     </div>}
                 </div>
-                <p className="text-gray-700 text-base">
+                <p className="text-gray-300 text-base">
                    {body}
                 </p>
             </div>
             <div className="px-6 pt-4 pb-2">
-                { date && <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">Fecha: {formatDate(date)}</span>}
-                { hour && <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">Hora: {new Date(hour).toLocaleString()}</span>}
-                <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">{status ? "Especialidad" : "Lugar"}: {place}</span>
+                { date && <span className="inline-block bg-[#FCE155] rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">Fecha: {formatDate(date)}</span>}
+                { hour && <span className="inline-block bg-[#FCE155] rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">Hora: {new Date(hour).toLocaleString()}</span>}
+                <span className="inline-block bg-[#FCE155] rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">{status ? "Especialidad" : "Lugar"}: {place}</span>
             </div>
         </div>
     )
