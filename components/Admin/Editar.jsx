@@ -36,7 +36,7 @@ export default function Editar({ id, user }) {
       .then(() => {
         NotificationManager.success('Se ha eliminado correctamente', 'Exito!!', 5000)
         setPostsList(false)
-        setSelectedEdit("")
+        setSelectedEdit("") 
       })
       .catch(() => NotificationManager.error('Ocurrió un problema al eliminar', 'Error!!', 5000))
   }

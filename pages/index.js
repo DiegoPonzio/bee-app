@@ -2,14 +2,12 @@ import Layout from "../components/Layout"
 import NavBar from "../components/NavBar"
 import Footer from "../components/Footer"
 import withSessionCecyt from "../lib/cecyt"
-import Slider1 from "../components/Slider1"
 import { useEffect, useState } from "react"
 import Spinners from "../components/Spinners"
 import { NotificationContainer } from "react-notifications"
 import axios from "axios"
 import Cards from "../components/Cards"
 import Router from "next/router"
-import Comments from "../components/OtherUsers/Comments"
 
 export default function Home({ cecyt }) {
 

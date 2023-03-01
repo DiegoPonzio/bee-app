@@ -15,7 +15,7 @@ export default function Mybutton() {
     }
 
     return (
-        <div className="px-3 text-left  md:cursor-pointer group">
+        <div className="px-3 text-left  group">
             <button className="bg-transparent" onClick={() => heading !== "user" ? setHeading("user") : setHeading("")}>
                 <div className='text-5xl text-gray-600 my-2.5 hover:text-yellow-200'>
                     <h1>
@@ -25,7 +25,7 @@ export default function Mybutton() {
             </button>
             <div>
                 <div>
-                    <div className=' absolute top-20 hidden group-hover:md:block hover:md:block'>
+                    <div className=' absolute top-20 hidden '>
                         <div className='py-3'>
                             <div className='w-4 h-4 left-3 absolute mt-1 bg-white rotate-45'></div>
                         </div>
@@ -50,7 +50,7 @@ export default function Mybutton() {
                     </div>
                 </div>
                 {/* mobile app */}
-                <div className={`${heading === "user" ? 'md:hidden' : 'hidden'}`}>
+                <div className={`${heading === "user" ? '' : 'hidden'}`}>
                     <div>
                         <div>
                             <div>

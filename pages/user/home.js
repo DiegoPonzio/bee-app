@@ -50,7 +50,7 @@ export default function Home({ user }) {
                             {selectedItem === 3 && <Solicitud />}
                             {selectedItem === 4 && (
                                 <div className="md:ml-12 mb-1">
-                                        <PostsList user={usu_id} />
+                                    <PostsList user={usu_id} />
                                 </div>
                             )}
 

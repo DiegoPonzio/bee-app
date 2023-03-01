@@ -3,7 +3,7 @@ import { AiOutlineInstagram, AiOutlineTwitter, AiFillGithub } from 'react-icons/
 export default function Footer() {
     return (
 
-        <footer className="bottom-0 left-0 z-20 p-4 w-full bg-white border-t border-gray-200 shadow md:flex md:items-center md:justify-between md:p-6 max-sm:hidden">
+        <footer className="fixed bottom-0 left-0 z-20 p-4 w-full bg-white border-t border-gray-200 shadow md:flex md:items-center md:justify-between md:p-6 max-sm:hidden">
             <span className="text-sm text-gray-500 sm:text-center dark:text-gray-400">© 2022 <a href="https://flowbite.com/" className="hover:underline">BEE+™</a>. All Rights Reserved.
             </span>
 

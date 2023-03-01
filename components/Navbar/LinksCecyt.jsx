@@ -10,7 +10,7 @@ export default function LinksCecyt({ carrear }) {
         <>
             {
                 <div key={'De Carrera'}>
-                    <div className="px-3 text-left  md:cursor-pointer group">
+                    {/* <div className="px-3 text-left  md:cursor-pointer group">
                         <h1 className="py-7 flex justify-between items-center md:pr-0 pr-5 group" onClick={() => heading !== "De Carrera" ? setHeading("De Carrera") : setHeading("")}>
                             De Carrera
                             <span className="text-xl md:hidden inline">
@@ -40,10 +40,10 @@ export default function LinksCecyt({ carrear }) {
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> */}
                     {/* mobile menues */}
                     <div className={`${heading === "De Carrera" ? 'md:hidden' : 'hidden'}`}>
-                        { carrear.map(sublink => (
+                        {carrear.map(sublink => (
                             <div key={sublink.id}>
                                 <div>
                                     <div>

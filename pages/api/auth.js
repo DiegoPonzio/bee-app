@@ -11,7 +11,7 @@ export default withSession(async (req, res) => {
                 const { username, password } = req.body
                 const { verfiedUser } = MyQuerys
                 const query = format(verfiedUser, [
-                    username
+                    usernam
                 ])
                 const [response] = await pool.query(query)
                 if (response.length !== 0) {

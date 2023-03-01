@@ -6,12 +6,14 @@ import Comments from './OtherUsers/Comments'
 import { AiOutlineComment } from "react-icons/ai"
 import axios from 'axios'
 import { AiOutlineUser } from 'react-icons/ai'
+import useUser from '../lib/user'
 
 export default function Cards({ img = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRZhLHBfMTrKT4HCY7Lyue8ul7R_G5S24zHBT73LSjA2Fi536zNOPBM33V3SbVsSzaY3Uc&usqp=CAU", name, body, date, hour, hour2, place, id, link, who }) {
 
     const [like, setLike] = useState(false);
     const [posts, setPosts] = useState()
     const [error, setError] = useState(false)
+    const [user, message] = useUser()
     const URL = `/api/showComments/byId/${id}`
 
     const fetchComments = async () => {
@@ -80,7 +82,7 @@ export default function Cards({ img = "https://encrypted-tbn0.gstatic.com/images
                     <Comments user={"Diego"} text={"hola mundo esto es para ver que tan bien es que se ve"} />
                 </div>
                 <br />
-                <PostComment id={id} />
+                <PostComment id={id} user={user} />
             </div>
         </div>
     )
