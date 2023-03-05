@@ -55,7 +55,7 @@ export default function Home({ cecyt }) {
             </>
           )}
         </div>
-        <Footer />
+        {/* <Footer /> */}
       </>
     )
   } catch (error) {

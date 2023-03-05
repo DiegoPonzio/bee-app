@@ -37,7 +37,7 @@ export default async function ShowAll(req, res) {
                 return res.status(404).json(
                     {
                         message: {
-                            Found: response.length
+                            Found: response?.length
                         },
                         result: ["Not found", error],
                         status: 404
