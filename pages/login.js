@@ -23,11 +23,12 @@ export default function Login() {
             username,
             password
         }).then(Veryfy)
-            .catch(() => setState2(true))
+            .catch((err) => {
+                setState2(true)
+            })
     }
 
     const Veryfy = async (status) => {
-        //console.log(status);
         setStatus(status)
         try {
             if (await status !== null) {

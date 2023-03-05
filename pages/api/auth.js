@@ -11,7 +11,7 @@ export default withSession(async (req, res) => {
                 const { username, password } = req.body
                 const { verfiedUser } = MyQuerys
                 const query = format(verfiedUser, [
-                    usernam
+                    username
                 ])
                 const [response] = await pool.query(query)
                 if (response.length !== 0) {
@@ -27,6 +27,7 @@ export default withSession(async (req, res) => {
                     return res.status(200).json({ message: "Empty", result: response, status: 401 })
                 }
             } catch (err) {
+                console.log(err);
                 return res.status(200).json({ message: 'Erro Time out', result: err, status: 408 })
             }
         case "GET":
