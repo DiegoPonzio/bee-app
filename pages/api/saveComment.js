@@ -5,9 +5,9 @@ export default async function saveComment(req, res){
     switch (req.method) {
         case "POST":
             try{
-                const { nombre, comentario, id } = req.body
+                const { name, comentario, id } = req.body
 
-                const comment = await newComment(nombre, comentario, id)
+                const comment = await newComment(name, comentario, id)
 
                 return res.status(200).json({ message: "Exito", result: comment, status: 200 })
             } catch (error) {

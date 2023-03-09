@@ -3,7 +3,7 @@ import { FaHeart } from 'react-icons/fa'
 import { FiHeart } from 'react-icons/fi'
 import PostComment from './OtherUsers/PostComment'
 import Comments from './OtherUsers/Comments'
-import { AiOutlineComment } from "react-icons/ai"
+import { useComment } from "../clientServices/hamburger"
 import axios from 'axios'
 import { AiOutlineUser } from 'react-icons/ai'
 import useUser from '../lib/user'
@@ -59,30 +59,22 @@ export default function Cards({ img = "https://encrypted-tbn0.gstatic.com/images
                         Leer más
                         <svg aria-hidden="true" class="w-4 h-4 ml-2 -mr-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
                     </a>
-                </div>
-                <div className="float-right px-4 pt-2 pb-3">
-                    {`Número de comentarios: ${!posts ? posts?.result?.lenght : "0"}`}
+                    <div className="float-right px-4 pt-2 pb-3">
+                        {`Número de comentarios: ${posts ? posts.data.result.length : "0"}`}
+                    </div>
                 </div>
             </div>
             <div className='flex-col mx-3 mt-4'>
-                <div className='overflow-y-scroll h-4/5 max-w-sm break-words'>
-                    {posts && posts.data.result.map(post => (
-                        <Comments user={post.com_nombre} text={post.com_desc} key={`comment_${post.com_id}`}
-                        />
-                    ))}
-                    <Comments user={"Diego"} text={"hola mundo esto es para ver que tan bien es que se ve"} />
-                    <Comments user={"Diego"} text={"hola mundo esto es para ver que tan bien es que se ve"} />
-                    <Comments user={"Diego"} text={"hola mundo esto es para ver que tan bien es que se ve"} />
-                    <Comments user={"Diego"} text={"hola mundo esto es para ver que tan bien es que se ve"} />
-                    <Comments user={"Diego"} text={"hola mundo esto es para ver que tan bien es que se ve"} />
-                    <Comments user={"Diego"} text={"hola mundo esto es para ver que tan bien es que se ve"} />
-                    <Comments user={"Diego"} text={"hola mundo esto es para ver que tan bien es que se ve"} />
-                    <Comments user={"Diego"} text={"hola mundo esto es para ver que tan bien es que se ve"} />
-                    <Comments user={"Diego"} text={"hola mundo esto es para ver que tan bien es que se ve"} />
-                    <Comments user={"Diego"} text={"hola mundo esto es para ver que tan bien es que se ve"} />
-                </div>
-                <br />
-                <PostComment id={id} user={user} />
+                <useComment.Provider value={{ setPosts }}>
+                    <div className='overflow-y-scroll h-4/5 max-w-sm break-words'>
+                        {posts && posts.data.result.map(post => (
+                            <Comments user={post.usu_nombre} text={post.com_desc} key={`comment_${post.com_id}`}
+                            />
+                        ))}
+                    </div>
+                    <br />
+                    <PostComment id={id} user={user} />
+                </useComment.Provider>
             </div>
         </div>
     )

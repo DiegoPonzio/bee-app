@@ -56,10 +56,10 @@ export default function Mybutton() {
                             <div>
                                 <ul>
                                     <li className='py-3 pl-14'>
-                                        <Link href={"/login"} legacyBehavior><a className='hover:text-orange-900'>Iniciar Sesión</a></Link>
+                                        <a href={"/login"} className='hover:text-orange-900'>Iniciar Sesión</a>
                                     </li>
                                     <li className='py-3 pl-14'>
-                                        <Link href={"/signup"} legacyBehavior><a className='hover:text-orange-900'>Registarse</a></Link>
+                                        <a href={"/signup"} className='hover:text-orange-900'>Registarse</a>
                                     </li>
                                     <li className='py-3 pl-14'>
                                         <button className={"hover:text-orange-900"}  onClick={() => logOut()} >

@@ -37,7 +37,7 @@ export default function NavAdmin({ children }) {
       <nav className={`${status && "fixed"} bg-amber-300 z-50 w-full h-16`}>
         <div className="grid grid-cols-2 font-medium">
           <div className="z-50 p-3 md:w-auto w-full flex justify-start">
-            <h2 className="text-5xl cursor-pointer"><Link href={"/user/home"} legacyBehavior>BEE+</Link></h2>
+            <h2 className="text-5xl cursor-pointer"><Link href={"/"} legacyBehavior>BEE+</Link></h2>
           </div>
           <div className="flex uppercase items-end gap-5 justify-end p-3">
             <button type="submit" onClick={() => logOut()} className={"hover:text-yellow-200"}>

@@ -10,17 +10,14 @@ export default function LinksCecyt({ carrear }) {
         <>
             {
                 <div key={'De Carrera'}>
-                    {/* <div className="px-3 text-left  md:cursor-pointer group">
-                        <h1 className="py-7 flex justify-between items-center md:pr-0 pr-5 group" onClick={() => heading !== "De Carrera" ? setHeading("De Carrera") : setHeading("")}>
+                    <div className="px-3 text-left  md:cursor-pointer group">
+                        <h1 className="py-7 flex justify-between items-center pr-5 group" onClick={() => heading !== "De Carrera" ? setHeading("De Carrera") : setHeading("")}>
                             De Carrera
-                            <span className="text-xl md:hidden inline">
+                            <span className="text-xl inline">
                                 {heading === "De Carrera" ? <BsChevronUp /> : <BsChevronDown />}
                             </span>
-                            <span className="text-xl md:mt-1 md:ml-2 md:block hidden group-hover:rotate-180 group-hover:-mt-2">
-                                <BsChevronDown />
-                            </span>
                         </h1>
-                        <div>
+                        {/*<div>
                             <div>
                                 <div className="absolute top-20 hidden group-hover:md:block hover:md:block">
                                     <div className="py-3">
@@ -39,16 +36,16 @@ export default function LinksCecyt({ carrear }) {
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    </div> */}
+                        </div>*/}
+                    </div>
                     {/* mobile menues */}
-                    <div className={`${heading === "De Carrera" ? 'md:hidden' : 'hidden'}`}>
+                    <div className={`${heading === "De Carrera" ? '' : 'hidden'}`}>
                         {carrear.map(sublink => (
                             <div key={sublink.id}>
                                 <div>
                                     <div>
                                         <li className="py-3 pl-14">
-                                            <a href={`/De Carrera/${sublink.name}`} className="text-orange-400 hover:text-orange-900">{sublink.name}</a>
+                                            <a href={`/De Carrera/${sublink.name}`} className="hover:text-orange-900">{sublink.name}</a>
                                         </li>
                                     </div>
                                 </div>

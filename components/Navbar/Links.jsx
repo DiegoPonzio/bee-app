@@ -21,7 +21,6 @@ export default function Links() {
                                 </span>
                                 
                             </h1>
-                            
                         </div>
                         <div className={`${heading === link.name ? '' : 'hidden'}`}>
                             {link.subMenu && link.subLinks.map(sublink => (
