@@ -12,8 +12,9 @@ export default async function showCommentById(req, res) {
                 const query = format(fetchComments, [id])
 
                 const [result] = await pool.query(query)
+                const reverse = result.reverse()
 
-                return res.status(200).json({ message: "Exito", result, status: 200 })
+                return res.status(200).json({ message: "Exito", result: reverse, status: 200 })
             } catch (err) {
                 return res.status(408).json({ message: 'Error', result: err, status: 408 })
             }
