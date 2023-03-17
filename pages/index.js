@@ -35,7 +35,7 @@ export default function Home({ cecyt }) {
         <NotificationContainer />
         <div className='py-5 px-10'>
           {/* <Slider1 /> */}
-          <div className="grid gird-cols-1 items-center justify-items-center gap-6">
+          <div className="grid gird-cols-1 items-center justify-items-center gap-6 snap-y snap-proximity">
             {!posts && !error && <Spinners />}
             {posts && !error && posts.data.result && posts.data.result.map(post => {
               //console.log(bufferToBinaryString(post.pub_media.data))

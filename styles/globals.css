@@ -4,6 +4,6 @@
 
 @layer components {
     body{
-       @apply bg-[#000];
+       @apply bg-[#000]; 
     }
 }

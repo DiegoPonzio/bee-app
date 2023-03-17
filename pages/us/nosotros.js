@@ -5,7 +5,7 @@ import Slider1 from "../../components/Slider1"
 import Layout from "../../components/Layout"
 import Estrategias from '../../components/Estrategias'
 
-export default function Nosotros () {
+export default function Nosotros() {
   return (
     <>
       <Layout title="Conócenos" />
@@ -13,10 +13,9 @@ export default function Nosotros () {
       <div className="py-5 px-5">
         <Conoce />
         <Slider1 />
-        <Estrategias/>
+        <Estrategias />
       </div>
-      <Footer />
-
+      {/* <Footer /> */}
     </>
   )
 }

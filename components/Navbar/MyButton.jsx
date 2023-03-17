@@ -1,6 +1,6 @@
 import { BiUserCircle } from 'react-icons/bi'
 import { useState } from 'react'
-import Link from 'next/link'
+import useUser from '../../lib/user'
 import { NotificationManager } from 'react-notifications'
 import Router from 'next/router'
 import axios from 'axios'
@@ -8,6 +8,7 @@ import axios from 'axios'
 export default function Mybutton() {
     //const router = useRouter()
     const [heading, setHeading] = useState("")
+    const [user, message] = useUser()
     const logOut = async () => {
         const res = await axios.get('/api/outCecyt')
             .then(() => Router.replace('/principal'))
@@ -24,45 +25,34 @@ export default function Mybutton() {
                 </div>
             </button>
             <div>
-                <div>
-                    <div className=' absolute top-20 hidden '>
-                        <div className='py-3'>
-                            <div className='w-4 h-4 left-3 absolute mt-1 bg-white rotate-45'></div>
-                        </div>
-                        <div className='bg-white p-3.5 z-40 relative'>
-                            <div>
-                                <ul>
-                                    <li className='text-sm text-gray-600 my-2.5'>
-                                        <a className='hover:text-orange-900' href={"/login"}>Iniciar Sesión</a>
-                                    </li>
-                                    <li className='text-sm text-gray-600 my-2.5'>
-                                        <a href={"/signup"} className='hover:text-orange-900'>Registarse</a>
-                                    </li>
-                                    <li className='text-sm text-gray-600 my-2.5' onClick={() => logOut()}>
-                                        {/* className='hover:text-orange-900' */}
-                                        <div className={"hover:text-orange-900"} >
-                                            Elegir Institución
-                                        </div>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
                 {/* mobile app */}
                 <div className={`${heading === "user" ? '' : 'hidden'}`}>
                     <div>
                         <div>
                             <div>
                                 <ul>
+                                    {!user && (
+                                        <>
+                                            <li className='text-sm py-3 pl-14'>
+                                                <a className='hover:text-orange-900' href={"/login"}>Iniciar Sesión</a>
+                                            </li>
+                                            <li className='text-sm py-3 pl-14'>
+                                                <a href={"/signup"} className='hover:text-orange-900'>Registarse</a>
+                                            </li>
+                                        </>
+                                    )}
+                                    {user && (
+                                        <>
+                                            <li className='text-sm py-3 pl-14'>
+                                                <a className='hover:text-orange-900' href={"/login"}>Mis likes</a>
+                                            </li>
+                                            <li className='text-sm py-3 pl-14'>
+                                                <a className='hover:text-orange-900' href={"/user/home"}>Mi Cuenta</a>
+                                            </li>
+                                        </>
+                                    )}
                                     <li className='py-3 pl-14'>
-                                        <a href={"/login"} className='hover:text-orange-900'>Iniciar Sesión</a>
-                                    </li>
-                                    <li className='py-3 pl-14'>
-                                        <a href={"/signup"} className='hover:text-orange-900'>Registarse</a>
-                                    </li>
-                                    <li className='py-3 pl-14'>
-                                        <button className={"hover:text-orange-900"}  onClick={() => logOut()} >
+                                        <button className={"hover:text-orange-900"} onClick={() => logOut()} >
                                             Elegir Institución
                                         </button>
                                     </li>

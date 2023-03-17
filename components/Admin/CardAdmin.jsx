@@ -28,7 +28,7 @@ export default function CardAdmin({ status, id, title, body, date, hour, place, 
     }
     // 
     return (
-        <div className="max-w-sm rounded overflow-hidden shadow-lg md:cursor-pointer mx-30px mt-10 bg-[#3C3838]">
+        <div className="max-w-sm rounded overflow-hidden shadow-lg md:cursor-pointer mx-30px mt-10 bg-gray-10">
             <img className="w-full" src={img} alt="Sunset in the mountains" />
             <div className="px-6 py-4">
                 <div className="font-bold text-xl mb-2 ">{title} <div className='float-right mt-1'> <div className="text-gray-500 hover:text-yellow-200 cursor-pointer">
@@ -52,9 +52,9 @@ export default function CardAdmin({ status, id, title, body, date, hour, place, 
                 </p>
             </div>
             <div className="px-6 pt-4 pb-2">
-                { date && <span className="inline-block bg-[#FCE155] rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">Fecha: {formatDate(date)}</span>}
-                { hour && <span className="inline-block bg-[#FCE155] rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">Hora: {new Date(hour).toLocaleString()}</span>}
-                <span className="inline-block bg-[#FCE155] rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">{status ? "Especialidad" : "Lugar"}: {place}</span>
+                { date && <span className="inline-block bg-yellow-10 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">Fecha: {formatDate(date)}</span>}
+                { hour && <span className="inline-block bg-yellow-10 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">Hora: {new Date(hour).toLocaleString()}</span>}
+                <span className="inline-block bg-yellow-10 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">{status ? "Especialidad" : "Lugar"}: {place}</span>
             </div>
             {selectedEdit === `edit_${id}` && <Editar id={id} user={user} />}
             {selectedDelete === `delete_${id}` && <DeletePost id={id} />}
