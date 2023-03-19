@@ -11,7 +11,7 @@ export default function Mybutton() {
     const [user, message] = useUser()
     const logOut = async () => {
         const res = await axios.get('/api/outCecyt')
-            .then(() => Router.replace('/principal'))
+            .then(() => Router.replace('/principal/cecyts'))
             .catch(() => NotificationManager.error('Error!!', 'Ocurrio un problema', 5000))
     }
 
