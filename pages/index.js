@@ -12,11 +12,11 @@ import Router from "next/router"
 export default function Home({ cecyt }) {
 
   try {
-
     const { carrear, name } = cecyt
     const [posts, setPosts] = useState()
     const [error, setError] = useState(false)
     const URL = `/api/showAll/byCecyt/${name}`
+    //
 
     const fetchPosts = async () => {
       const response = await axios.get(URL)
@@ -35,11 +35,11 @@ export default function Home({ cecyt }) {
         <NotificationContainer />
         <div className='py-5 px-10'>
           {/* <Slider1 /> */}
-          <div className="grid gird-cols-1 items-center justify-items-center gap-6 snap-y snap-proximity">
+          <div className="grid gird-cols-1 items-center justify-items-center gap-6 snap-y snap-proximity pt-28">
             {!posts && !error && <Spinners />}
-            {posts && !error && posts.data.result && posts.data.result.map(post => {
+            {posts && !error && posts.data.result && posts.data.result.map((post, index) => {
               //console.log(bufferToBinaryString(post.pub_media.data))
-              return <Cards img={String.fromCharCode(...post.pub_media.data)} name={post.pub_titulo} body={post.pub_descripcion} date={post.pub_fecha} hour={post.pub_horainicio} hour2={post.pub_horafinal} place={post.pub_locacion} key={post.pub_id} id={post.pub_id} link={post.pub_fuente} who={post.pub_encargado} />
+              return <Cards img={String.fromCharCode(...post.pub_media.data)} name={post.pub_titulo} body={post.pub_descripcion} date={post.pub_fecha} hour={post.pub_horainicio} hour2={post.pub_horafinal} place={post.pub_locacion} key={post.pub_id} id={post.pub_id} link={post.pub_fuente} who={post.pub_encargado} cecyt={name} index={index} />
             })}
           </div>
           {error && (
