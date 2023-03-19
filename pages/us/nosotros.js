@@ -10,7 +10,7 @@ export default function Nosotros() {
     <>
       <Layout title="Conócenos" />
       <NavBar />
-      <div className="py-5 px-5">
+      <div className="py-5 px-5 pt-28">
         <Conoce />
         <Slider1 />
         <Estrategias />

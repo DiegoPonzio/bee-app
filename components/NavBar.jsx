@@ -14,7 +14,7 @@ export default function NavBar({ carrear }) {
       <div className="flex items-center font-medium justify-around">
         <div className="z-50 p-5 w-full flex justify-between items-center">
           <h2 className="text-7xl cursor-pointer">{
-            carrear ? <Link href={"/"} legacyBehavior>BEE+</Link> : <Link href={"/principal"} legacyBehavior>BEE+</Link>
+            carrear ? <Link href={"/"} legacyBehavior>BEE+</Link> : <a href={"/principal"}>BEE+</a>
           }</h2>
           <div className="text-3xl " onClick={() => setOpen(!open)}>
             {open ? <AiOutlineClose /> : <GiHamburgerMenu />}

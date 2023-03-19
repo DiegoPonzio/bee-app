@@ -8,7 +8,7 @@ export default function Politicas() {
         <>
             <Layout title="Políticas" />
             <NavBar />
-            <div className="py-10 px-10">
+            <div className="py-10 px-10 pt-28">
                 <Poli />
                 {/* <Footer /> */}
             </div>
