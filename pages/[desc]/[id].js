@@ -30,7 +30,7 @@ const Description = ({ cecyt }) => {
       <Layout title={`Comunicados de ${id}`} />
       <NavBar carrear={carrear} />
       <div className='py-5 px-10'>
-        <div className="grid gird-cols-1 gap-5 items-center justify-items-center">
+        <div className="grid gird-cols-1 gap-5 items-center justify-items-center pt-28">
           {!error && post && post.data.result.map(post => (
             <Cards img={String.fromCharCode(...post.pub_media.data)} name={post.pub_titulo} body={post.pub_descripcion} date={post.pub_fecha} hour={post.pub_horainicio} hour2={post.pub_horafinal} place={post.pub_locacion} key={post.pub_id} id={post.pub_id} link={post.pub_fuente} who={post.pub_encargado} />
           ))}
