@@ -18,18 +18,20 @@ export default function Cards({ img = "https://encrypted-tbn0.gstatic.com/images
     const [posts, setPosts] = useState()
     const [error, setError] = useState(false)
     const URL = `/api/showComments/byId/${id}`
-    let URLLike = `/api/verifLike`
+    let URLLike = `/api/verifLike/${user}/${id}`
 
     const saveLike = () => {
         //se valida si anetriormente dio like
         if (!like) {
             //no ha dado like
+            console.log("entro a dar like");
             const res = axios.post(URLLike, {
                 user,
                 post: id
             }).then(() => setLike(true)).catch(() => setLike(false))
 
         } else {
+            console.log("entro a quitar like");
             //dio like
             URLLike = `/api/verifLike/${user}/${id}`
 
