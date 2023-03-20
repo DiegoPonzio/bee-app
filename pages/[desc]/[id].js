@@ -12,7 +12,7 @@ const Description = ({ cecyt }) => {
   const { name, carrear } = cecyt
   const [post, setPost] = useState()
   const [error, setError] = useState(false)
-  const URL = desc === "De Carrera" ? `/api/showAll/byCecyt/${name}/byEspId/${id}` : `/api/showAll/byCecyt/${name}/byEsp/${id}`
+  const URL = `/api/showAll/byCecyt/${name}/byEsp/${id}`
   const fetchEsp = async () => {
     const fetchEsp = await axios.get(URL)
       .then(response => {
