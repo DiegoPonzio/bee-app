@@ -38,7 +38,7 @@ export default function Home({ user }) {
             {priv_id === 1 && (
                 <NavAdmin>
                     <NotificationContainer />
-                    <div className="flex h-full w-full">
+                    <div className="flex h-full w-full pt-16">
                         <useAdminItem.Provider value={{ selectedItem, setSelectedItem }}>
                             <div className="max-sm:hidden w-80">
                                 <Modal userName={usu_nombre} />
@@ -47,7 +47,7 @@ export default function Home({ user }) {
                         <div className="w-full p-3 text-white grid place-items-center">
                             {selectedItem === 1 && <div>parte del dashboard</div>}
                             {selectedItem === 2 && <div className=" md:ml-12 mb-1"><SolicitudList /></div>}
-                            {selectedItem === 3 && <Solicitud />}
+                            {selectedItem === 3 && <Solicitud user={usu_id} />}
                             {selectedItem === 4 && (
                                 <div className="md:ml-12 mb-1">
                                     <PostsList user={usu_id} />

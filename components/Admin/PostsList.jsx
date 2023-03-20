@@ -59,7 +59,7 @@ export default function PostsList({ user }) {
                         {!postsList && !error && <Spinners />}
                         {!error && !loader && postsList?.result?.map(post => {
                             //console.log(bufferToBinaryString(post.pub_media.data))
-                            return <CardAdmin img={String.fromCharCode(...post.pub_media.data)} title={post.pub_titulo} body={post.pub_descripcion} date={post.pub_fecha} hour={post.pub_horainicio} place={post.pub_locacion} key={post.pub_id} id={post.pub_id} user={user} />
+                            return <CardAdmin img={post.pub_media} title={post.pub_titulo} body={post.pub_descripcion} date={post.pub_fecha} hour={post.pub_horainicio} place={post.pub_locacion} key={post.pub_id} id={post.pub_id} user={user} />
                         })}
                     </>
                 </useEditPost.Provider>

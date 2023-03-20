@@ -8,26 +8,9 @@ import { useContext, useEffect, useState } from "react";
 export default function Modal({userName}) {
     const ctx = useContext(useAdminItem)
     const { selectedItem, setSelectedItem } = ctx
-    const [space ,setSpace] = useState(false)
-
-    useEffect(() => {
-        const handlerScroll = () => {
-          if (window.scrollY > 0 ) {
-            setSpace(true)
-          } else {
-            setSpace(false)
-          }
-        }
-        window.addEventListener("scroll", handlerScroll)
-    
-        return () => {
-          window.removeEventListener("scroll", handlerScroll)
-        }
-      }, [])
-
 
     return(
-        <div id="drawer-navigation" className={`fixed z-40 h-screen p-5 overflow-y-auto w-80 bg-black ${space && " mt-16"}`} tabIndex="-1" aria-labelledby="drawer-navigation-label">
+        <div id="drawer-navigation" className={`fixed z-40 h-screen p-5 overflow-y-auto w-80 bg-black`} tabIndex="-1" aria-labelledby="drawer-navigation-label">
             <h5 id="drawer-navigation-label" className="text-base font-semibold text-white uppercase">¡Bienvenido!</h5>
             <div className="flex items-center p-1 text-base font-normal text-white">
                 <BiUserCircle className="w-7 h-7 text-[#FCE155]" />

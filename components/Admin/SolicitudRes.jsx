@@ -7,7 +7,7 @@ import Router from 'next/router'
 
 export default function SolicitudRes({ id }) {
   const [state, setState] = useState(false)
-  const URL = `http://localhost:3000/api/showAll/temp/byId/${id}`
+  const URL = `https://bee-app.herokuapp.com/api/showAll/temp/byId/${id}`
 
   const onCheck = async () => {
     Router.push("/user/admin/Solicitudes")
