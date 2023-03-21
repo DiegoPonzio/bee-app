@@ -58,7 +58,7 @@ export default function Home({ user }) {
                     </div>
                 </NavAdmin>
             )}
-            {priv_id !== 1 && (
+            {priv_id === 2 || priv_id === 3 && (
                 <>
                     <NavAdmin />
                     <div className="py-10 px-10">

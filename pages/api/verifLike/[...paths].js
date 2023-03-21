@@ -1,6 +1,15 @@
 import { addLike, deleteLike, fetchPostNLike } from "../../../lib/postProcedures"
+import withSession from "../../../lib/session"
 
-export default async function VerifLike(req, res) {
+export default withSession(async (req, res) => {
+
+    const user = req.session.get("user")
+
+    if (!user) {
+        res.status(401).send(`Invalid user: ${user}`);
+        return;
+    }
+
     switch (req.method) {
         case "GET":
             //ver si hay like
@@ -10,13 +19,22 @@ export default async function VerifLike(req, res) {
             }
             const [userG, postG] = paths
 
+            if (user.usu_nombre !== userG) {
+                res.status(403).send(`Invalid user: ${user}`);
+            }
+
             const newLike = await fetchPostNLike(userG, postG)
             return res.status(200).json({ message: "OK", newLike })
         case "POST":
             //insertar like
             try {
-                const { user, post } = req.body
-                const postLike = await addLike(user, post)
+                const { user: userP, post } = req.body
+
+                if (user.usu_nombre !== userP) {
+                    res.status(403).send(`Invalid user: ${user}`);
+                }
+
+                const postLike = await addLike(userP, post)
                 return res.status(200).json({ message: "OK", postLike })
             } catch (error) {
                 return res.status(400).json({message: "Bad Request", error})
@@ -27,6 +45,10 @@ export default async function VerifLike(req, res) {
                 const { paths } = req.query 
                 const [userD, postD] = paths
 
+                if (user.usu_nombre !== userD) {
+                    res.status(403).send(`Invalid user: ${user}`);
+                }    
+
                 const DeleteLike = await deleteLike(userD, postD)
                 return res.status(200).json({ message: "OK", response: DeleteLike })
             } catch (error) {
@@ -36,4 +58,4 @@ export default async function VerifLike(req, res) {
         default:
             return res.status(400).json({ message: "Bad Reqeuest", status: 400 })
     }
-}
+})
