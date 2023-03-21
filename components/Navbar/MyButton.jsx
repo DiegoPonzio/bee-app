@@ -1,3 +1,4 @@
+import styles from '../../styles/Index.module.css'
 import { BiUserCircle } from 'react-icons/bi'
 import { useState } from 'react'
 import useUser from '../../lib/user'
@@ -12,7 +13,7 @@ export default function Mybutton() {
     const logOut = async () => {
         const res = await axios.get('/api/outCecyt')
             .then(() => Router.replace('/principal/cecyts'))
-            .catch(() => NotificationManager.error('Error!!', 'Ocurrio un problema', 5000))
+            .catch(() => NotificationManager.error('Error!!', 'Ocurrió un problema', 5000))
     }
 
     return (
@@ -29,32 +30,32 @@ export default function Mybutton() {
                 <div className={`${heading === "user" ? '' : 'hidden'}`}>
                     <div>
                         <div>
-                            <div>
+                            <div className={styles.linksHamburger} >
                                 <ul>
                                     {!user && (
                                         <>
                                             <li className='text-sm py-3 pl-14'>
-                                                <a className='hover:text-orange-900' href={"/login"}>Iniciar Sesión</a>
+                                                <a href={"/login"}>Iniciar Sesión</a>
                                             </li>
                                             <li className='text-sm py-3 pl-14'>
-                                                <a href={"/signup"} className='hover:text-orange-900'>Registarse</a>
+                                                <a href={"/signup"} >Registarse</a>
                                             </li>
                                         </>
                                     )}
                                     {user && (
                                         <>
                                             <li className='text-sm py-3 pl-14'>
-                                                <a className='hover:text-orange-900' href={"/login"}>Mis likes</a>
+                                                <a  href={"/login"}>Mis likes</a>
                                             </li>
                                             <li className='text-sm py-3 pl-14'>
-                                                <a className='hover:text-orange-900' href={"/user/home"}>Mi Cuenta</a>
+                                                <a  href={"/user/home"}>Mi Cuenta</a>
                                             </li>
                                         </>
                                     )}
                                     <li className='py-3 pl-14'>
-                                        <button className={"hover:text-orange-900"} onClick={() => logOut()} >
+                                        <a onClick={() => logOut()} >
                                             Elegir Institución
-                                        </button>
+                                        </a>
                                     </li>
                                 </ul>
                             </div>

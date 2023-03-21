@@ -5,7 +5,7 @@ import PostComment from './OtherUsers/PostComment'
 import Comments from './OtherUsers/Comments'
 import { useComment } from "../clientServices/hamburger"
 import axios from 'axios'
-import { AiOutlineUser } from 'react-icons/ai'
+import { AiOutlineUser, AiOutlineComment } from 'react-icons/ai'
 import useUser from '../lib/user'
 import useLikeIfU from '../lib/getLikesIfU'
 
@@ -58,9 +58,9 @@ export default function Cards({ img = "https://encrypted-tbn0.gstatic.com/images
     }, [posts, likes])
 
     return (
-        <div className='md:flex md:gap-5 rounded shadow-lg px-5 max-h-[600px] bg-gray-10 snap-center'>
-            <div className="max-w-sm md:max-w-md overflow-hidden md:cursor-pointer mx-3 mt-4">
-                <img className="w-full" src={`${img}`} alt={name} onDoubleClick={() => saveLike()} />
+        <div className='md:flex md:gap-5 rounded shadow-lg px-5 bg-gray-10 snap-center pb-2'>
+            <div className="max-w-sm md:max-w-md overflow-hidden md:cursor-pointer mx-3 mt-4 border-r-2 border-r-white max-h-[900px]">
+                <img className="w-full max-h-72 pr-3 rounded object-cover object-center" src={`${img}`} alt={name} onDoubleClick={() => saveLike()} />
                 <div className='px-4 py-4'>
                     <p className="inline-flex items-center text-sm text-gray-500 ">
                         <AiOutlineUser />{" "}
@@ -95,6 +95,7 @@ export default function Cards({ img = "https://encrypted-tbn0.gstatic.com/images
                 </div>
             </div>
             <div className='flex-col mx-3 mt-4'>
+                <p className="text-gray-300 text-base flex"><AiOutlineComment className='pl-1 text-xl pr-1' /> Comentarios</p>
                 <useComment.Provider value={{ setPosts }}>
                     <div className='overflow-y-scroll h-4/5 max-w-sm break-words scrollbar-thin scrollbar-thumb-yellow-10 scrollbar-track-gray-500 scrollbar-thumb-rounded-full scrollbar-track-rounded-full snap-y'>
                         {posts && posts.data.result.map(post => (
