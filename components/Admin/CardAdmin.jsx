@@ -23,8 +23,8 @@ export default function CardAdmin({ status, id, title, body, date, hour, place, 
             id,
             status: 3
         })
-            .then( () =>  NotificationManager.success('Se ha Negado la solicitud', 'Exito!!', 5000) )
-            .catch( () => NotificationManager.error('Ocurrió un problema al negar la solicitud', 'Error!!', 5000) )
+            .then( () =>  NotificationManager.success('Se ha negado la solicitud', '¡Exito!', 5000) )
+            .catch( () => NotificationManager.error('Ocurrió un problema al negar la solicitud', '¡Error!', 5000) )
     }
     // 
     return (

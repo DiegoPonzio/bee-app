@@ -214,17 +214,17 @@ export default function Solicitar({ usuario }) {
                 )}
                 {errorTitle && (
                   <div className={`p-4 mb-4 text-sm text-red-700 bg-red-100 rounded-lg col-span-2 text-center`} role="alert">
-                    <span className="font-medium">Error!!</span> El título es demasiado grande, un minimo de 50 caracteres
+                    <span className="font-medium">¡Error!</span> El título es demasiado grande, un minimo de 50 caracteres
                   </div>
                 )}
                 {errorDesc && (
                   <div className={`p-4 mb-4 text-sm text-red-700 bg-red-100 rounded-lg col-span-2 text-center`} role="alert">
-                    <span className="font-medium">Error!!</span> La descripción es demasiado grande un minimo de 300 caracteres
+                    <span className="font-medium">¡Error!</span> La descripción es demasiado grande un minimo de 300 caracteres
                   </div>
                 )}
                 {errorStatus && (
                   <div className={`p-4 mb-4 text-sm text-red-700 bg-red-100 rounded-lg col-span-2 text-center`} role="alert">
-                    <span className="font-medium">Error!!</span> El archivo es demasiado grande
+                    <span className="font-medium">¡Error!</span> El archivo es demasiado grande
                   </div>
                 )}
               </div>

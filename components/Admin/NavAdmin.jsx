@@ -12,7 +12,7 @@ export default function NavAdmin({ children }) {
   const logOut = async () => {
     const res = await axios.get('/api/logout')
       .then(() => Router.replace('/'))
-      .catch(() => NotificationManager.error('Error!!', 'Ocurrio un problema', 5000))
+      .catch(() => NotificationManager.error('¡Error!', 'Ocurrió un problema', 5000))
   }
   
 

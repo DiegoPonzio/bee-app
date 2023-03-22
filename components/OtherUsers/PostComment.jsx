@@ -20,7 +20,7 @@ export default function PostComment({ id, user }) {
         //document.querySelector("#chat").value = ""
 
         if (!user) {
-            NotificationManager.error('No has iniciado sesión', 'Error!!', 5000)
+            NotificationManager.error('No has iniciado sesión', '¡Error!', 5000)
             setLoader(false)
         } else {
             const res = await axios.post("/api/saveComment", {
@@ -29,12 +29,12 @@ export default function PostComment({ id, user }) {
                 id
             })
                 .then(() => {
-                    NotificationManager.success('Se ha guardado el comentario', 'Exito!!', 5000)
+                    NotificationManager.success('Se ha guardado el comentario', '¡Éxito!', 5000)
                     setPosts(false)
                     setLoader(false)
                 })
                 .catch(() => {
-                    NotificationManager.error('Ocurrió un problema al guardar el comentario :(', 'Error!!', 5000)
+                    NotificationManager.error('Ocurrió un problema al guardar el comentario', '¡Error!', 5000)
                     setLoader(false)
                 })
         }

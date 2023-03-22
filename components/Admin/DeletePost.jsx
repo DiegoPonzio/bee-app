@@ -11,12 +11,12 @@ import Spinners from "../Spinners"
     const onDelete = async () => {
         const res = axios.delete(`/api/deletePost/${id}`)
             .then( () =>  {
-                NotificationManager.success('Se ha eliminado correctamente', 'Exito!!', 5000)
+                NotificationManager.success('Se ha eliminado correctamente', '¡Exito!', 5000)
                 setSelectedDelete("")
                 setPostsList(false)
                 setLoading(true)
             })
-            .catch( () => NotificationManager.error( 'Ocurrió un problema al eliminar', 'Error!!', 5000) )
+            .catch( () => NotificationManager.error( 'Ocurrió un problema al eliminar', '¡Error!', 5000) )
     }
 
 

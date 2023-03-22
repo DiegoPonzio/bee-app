@@ -15,8 +15,8 @@ export default function SolicitudRes({ id }) {
       id,
       status: 2
     })
-      .then(() => NotificationManager.success('Solicitud aceptada', 'Exito!!', 5000))
-      .catch(() => NotificationManager.error('Error!!', 'Ocurrio un problema al eliminar', 5000))
+      .then(() => NotificationManager.success('Solicitud aceptada', '¡Éxito!', 5000))
+      .catch(() => NotificationManager.error('Ocurrió un problema al eliminar','¡Error!', 5000))
   }
 
   return (

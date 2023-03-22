@@ -63,19 +63,19 @@ export default function Solicitud({ user }) {
     if (status.data.status === 200) {
       const reset = document.querySelector('#reset')
       reset.click()
-      NotificationManager.success('Comunicado agregado correctamente', 'Éxito!', 5000);
+      NotificationManager.success('Comunicado agregado correctamente', '¡Éxito!', 5000);
     } else if (status.data.status === 408 && status.data.result.message === "Data too long for column 'pub_media' at row 1") {
-      NotificationManager.error('El nombre del archivo es muy largo', 'Error!', 5000);
+      NotificationManager.error('El nombre del archivo es muy largo', '¡Error!', 5000);
     } else if (status.data.status === 408 && status.data.result.message === "Data too long for column 'pub_titulo' at row 1") {
-      NotificationManager.error('El nombre del comunicado es muy largo', 'Error!', 5000);
+      NotificationManager.error('El nombre del comunicado es muy largo', '¡Error!', 5000);
     } else if (status.data.status === 408 && status.data.result.message === "Data too long for column 'pub_descripcion' at row 1") {
-      NotificationManager.error('La descripción del comunicado es muy larga', 'Error!', 5000);
+      NotificationManager.error('La descripción del comunicado es muy larga', '¡Error!', 5000);
     } else if (status.data.status === 408 && status.data.result.message === "Data too long for column 'pub_url' at row 1") {
-      NotificationManager.error('La url es muy larga', 'Error!', 5000);
+      NotificationManager.error('La URL es muy larga', '¡Error!', 5000);
     } else if (status.data.status === 408 && status.data.result.message === "Data too long for column 'pub_organizador' at row 1") {
-      NotificationManager.error('El nombre del organizador es muy largo', 'Error!', 5000);
+      NotificationManager.error('El nombre del organizador es muy largo', '¡Error!', 5000);
     } else if (status.data.status === 408 && status.data.result.message === "Data too long for column 'pub_lugar' at row 1") {
-      NotificationManager.error('El nombre del lugar es muy largo', 'Error!', 5000);
+      NotificationManager.error('El nombre del lugar es muy largo', '¡Error!', 5000);
     }
   }
 
@@ -83,7 +83,7 @@ export default function Solicitud({ user }) {
     setLoading(true)
     const { message } = res
     if (message === "Request failed with status code 413") {
-      NotificationManager.error('Ocurrió un problema', 'Error!', 5000);
+      NotificationManager.error('Ocurrió un problema', '¡Error!', 5000);
     }
   }
 
@@ -92,7 +92,7 @@ export default function Solicitud({ user }) {
     const { nombre, descripcion, escuela, especialidad, desde, hasta, publicacion, lugar, organizador, url } = e
     setLoading(true)
     if (files.length === 0) {
-      NotificationManager.error('No se ha seleccionado ningún archivo', 'Error!', 5000);
+      NotificationManager.error('No se ha seleccionado ningún archivo', '¡Error!', 5000);
       return
     }
 
@@ -120,7 +120,7 @@ export default function Solicitud({ user }) {
       setLoading(false)
     } catch (error) {
       setLoading(false)
-      NotificationManager.error('Error al guardar el archivo', 'Error!', 5000);
+      NotificationManager.error('No se ha podido guardar el archivo', '¡Error!', 5000);
     }
   }
 

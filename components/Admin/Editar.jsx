@@ -34,11 +34,11 @@ export default function Editar({ id, user }) {
     Router.replace("/user/home")
     const res = await axios.delete(`/api/deletePost/${id}`)
       .then(() => {
-        NotificationManager.success('Se ha eliminado correctamente', 'Exito!!', 5000)
+        NotificationManager.success('Se ha eliminado correctamente', '¡Éxito!', 5000)
         setPostsList(false)
         setSelectedEdit("") 
       })
-      .catch(() => NotificationManager.error('Ocurrió un problema al eliminar', 'Error!!', 5000))
+      .catch(() => NotificationManager.error('Ocurrió un problema al eliminar', '¡Error!', 5000))
   }
 
   const actionHandler = async e => {
@@ -62,7 +62,7 @@ export default function Editar({ id, user }) {
         setSelectedEdit("")
         setPostsList(false)
       })
-      .catch(() => NotificationManager.error('Ocurrio un problema al eliminar', 'Error!!', 5000))
+      .catch(() => NotificationManager.error('Ocurrió un problema al eliminar', '¡Error!', 5000))
   }
 
   return (

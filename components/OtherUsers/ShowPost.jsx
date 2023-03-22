@@ -33,7 +33,7 @@ export default function ShowPost({ user, userName }) {
             <div className={hide ? "grid grid-cols-3 gap-4 p-4 lg:grid-cols-4" : "hidden"}>
                 {error && (
                     <div className={`p-4 mb-4 text-sm text-red-700 bg-red-100 rounded-lg col-span-2 text-center`} role="alert">
-                        <span className="font-medium">Error!!</span> Ocurrio un problema al momento de buscar tus solicitudes
+                        <span className="font-medium">¡Error!</span> Ocurrió un problema al momento de buscar tus solicitudes
                     </div>
                 )}
                 {!error && !myPost && spinner && <Spinners />}

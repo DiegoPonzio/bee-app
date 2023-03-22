@@ -32,7 +32,7 @@ export default function Cecyt({ src, name, carrear }) {
             <img className="h-[7rem] w-[7rem] ml-16 " src={src} alt={name} />
             <h2 className="text-4xl font-sans">{name}</h2>
             {error && (
-                <p className="text-red-500 text-xs italic">Ocurrio un problema</p>
+                <p className="text-red-500 text-xs italic">Ocurrió un problema</p>
             )}
         </div>
 

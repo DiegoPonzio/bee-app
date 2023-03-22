@@ -10,7 +10,7 @@ export default function Modal({userName}) {
     const { selectedItem, setSelectedItem } = ctx
 
     return(
-        <div id="drawer-navigation" className={`fixed z-40 h-screen p-5 overflow-y-auto w-80 bg-black`} tabIndex="-1" aria-labelledby="drawer-navigation-label">
+        <div id="drawer-navigation" className={`fixed z-40 h-screen p-5 overflow-y-auto w-80`} tabIndex="-1" aria-labelledby="drawer-navigation-label">
             <h5 id="drawer-navigation-label" className="text-base font-semibold text-white uppercase">¡Bienvenido!</h5>
             <div className="flex items-center p-1 text-base font-normal text-white">
                 <BiUserCircle className="w-7 h-7 text-[#FCE155]" />

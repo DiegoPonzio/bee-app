@@ -1,7 +1,7 @@
 import { MdOutlineCancel } from "react-icons/md";
 import Link from "next/link";
 
-const Banner404 = ({ error = 404, title = "Comunicado no encontrado", desc = "Lo sentimos pero el comunicado que buscas no se encontro. Porfavor regresa al inicio.", err4 = false }) => {
+const Banner404 = ({ error = 404, title = "Comunicado no encontrado", desc = "Lo sentimos, pero el comunicado que buscas no se encontró. Porfavor regresa al inicio.", err4 = false }) => {
   return (
     <div className="bg-gray-100 h-96 w-6/12 shadow-2xl  grid grid-cols-2 rounded-md   items-center justify-center  border-amber-300 p-12">
       <div>

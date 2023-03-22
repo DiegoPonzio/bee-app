@@ -13,7 +13,7 @@ export default function Mybutton() {
     const logOut = async () => {
         const res = await axios.get('/api/outCecyt')
             .then(() => Router.replace('/principal/cecyts'))
-            .catch(() => NotificationManager.error('Error!!', 'Ocurrió un problema', 5000))
+            .catch(() => NotificationManager.error('Ocurrió un problema','¡Error!', 5000))
     }
 
     return (
