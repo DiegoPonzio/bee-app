@@ -19,14 +19,15 @@ export default withSession(async (req, res) => {
     }
 
     try {
-        const { nombre, file, desc, esp, inicio, final, fecha, lugar, org, url, escuela, user } = req.body
+        const { nombre, file, desc, esp, inicio, final, fecha, lugar, org, url, escuela, user: userD } = req.body
 
-        if (user.usu_id !== user) {
+        if (user.usu_id !== userD) {
+            console.log(`entro al if ${user}, ${user.usu_id}`);
             res.status(403).send(`Invalid user: ${user}`);
             return;
         }
 
-        const post = await newPost(nombre, desc, org, file, inicio, final, fecha, lugar, url, escuela, esp, user)
+        const post = await newPost(nombre, desc, org, file, inicio, final, fecha, lugar, url, escuela, esp, userD)
 
         return res.status(200).json({message: 'Exito', result: post, status: 200 })
     } catch (error) {
