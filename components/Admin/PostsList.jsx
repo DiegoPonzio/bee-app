@@ -12,7 +12,7 @@ export default function PostsList({ user }) {
     const [error, setError] = useState(false)
     const [selectedEdit, setSelectedEdit] = useState("")
     const [selectedDelete, setSelectedDelete] = useState("")
-    const URL = `https://bee-app.herokuapp.com/api/showAll/Posts/byAdmin/${user}`
+    const URL = `http://localhost:3000/api/showAll/Posts/byAdmin/${user}`
 
     const fetchAll = async () => {
         const response = await fetch(URL)
