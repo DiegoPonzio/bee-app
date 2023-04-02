@@ -5,6 +5,8 @@ import withSession from "../lib/session";
 import Router from "next/router";
 import Link from "next/link";
 import Spinners from "../components/Spinners"
+import Loggin from "../components/Login";
+import { NotificationContainer } from "react-notifications";
 
 export default function Login() {
 
@@ -59,50 +61,8 @@ export default function Login() {
     return (
         <>
             <Layout title='Login' />
-            <div className="grid grid-cols-2 w-screen h-screen">
-                <div className="bg-yellow-10">
-                    <div className="place-content-center bg-amber-200 min-h-screen flex items-center justify-center">
-                        <div className="w-full max-w-xs">
-                            <form className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4" onSubmit={actioHandler}>
-                                <div className="mb-4">
-                                    <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="username">
-                                        Usuario
-                                    </label>
-                                    <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="text" placeholder="Username" onInput={e => setUsername(e.target.value)} />
-                                </div>
-                                <div className="mb-6">
-                                    <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="password">
-                                        Contraseña
-                                    </label>
-                                    <input className={`shadow appearance-none border  rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline ${!stateP && "border-red-500"}`} id="password" type="password" placeholder="******************" onInput={e => { setPassword(e.target.value); setStateP(true) }} />
-                                    <p className={stateP ? "hidden" : "text-red-500 text-xs italic"}>Please choose a password.</p>
-                                </div>
-                                <div className="flex items-center justify-between">
-                                    {!hideButton && <button className="bg-amber-200  hover:bg-gray-400 text-white font-bold py-2 px-4 rounded-full focus:outline-none focus:shadow-outline" type="submit">
-                                        Sign In
-                                    </button>}
-                                    {hideButton && <Spinners />}
-                                    <a href={"/"} className="inline-block align-baseline  font-bold text-sm text-gray-400 hover:text-amber-300">
-                                        Regresar </a>
-                                </div>
-                                <br></br>
-                                <div className={`${state ? "p-4 mb-4 text-sm text-red-700 bg-red-100 rounded-lg dark:bg-red-200 dark:text-red-800" : "hidden"}`} role="alert">
-                                    <span className="font-medium">Error!!</span> Usaurio y/o constraseña incorrectos
-                                </div>
-                                <div className={`${state2 ? "p-4 mb-4 text-sm text-red-700 bg-red-100 rounded-lg dark:bg-red-200 dark:text-red-800" : "hidden"}`} role="alert">
-                                    <span className="font-medium">Error!!</span> Ocurrio un problema
-                                </div>
-                            </form>
-                            <p className="text-center text-gray-500 text-xs">
-                                &copy;2022 BEE Assistant
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                <div className="">
-
-                </div>
-            </div>
+            <NotificationContainer />
+            <Loggin />
         </>
     )
 }
