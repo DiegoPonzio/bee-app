@@ -10,10 +10,10 @@ import Modal from "../../components/Admin/Modal";
 import { useAdminItem, useEditPost } from "../../clientServices/hamburger"
 import SolicitudList from "../../components/Admin/SolicitudesList";
 import PostsList from "../../components/Admin/PostsList";
+import AdminPerPost from "../../components/Charts/AdminPerPost";
 
 // empresa, egresado y admin
 export default function Home({ user }) {
-
     const [posts, setPosts] = useState()
     const [error, setError] = useState(false)
     const [selectedItem, setSelectedItem] = useState(1)
@@ -45,7 +45,9 @@ export default function Home({ user }) {
                             </div>
                         </useAdminItem.Provider>
                         <div className="w-full p-3 text-white grid place-items-center">
-                            {selectedItem === 1 && <div>parte del dashboard</div>}
+                            {selectedItem === 1 && <div>
+                                <AdminPerPost />
+                            </div>}
                             {selectedItem === 2 && <div className=" md:ml-12 mb-1"><SolicitudList /></div>}
                             {selectedItem === 3 && <Solicitud user={usu_id} />}
                             {selectedItem === 4 && (
@@ -85,7 +87,6 @@ export const getServerSideProps = withSession(async function ({ req, res }) {
     }
 
     return {
-        props: { user: req.session.get("user") }
+        props: { user: req.session.get("user")}
     }
-
 })
