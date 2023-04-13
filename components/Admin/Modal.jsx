@@ -1,13 +1,21 @@
-import Link from "next/link";
 import { FiLogOut } from "react-icons/fi"
 import { AiOutlineUserAdd, AiOutlineFileAdd, AiOutlineAppstore } from "react-icons/ai"
 import { BiUserCircle } from "react-icons/bi";
 import { useAdminItem } from "../../clientServices/hamburger";
-import { useContext, useEffect, useState } from "react";
+import { useContext } from "react";
+import axios from "axios";
+import Router from "next/router";
+import {NotificationManager} from "react-notifications";
 
 export default function Modal({userName}) {
     const ctx = useContext(useAdminItem)
-    const { selectedItem, setSelectedItem } = ctx
+    const { setSelectedItem } = ctx
+
+    const logOut = async () => {
+        const res = await axios.get('/api/logout')
+            .then(() => Router.replace('/'))
+            .catch(() => NotificationManager.error('¡Error!', 'Ocurrió un problema', 5000))
+    }
 
     return(
         <div id="drawer-navigation" className={`fixed z-40 h-screen p-5 overflow-y-auto w-80`} tabIndex="-1" aria-labelledby="drawer-navigation-label">
@@ -44,16 +52,16 @@ export default function Modal({userName}) {
                         </div>
                     </li>
                     <li>
-                        <div className="flex items-center p-2 text-base font-normal cursor-pointer text-white rounded-lg hover:bg-gray-300 hover:text-gray-800">
+                        <div className="flex items-center p-2 text-base font-normal cursor-pointer text-white rounded-lg hover:bg-gray-300 hover:text-gray-800" onClick={ () => setSelectedItem(5)}>
                             <AiOutlineUserAdd className="flex-shrink-0 w-6 h-6 text-[#FCE155] transition duration-75 group-hover:text-gray-900" />
                             <span className="flex-1 ml-3 whitespace-nowrap">Mi perfil</span>
                         </div>
                     </li>
                     <li>
-                        <a href="#" className="flex items-center p-2 text-base font-normal text-white rounded-lg hover:bg-gray-300 hover:text-gray-800">
+                        <div className="flex items-center p-2 text-base font-normal text-white rounded-lg hover:bg-gray-300 hover:text-gray-800 cursor-pointer" onClick={() => logOut()}>
                             <FiLogOut className="flex-shrink-0 w-6 h-6 text-[#FCE155] transition duration-75 group-hover:text-gray-900" />
                             <span className="flex-1 ml-3 whitespace-nowrap">Cerrar Sesión</span>
-                        </a>
+                        </div>
                     </li>
                 </ul>
             </div>
