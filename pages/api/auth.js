@@ -19,7 +19,8 @@ export default withSession(async (req, res) => {
                     const bytesString = String.fromCharCode(...usu_contraseña)
                     if (await validate(password, bytesString)) {
                         await saveSession(response[0], req)
-                        return res.status(200).json({ message: "Acepted", result: response, status: 200 })
+                        const { priv_id } = response[0]
+                        return res.status(200).json({ message: "Acepted", result: response, userType: priv_id  ,status: 200 })
                     } else {
                         return res.status(200).json({ message: "Empty", result: response, status: 401 })
                     }
@@ -27,7 +28,6 @@ export default withSession(async (req, res) => {
                     return res.status(200).json({ message: "Empty", result: response, status: 401 })
                 }
             } catch (err) {
-                console.log(err);
                 return res.status(200).json({ message: 'Erro Time out', result: err, status: 408 })
             }
         case "GET":

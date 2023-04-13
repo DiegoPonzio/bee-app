@@ -1,6 +1,5 @@
 import Layout from "../components/Layout"
 import NavBar from "../components/NavBar"
-import Footer from "../components/Footer"
 import withSessionCecyt from "../lib/cecyt"
 import { useEffect, useState } from "react"
 import Spinners from "../components/Spinners"
@@ -28,37 +27,31 @@ export default function Home({ cecyt }) {
       !posts && fetchPosts()
     }, [posts])
 
-    return (
-      <>
-        <Layout title={name} />
-        <NavBar carrear={carrear} />
-        <NotificationContainer />
-        <div className='py-5 px-10'>
-          {/* <Slider1 /> */}
-          <div className="grid gird-cols-1 items-center justify-items-center gap-6 snap-y snap-proximity pt-28">
-            {!posts && !error && <Spinners />}
-            {posts && !error && posts.data.result && posts.data.result.map((post, index) => {
-              return <Cards img={post.pub_media} name={post.pub_titulo} body={post.pub_descripcion} date={post.pub_fecha} hour={post.pub_horainicio} hour2={post.pub_horafinal} place={post.pub_locacion} key={post.pub_id} id={post.pub_id} link={post.pub_fuente} who={post.pub_encargado} cecyt={name} index={index} />
-            })}
-          </div>
-          {error && (
-            <div className="p-4 mb-4 text-sm text-red-700 bg-red-100 rounded-lg" role="alert">
-              <span className="font-medium">Lo sentimos😿!!</span> No se encontrarón comunicados en este apartado.
-            </div>
-          )}
-          {posts && !error && (
-            <>
-              <br />
-              <br />
-              <br />
-            </>
-          )}
+    return <>
+      <Layout title={name} />
+      <NavBar carrear={carrear} />
+      <NotificationContainer />
+      <div className='py-5 px-10'>
+        {/* <Slider1 /> */}
+        <div className="grid gird-cols-1 items-center justify-items-center gap-6 snap-y snap-proximity pt-28">
+          {!posts && !error && <Spinners />}
+          {posts && !error && posts.data.result && posts.data.result.map((post, index) => {
+            return <Cards img={post.pub_media} name={post.pub_titulo} body={post.pub_descripcion} date={post.pub_fecha} hour={post.pub_horainicio} hour2={post.pub_horafinal} place={post.pub_locacion} key={post.pub_id} id={post.pub_id} link={post.pub_fuente} who={post.pub_encargado} cecyt={name} index={index} />
+          })}
         </div>
-        {/* <Footer /> */}
-      </>
-    )
+        {error && <div className="p-4 mb-4 text-sm text-red-700 bg-red-100 rounded-lg" role="alert">
+            <span className="font-medium">Lo sentimos😿!!</span> No se encontrarón comunicados en este apartado.
+          </div>}
+        {posts && !error && <>
+            <br />
+            <br />
+            <br />
+          </>}
+      </div>
+      {/* <Footer /> */}
+    </>
   } catch (error) {
-    Router.replace("/principal")
+    Router.replace('/principal')
   }
 }
 

@@ -1,5 +1,5 @@
 import Layout from "../components/Layout"
-import { useState } from "react";
+import {useEffect, useState} from "react";
 import axios from "axios";
 import { hashUser } from "../config/hashUser";
 import { useForm } from "react-hook-form";
@@ -7,6 +7,7 @@ import Link from "next/link";
 import Router from "next/router";
 import withSession from "../lib/session";
 import Spinners from "../components/Spinners"
+import {NotificationContainer, NotificationManager} from "react-notifications";
 
 export default function SignUp() {
 
@@ -22,7 +23,6 @@ export default function SignUp() {
 
     const rfc = watch("tipoCuenta");
     const [errorPassword, setErrorPassword] = useState(false)
-
     const handlerFile = e => {
         const files = e.target.files
         const file = files[0]
@@ -75,22 +75,27 @@ export default function SignUp() {
     }
 
     const Veryfy = async (status) => {
-        //setStatus(status)
-        //console.log(status);
-        Router.replace("/user/home")
+        NotificationManager.success('Usuario registrado correctamente', 'Exito', 5000);
+        Router.replace("/login")
     }
 
+    useEffect(() => {
+        if (errors.userCheck) {
+            NotificationManager.error('No han aceptado los terminos y condiciones', 'Error', 5000);
+        }
+    }, [errors.userCheck])
     return (
         <>
-            <Layout title='Sign out' />
-            <div className="place-content-center bg-amber-200 min-h-screen w-full flex items-center justify-center">
+            <Layout title='Registrarse' />
+            <NotificationContainer />
+            <div className="place-content-center min-h-screen w-full flex items-center justify-center">
                 <div className="sm:w-xs md:w-1/2 lg:w-8/12">
-                    <form className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 " onSubmit={handleSubmit(actioHandler)}>
-                        <h3 className="mb-5 text-lg font-medium text-gray-900">Selecciona el tipo de cuenta: </h3>
+                    <form className="bg-gray-10 shadow-md text-white rounded px-8 pt-6 pb-8 mb-4 " onSubmit={handleSubmit(actioHandler)}>
+                        <h3 className="mb-5 text-lg font-medium text-white">Selecciona el tipo de cuenta: </h3>
                         <ul className="grid gap-6 w-full md:grid-cols-2">
                             <li>
                                 <input type="radio" id="hosting-small" name="hosting" value="Empresa" className="hidden peer" {...register("tipoCuenta")} />
-                                <label htmlFor="hosting-small" className="inline-flex justify-between items-center p-5 w-full text-gray-500 bg-white rounded-lg border border-gray-200 cursor-pointer peer-checked:border-amber-400 peer-checked:text-amber-400 hover:text-gray-600 hover:bg-gray-100">
+                                <label htmlFor="hosting-small" className="inline-flex justify-between items-center p-5 w-full text-gray-300 rounded-lg border border-yellow-10 cursor-pointer peer-checked:border-yellow-10 peer-checked:text-yellow-10 hover:text-white">
                                     <div className="block">
                                         <div className="w-full text-lg font-semibold">Empresa</div>
                                         <div className="w-full">Si vienes por parte de una empresa registrate aqui!!</div>
@@ -100,7 +105,7 @@ export default function SignUp() {
                             </li>
                             <li>
                                 <input type="radio" id="hosting-big" name="hosting" value="Egresado" className="hidden peer" {...register("tipoCuenta")} />
-                                <label htmlFor="hosting-big" className="inline-flex justify-between items-center p-5 w-full text-gray-500 bg-white rounded-lg border border-gray-200 cursor-pointer peer-checked:border-amber-400 peer-checked:text-amber-400   hover:text-gray-600 hover:bg-gray-100">
+                                <label htmlFor="hosting-big" className="inline-flex justify-between items-center p-5 w-full text-gray-300 rounded-lg border border-yellow-10 cursor-pointer peer-checked:border-yellow-10 peer-checked:text-yellow-10 hover:text-white">
                                     <div className="block">
                                         <div className="w-full text-lg font-semibold">Egresado</div>
                                         <div className="w-full">Registrate siendo Egresado o Freelancer!!</div>
@@ -108,40 +113,49 @@ export default function SignUp() {
                                     <svg aria-hidden="true" className="ml-3 w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd"></path></svg>
                                 </label>
                             </li>
+                            <li>
+                                <input type="radio" id="hosting-medium" name="hosting" value="general" className="hidden peer" {...register("tipoCuenta")} />
+                                <label htmlFor="hosting-medium" className="inline-flex justify-between items-center p-5 w-full text-gray-300 rounded-lg border border-yellow-10 cursor-pointer peer-checked:border-yellow-10 peer-checked:text-yellow-10 hover:text-white">
+                                    <div className="block">
+                                        <div className="w-full text-lg font-semibold">Alumno / Padre de familia </div>
+                                        <div className="w-full">Registrate siendo alumno o padre de familia</div>
+                                    </div>
+                                    <svg aria-hidden="true" className="ml-3 w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd"></path></svg>
+                                </label>
+                            </li>
                         </ul>
                         {!dirtyFields.tipoCuenta && (
-                            <p className="text-red-500 text-xs italic">Selecciona un tipo de cuenta</p>
+                            <p className="text-red-500 text-xs italic pt-3">Selecciona un tipo de cuenta</p>
                         )}
                         <div className="mb-4">
-                            <label className="block text-gray-700 text-sm font-bold mt-5 mb-2" htmlFor="username">
-                                Nombre Completo
+                            <label className="block text-sm font-bold mt-5 mb-2" htmlFor="username">
+                                Nombre de Usuario
                             </label>
-                            <input className={`shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline ${errors.userName && 'border-red-500'}`} id="username" type="text" placeholder="Nombre" {...register("userName", { required: true, pattern: /^[a-zA-Z\u00C0-\u017f\s]+$/ })} />
+                            <input className={`bg-transparent shadow appearance-none border rounded w-full py-2 px-3 text-white  leading-tight focus:outline-none focus:shadow-outline ${errors.userName && 'border-red-500'}`} id="username" type="text" placeholder="Nombre" {...register("userName", { required: true, pattern: /^[a-zA-Z\u00C0-\u017f\s]+$/ })} />
                             {errors.userName && <p className="text-red-500 text-xs italic">Nombre no valido</p>}
                         </div>
                         <div className="mb-4">
-                            <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="email">
+                            <label className="block text-sm font-bold mb-2" htmlFor="email">
                                 Correo
                             </label>
-                            <input className={`shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline ${errors.userEmail && 'border-red-500'}`} id="email" type="text" placeholder="Email" autoComplete="false" {...register("userEmail", { required: true, pattern: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i })} />
+                            <input className={`bg-transparent shadow appearance-none border rounded w-full py-2 px-3 text-white leading-tight focus:outline-none focus:shadow-outline ${errors.userEmail && 'border-red-500'}`} id="email" type="text" placeholder="Email" autoComplete="false" {...register("userEmail", { required: true, pattern: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i })} />
                             {errors.userEmail && <p className="text-red-500 text-xs italic">Correo no valido</p>}
                         </div>
                         {rfc === "Empresa" && (
                             <div className="mb-4">
-                                <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="RFC">
+                                <label className="block text-sm font-bold mb-2" htmlFor="RFC">
                                     RFC
                                 </label>
-
-                                <input className={`shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline ${errors.userRFC && 'border-red-500'}`} id="RFC" type="text" placeholder="RFC" autoComplete="false" {...register("userRFC", { pattern: /^[A-ZÑ&]{3,4}\d{6}(?:[A-Z\d]{3})?$/ })} />
+                                <input className={`bg-transparent shadow appearance-none border rounded w-full py-2 px-3 text-white leading-tight focus:outline-none focus:shadow-outline ${errors.userRFC && 'border-red-500'}`} id="RFC" type="text" placeholder="RFC" autoComplete="false" {...register("userRFC", { pattern: /^[A-ZÑ&]{3,4}\d{6}(?:[A-Z\d]{3})?$/ })} />
                                 {errors.userRFC && <p className="text-red-500 text-xs italic">RFC no válido.</p> /* aqui en el error pon el nombre de este */}
                             </div>
                         )}
                         {rfc === "Egresado" && (
                             <div className="mb-4">
-                                <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="username">
+                                <label className="block text-sm font-bold mb-2" htmlFor="username">
                                     Cedula
                                 </label>
-                                {!stateFile && <input className={`shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline ${errors.userCedula && 'border-red-500'}`} id="username" type="button" value="Insertar Cedula" onClick={() => {
+                                {!stateFile && <input className={`shadow appearance-none border rounded w-full py-2 px-3 text-white mb-3 leading-tight focus:outline-none focus:shadow-outline ${errors.userCedula && 'border-red-500'}`} id="username" type="button" value="Insertar Cedula" onClick={() => {
                                     const file = document.querySelector("#certf")
                                     file.click()
                                 }} />}
@@ -155,19 +169,30 @@ export default function SignUp() {
                             </div>
                         )}
                         <div className="mb-6">
-                            <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="password">
+                            <label className="block text-sm font-bold mb-2" htmlFor="password">
                                 Contraseña
                             </label>
-                            <input className={`shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline ${errors.password1 && 'border-red-500'}`} id="password" name="password" type="password" placeholder="******************" {...register("password1", { required: true, pattern: /^(?=\w*\d)(?=\w*[A-Z])(?=\w*[a-z])\S{8,20}$/ })} />
+                            <input className={`bg-transparent shadow appearance-none border rounded w-full py-2 px-3 text-white mb-3 leading-tight focus:outline-none focus:shadow-outline ${errors.password1 && 'border-red-500'}`} id="password" name="password" type="password" placeholder="******************" {...register("password1", { required: true, pattern: /^(?=\w*\d)(?=\w*[A-Z])(?=\w*[a-z])\S{8,20}$/ })} />
                             {errors.password1 && <p className="text-red-500 text-xs italic">Please choose a password.</p>}
                         </div>
                         <div className="mb-6">
-                            <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="password2">
+                            <label className="block text-sm font-bold mb-2" htmlFor="password2">
                                 Confirmar Contraseña
                             </label>
-                            <input className={`shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline ${errors.password2 && 'border-red-500'}`} id="password2" name="password2" type="password" placeholder="******************" {...register("password2", { required: true, pattern: /^(?=\w*\d)(?=\w*[A-Z])(?=\w*[a-z])\S{8,20}$/ })} />
+                            <input className={`bg-transparent shadow appearance-none border rounded w-full py-2 px-3 text-white mb-3 leading-tight focus:outline-none focus:shadow-outline ${errors.password2 && 'border-red-500'}`} id="password2" name="password2" type="password" placeholder="******************" {...register("password2", { required: true, pattern: /^(?=\w*\d)(?=\w*[A-Z])(?=\w*[a-z])\S{8,20}$/ })} />
                             {errors.password2 && <p className="text-red-500 text-xs italic">Please choose a password.</p>}
                             {errorPassword && <p className="text-red-500 text-xs italic">Las contraseñas no coinciden</p>}
+                        </div>
+                        <div className="md:flex md:items-center mb-6">
+                            <div className="md:w-1/3"></div>
+                            <label className="md:w-2/3 block text-gray-500 font-bold">
+                                <input className="mr-2 leading-tight" type="checkbox" {...register("userCheck", { required: true })} />
+                                <span className="text-sm">
+                                    Acepto los <Link href="/us/politics" className="text-yellow-10 hover:text-gray-400">
+                                        Terminos y Condiciones
+                                    </Link>
+                                </span>
+                            </label>
                         </div>
                         <div className="flex items-center justify-between">
                             {!hideButton && <button className="bg-amber-200  hover:bg-gray-400 text-white font-bold py-2 px-4 rounded-full focus:outline-none focus:shadow-outline" type="submit">

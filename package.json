@@ -24,7 +24,8 @@
     "react-hook-form": "^7.39.5",
     "react-icons": "^4.6.0",
     "react-notifications": "^1.7.4",
-    "swr": "^2.0.3"
+    "swr": "^2.0.3",
+    "to-zalgo": "^1.0.1"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.13",

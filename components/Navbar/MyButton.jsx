@@ -6,7 +6,7 @@ import { NotificationManager } from 'react-notifications'
 import Router from 'next/router'
 import axios from 'axios'
 
-export default function Mybutton() {
+export default function Mybutton({ isLikes }) {
     //const router = useRouter()
     const [heading, setHeading] = useState("")
     const [user, message] = useUser()
@@ -45,7 +45,7 @@ export default function Mybutton() {
                                     {user && (
                                         <>
                                             <li className='text-sm py-3 pl-14'>
-                                                <a  href={"/login"}>Mis likes</a>
+                                                    <a  href={`/${user}/Likes`}>Mis likes</a>
                                             </li>
                                             <li className='text-sm py-3 pl-14'>
                                                 <a  href={"/user/home"}>Mi Cuenta</a>

@@ -97,7 +97,7 @@ export default function Cards({ img = "https://encrypted-tbn0.gstatic.com/images
             <div className='flex-col mx-3 mt-4'>
                 <p className="text-gray-300 text-base flex"><AiOutlineComment className='pl-1 text-xl pr-1' /> Comentarios</p>
                 <useComment.Provider value={{ setPosts }}>
-                    <div className='overflow-y-scroll h-4/5 max-w-sm break-words scrollbar-thin scrollbar-thumb-yellow-10 scrollbar-track-gray-500 scrollbar-thumb-rounded-full scrollbar-track-rounded-full snap-y'>
+                    <div className='overflow-y-scroll h-[27rem] max-w-sm break-words scrollbar-thin scrollbar-thumb-yellow-10 scrollbar-track-gray-500 scrollbar-thumb-rounded-full scrollbar-track-rounded-full snap-y'>
                         {posts && posts.data.result.map(post => (
                             <Comments user={post.usu_nombre} text={post.com_desc} key={`comment_${post.com_id}`}
                             />

@@ -2,6 +2,7 @@
 import Layout from "../../components/Layout"
 import NavBar from "../../components/NavBar"
 import Seleccionar from "../../components/OtherUsers/Seleccionar"
+import {NotificationContainer} from "react-notifications";
 //import withSessionCecyt from "../../lib/cecyt"
 
 export default function Cecyts() {
@@ -10,6 +11,7 @@ export default function Cecyts() {
         <>
             <Layout title="CECyTs" />
             <NavBar />
+            <NotificationContainer />
             <Seleccionar />
         </>
     )

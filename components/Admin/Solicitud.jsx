@@ -9,16 +9,8 @@ import { useFile } from "../../clientServices/hamburger";
 
 export default function Solicitud({ user }) {
 
-  //const [state, setState] = useState(false)
-  //const [state2, setState2] = useState(false)
-  //const [open, setOpen] = useState(false)
+  axios.defaults.timeout = 7000
   const [espState, setEspState] = useState("")
-  //const [file, setFile] = useState()
-  //const [stateFile, setStateFile] = useState(false)
-  //const [fileName, setFileName] = useState("")
-  //const [errorStatus, setErrorStatus] = useState(false)
-  //const [errorTitle, setErrorTitle] = useState(false)
-  //const [errorDesc, setErrorDesc] = useState(false)
   const [loading, setLoading] = useState(false)
   const [files, setFiles] = useState([])
   const [images, setImages] = useState([])
@@ -85,6 +77,9 @@ export default function Solicitud({ user }) {
     if (message === "Request failed with status code 413") {
       NotificationManager.error('Ocurrió un problema', '¡Error!', 5000);
     }
+    if (message === "timeout of 7000ms exceeded") {
+      NotificationManager.error('Error de conectividad', '¡Error!', 5000);
+    }
   }
 
   const actionHandler = async e => {
@@ -99,9 +94,9 @@ export default function Solicitud({ user }) {
     // primero se gurda el archivo en el servidor
     try {
       const { data } = await axios.post("/api/PostFile", files)
-      console.log(data);
+      //console.log(data);
       const { fileName } = data
-      console.log(fileName);
+      //console.log(fileName);
 
       const res = await axios.post("/api/savePost", {
         nombre,
@@ -125,9 +120,9 @@ export default function Solicitud({ user }) {
   }
 
   return (
-    <div className="bg-[#4A4444] p-5 mb-1 rounded-md w-auto md:w-4/5 h-auto">
+    <div className="bg-gray-20 p-5 mb-1 rounded-md w-auto md:w-4/5 h-auto">
       <form className="md:grid md:gap-5" onSubmit={handleSubmit(actionHandler)}>
-        <div className="text-[#FCE155] col-span-2">
+        <div className="text-yellow-10 col-span-2">
           Agregar Comunicado
         </div>
         <div className="grid gap-4 mb-2">

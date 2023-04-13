@@ -6,7 +6,7 @@ import { GiHamburgerMenu } from 'react-icons/gi'
 import { AiOutlineClose } from 'react-icons/ai'
 import LinksCecyt from "./Navbar/LinksCecyt"
 
-export default function NavBar({ carrear }) {
+export default function NavBar({ carrear, isLikes }) {
   const [open, setOpen] = useState(false)
 
   return (
@@ -28,7 +28,7 @@ export default function NavBar({ carrear }) {
           <li className="px-3 text-left"><Link href={'/us/politics'} legacyBehavior><a className="py-7 px-3 inline-block">Políticas</a></Link></li>
           <li className="px-3 text-left"><Link href={'/us/nosotros'} legacyBehavior><a className="py-7 px-3 inline-block">Conócenos</a></Link></li>
           <div className="py-5">
-            <Mybutton></Mybutton>
+            <Mybutton isLikes={isLikes} />
           </div>
         </ul>
       </div>

@@ -18,7 +18,7 @@ export default function Loggin() {
             username,
             password
         }).then(Veryfy)
-            .catch(() => console.log("holi"))
+            .catch(() => NotificationManager.error("Error al iniciar sesión", "Error", 5000));
     }
 
     const Veryfy = async (status) => {
@@ -30,7 +30,8 @@ export default function Loggin() {
                     if (data.status === 401) {
                         NotificationManager.error("Usuario o contraseña incorrectos", "Error", 5000);
                     } else if (data.status === 200) {
-                        Router.replace("/user/home")
+                        console.log(data.status.userType)
+                        data.userType === 4 ? Router.replace("/") : Router.replace("/user/home")
                     } else if (data.status === 408) {
                         NotificationManager.error("Usuario no verificado", "Error", 5000);
                     }
