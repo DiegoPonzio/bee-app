@@ -2,7 +2,6 @@ import Layout from "../../components/Layout";
 import withSession from "../../lib/session";
 import NavAdmin from "../../components/Admin/NavAdmin";
 import Solicitar from "../../components/OtherUsers/Solicitar";
-import ShowPost from "../../components/OtherUsers/ShowPost";
 import Solicitud from "../../components/Admin/Solicitud";
 import { useEffect, useState } from "react";
 import { NotificationContainer } from "react-notifications"
@@ -11,6 +10,7 @@ import { useAdminItem, useEditPost } from "../../clientServices/hamburger"
 import SolicitudList from "../../components/Admin/SolicitudesList";
 import PostsList from "../../components/Admin/PostsList";
 import AdminPerPost from "../../components/Charts/AdminPerPost";
+import Acount from "../../components/OtherUsers/Acount";
 
 // empresa, egresado y admin
 export default function Home({ user }) {
@@ -55,21 +55,29 @@ export default function Home({ user }) {
                                     <PostsList user={usu_id} />
                                 </div>
                             )}
-
+                            {selectedItem === 5 && <div className="md:ml-12 mb-1 w-4/5">
+                                <Acount user={user} />
+                            </div>}
                         </div>
                     </div>
                 </NavAdmin>
             )}
             {priv_id === 2 || priv_id === 3 && (
-                <>
-                    <NavAdmin />
-                    <div className="py-10 px-10">
+                <NavAdmin>
+                    <NotificationContainer />
+                    <div className="py-10 px-10 pt-20">
                         <Solicitar usuario={usu_id} />
+                        <Acount user={user} />
                     </div>
-                    <footer className="fixed bottom-0 left-0 z-20 p-4 w-full bg-white border-t border-gray-200 shadow md:flex md:items-center md:justify-between md:p-6">
-                        <ShowPost user={usu_id} userName={usu_nombre}></ShowPost>
-                    </footer>
-                </>
+                </NavAdmin>
+            )}
+            {priv_id === 4 && (
+                <NavAdmin>
+                    <NotificationContainer />
+                    <div className="py-10 px-10 pt-20 text-white">
+                        <Acount user={user} />
+                    </div>
+                </NavAdmin>
             )}
         </>
 

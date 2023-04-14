@@ -3,7 +3,7 @@ import withSession from "../../lib/session";
 
 export default withSession(async (req, res) => {
     if (req.method !== "POST") {
-        res.status(400).send(`Invalid method: ${req.method}`);
+        res.status(405).send(`Invalid method: ${req.method}`);
         return;
     }
     const user = req.session.get("user")
