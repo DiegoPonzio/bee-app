@@ -29,7 +29,7 @@ export default function AdminPerPost() {
             setData(result.data.data);
             setLoading(true);
         } catch (error) {
-            console.error(error);
+            //console.error(error);
             setLoading(false);
         }
     };
