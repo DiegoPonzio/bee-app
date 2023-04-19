@@ -12,6 +12,8 @@ import PostsList from "../../components/Admin/PostsList";
 import AdminPerPost from "../../components/Charts/AdminPerPost";
 import Acount from "../../components/OtherUsers/Acount";
 import LikesPerPost from "../../components/Charts/LikesPerPost";
+import ComentsPerPost from "../../components/Charts/ComentsPerPost";
+import PostPerEsp from "../../components/Charts/PostPerEsp";
 
 // empresa, egresado y admin
 export default function Home({ user }) {
@@ -46,9 +48,11 @@ export default function Home({ user }) {
                             </div>
                         </useAdminItem.Provider>
                         <div className="w-full p-3 text-white grid place-items-center">
-                            {selectedItem === 1 && <div className={"flex flex-wrap gap-4"}>
+                            {selectedItem === 1 && <div className={"flex flex-wrap gap-4 md:ml-12"}>
                                 <AdminPerPost />
                                 <LikesPerPost />
+                                <ComentsPerPost />
+                                <PostPerEsp />
                             </div>}
                             {selectedItem === 2 && <div className=" md:ml-12 mb-1"><SolicitudList /></div>}
                             {selectedItem === 3 && <Solicitud user={usu_id} />}

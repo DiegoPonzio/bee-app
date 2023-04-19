@@ -24,7 +24,7 @@ export default withSession(async (req, res) => {
 
     const [response] = await pool.query(numOflikesPost)
 
-    const values = response.map((item) => item.numlikexpub)
+    //const values = response.map((item) => item.numlikexpub)
     //const labels = response.map((item) => item.pub_titulo)
 
     const labels = ['No. Likes']

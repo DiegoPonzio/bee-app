@@ -24,36 +24,38 @@ export default withSession(async (req, res) => {
 
     const [response] = await pool.query(numOfCommentsPost)
 
-    const values = response.map((item) => item.numcompub)
-    const labels = response.map((item) => item.pub_titulo)
+    //const values = response.map((item) => item.numcompub)
+    //const labels = response.map((item) => item.pub_titulo)
+
+    const labels = ["No. Comentarios"]
+
+    const colors = [
+        'rgba(255, 99, 132, 0.2)',
+        'rgba(54, 162, 235, 0.2)',
+        'rgba(255, 206, 86, 0.2)',
+        'rgba(75, 192, 192, 0.2)',
+        'rgba(153, 102, 255, 0.2)',
+        'rgba(255, 159, 64, 0.2)',
+    ]
+
+    const datasets = response.map((item, index) => {
+        return {
+            label: item.pub_titulo,
+            data: [item.numcompub],
+            backgroundColor: colors[getRandomInt(0,5)]
+        }
+    })
 
     const data = {
         labels: labels,
-        datasets: [
-            //valeria tiene que ver los de los colores
-            {
-                label: 'No. comunicados',
-                data: values,
-                backgroundColor: [
-                  'rgba(255, 99, 132, 0.2)',
-                  'rgba(54, 162, 235, 0.2)',
-                  'rgba(255, 206, 86, 0.2)',
-                  'rgba(75, 192, 192, 0.2)',
-                  'rgba(153, 102, 255, 0.2)',
-                  'rgba(255, 159, 64, 0.2)',
-                ],
-                borderColor: [
-                  'rgba(255, 99, 132, 1)',
-                  'rgba(54, 162, 235, 1)',
-                  'rgba(255, 206, 86, 1)',
-                  'rgba(75, 192, 192, 1)',
-                  'rgba(153, 102, 255, 1)',
-                  'rgba(255, 159, 64, 1)',
-                ],
-                borderWidth: 1,
-            }
-        ]
+        datasets: datasets
     };
 
     return res.status(200).json({ message: "OK", data: data })
 })
+
+const getRandomInt = (min, max) => {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
