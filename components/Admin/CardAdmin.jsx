@@ -48,7 +48,7 @@ export default function CardAdmin({ status, id, title, body, date, hour, place, 
                     <span className="sr-only">Borrar comunicado</span>
                 </div></div>
                     <div className='float-right mt-1 mr-4'>
-                        {status && <div onClick={ () => status ?  setSelectedEdit(`sol_${id}`) : setSelectedEdit(`edit_${id}`)} className="text-gray-500 hover:text-yellow-200 cursor-pointer">
+                        {status && <div onClick={ () => !status ?  setSelectedEdit(`sol_${id}`) : setSelectedEdit(`edit_${id}`)} className="text-gray-500 hover:text-yellow-200 cursor-pointer">
                             <HiOutlinePencilAlt size={25} />
                             <span className="sr-only">Editar comunicado</span>
                         </div>}
