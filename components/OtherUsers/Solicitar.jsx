@@ -10,24 +10,13 @@ import {NotificationManager} from "react-notifications";
 
 export default function Solicitar({ usuario }) {
 
-  //axios.defaults.timeout = 7000
   const [loading, setLoading] = useState(false)
-  //const [errorStatus, setErrorStatus] = useState(false)
-  //const [errorTitle, setErrorTitle] = useState(false)
-  //const [errorDesc, setErrorDesc] = useState(false)
-  //const [saveCorrect, setSaveCorrect] = useState(false)
   const [files, setFiles] = useState([])
   const [images, setImages] = useState([])
   const [espState, setEspState] = useState()
   const [file, setFile] = useState()
-  //const [stateFile, setStateFile] = useState(false)
-  //const [fileName, setFileName] = useState("")
-  //const re = /:[0-9]{2}.[0-9]{3}Z/
 
   const { register, formState: { errors }, handleSubmit, watch } = useForm();
-  //const tt = Date.now();
-  //const hoy = new Date(tt);
-  //const hoyString = hoy.toISOString().toString();
 
   const especialidadesFetch = value => {
     switch (value) {
@@ -47,7 +36,6 @@ export default function Solicitar({ usuario }) {
   }
 
   const actioHandler = async e => {
-    console.log(e)
     const { nombre, area, descripcion, especialidad } = e;
     setLoading(true)
     if (files.length === 0) {
@@ -57,7 +45,7 @@ export default function Solicitar({ usuario }) {
     }
 
     try {
-      const {data} = await axios.post('/api/postFile', files)
+      const {data} = await axios.post('/api/PostFile', files)
 
       const { fileName } = data
 
@@ -66,31 +54,23 @@ export default function Solicitar({ usuario }) {
         area,
         especialidad,
         descripcion,
-        files: fileName,
+        file: fileName,
         usuario
       }).then(veryfy)
         .catch(Errors)
 
     } catch (error) {
       setLoading(false)
-        NotificationManager.error('No se ha podido guardar el archivo', '¡Error!', 3000);
+      NotificationManager.error('No se ha podido guardar el archivo', '¡Error!', 3000);
     }
-
-    /*const result = await axios.post('/api/savePropost', {
-      nombre,
-      area,
-      especialidad,
-      descripcion,
-      files,
-      usuario
-    }).then(veryfy)
-      .catch(Errors)*/
   }
 
   const veryfy = state => {
+    setLoading(false)
     NotificationManager.success('Solicitud enviada correctamente', 'Éxito', 3000);
   }
   const Errors = state => {
+    console.log(state)
     state.message ===  "timeout of 5000ms exceeded" && NotificationManager.error('Error al cargar la imagen', 'Error', 3000);
     state.response.data.result.message === "Data too long for column 'temp_titulo' at row 1" && NotificationManager.error('El nombre del evento es muy largo', 'Error', 3000);
     state.response.data.result.message === "Data too long for column 'temp_descripcion' at row 1" && NotificationManager.error('La descripción del evento es muy larga', 'Error', 3000);

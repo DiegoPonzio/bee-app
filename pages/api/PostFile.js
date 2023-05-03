@@ -14,7 +14,7 @@ export default withSession(async (req, res) => {
         return;
     }
 
-    if (user.priv_id !== 1) {
+    if (user.priv_id === 4) {
         res.status(403).send(`Invalid user: ${user}`);
         return;
     }
