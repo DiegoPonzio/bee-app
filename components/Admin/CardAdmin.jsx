@@ -35,8 +35,9 @@ export default function CardAdmin({ status, id, title, body, date, hour, place, 
             <img className="w-full" src={img} alt="Sunset in the mountains" />
             <div className="px-6 py-4">
                 <div className="font-bold text-xl mb-2 ">{title} <div className='float-right mt-1'> <div className="text-gray-500 hover:text-yellow-200 cursor-pointer">
-                    {!isNoAdmin && !status && <BsTrash size={23} onClick={ () => setSelectedDelete(`delete_${id}`)} />}
-                    {!isNoAdmin && status && icon === 3 ?  <MdCancel /> : <ImCross size={20} onClick={ () => onDeny() } />}
+                    {!isNoAdmin && status && <BsTrash size={23} onClick={ () => setSelectedDelete(`delete_${id}`)} />}
+                    {!isNoAdmin && !status && icon === 1 && <ImCross size={20} onClick={() => onDeny()}/>}
+                    {!isNoAdmin && !status && icon === 3 && <MdCancel size={25} color="#CB3234" />}
                     {isNoAdmin && (
                         <>
                             {icon === 1 && <CgSandClock size={25} />}
@@ -47,12 +48,12 @@ export default function CardAdmin({ status, id, title, body, date, hour, place, 
                     <span className="sr-only">Borrar comunicado</span>
                 </div></div>
                     <div className='float-right mt-1 mr-4'>
-                        {!isNoAdmin && <div onClick={ () => status ?  setSelectedEdit(`sol_${id}`) : setSelectedEdit(`edit_${id}`)} className="text-gray-500 hover:text-yellow-200 cursor-pointer">
+                        {status && <div onClick={ () => status ?  setSelectedEdit(`sol_${id}`) : setSelectedEdit(`edit_${id}`)} className="text-gray-500 hover:text-yellow-200 cursor-pointer">
                             <HiOutlinePencilAlt size={25} />
                             <span className="sr-only">Editar comunicado</span>
                         </div>}
                     </div>
-                    {status && <div className='float-right mt-1 mr-4'><a href="#" className="text-gray-500 hover:text-yellow-200 ">
+                    {!status && <div className='float-right mt-1 mr-4'><a href="#" className="text-gray-500 hover:text-yellow-200 ">
                         <AiOutlineUser size={25} />
                         <span className="sr-only">Ver usuario</span>
                     </a>
