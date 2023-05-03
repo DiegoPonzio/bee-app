@@ -36,7 +36,7 @@ export default function CardAdmin({ status, id, title, body, date, hour, place, 
             <div className="px-6 py-4">
                 <div className="font-bold text-xl mb-2 ">{title} <div className='float-right mt-1'> <div className="text-gray-500 hover:text-yellow-200 cursor-pointer">
                     {!isNoAdmin && !status && <BsTrash size={23} onClick={ () => setSelectedDelete(`delete_${id}`)} />}
-                    {!isNoAdmin && status && <ImCross size={20} onClick={ () => onDeny() } />}
+                    {!isNoAdmin && status && icon === 3 ?  <MdCancel /> : <ImCross size={20} onClick={ () => onDeny() } />}
                     {isNoAdmin && (
                         <>
                             {icon === 1 && <CgSandClock size={25} />}
