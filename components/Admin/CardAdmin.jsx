@@ -9,8 +9,11 @@ import { useContext } from 'react'
 import { useEditPost } from '../../clientServices/hamburger'
 import Editar from './Editar'
 import DeletePost from './DeletePost'
+import {CgSandClock} from "react-icons/cg";
+import {TiTick} from "react-icons/ti";
+import {MdCancel} from "react-icons/md";
 
-export default function CardAdmin({ status, id, title, body, date, hour, place, img, user }) {
+export default function CardAdmin({ status, id, title, body, date, hour, place, img, user, isNoAdmin, icon }) {
     const ctx = useContext(useEditPost)
     const { selectedEdit, setSelectedEdit, setSelectedDelete, selectedDelete } = ctx
     const formatDate = date => {
@@ -32,14 +35,22 @@ export default function CardAdmin({ status, id, title, body, date, hour, place, 
             <img className="w-full" src={img} alt="Sunset in the mountains" />
             <div className="px-6 py-4">
                 <div className="font-bold text-xl mb-2 ">{title} <div className='float-right mt-1'> <div className="text-gray-500 hover:text-yellow-200 cursor-pointer">
-                    {!status && <BsTrash size={23} onClick={ () => setSelectedDelete(`delete_${id}`)} />}
-                    {status && <ImCross size={20} onClick={ () => onDeny() } />}
+                    {!isNoAdmin && !status && <BsTrash size={23} onClick={ () => setSelectedDelete(`delete_${id}`)} />}
+                    {!isNoAdmin && status && <ImCross size={20} onClick={ () => onDeny() } />}
+                    {isNoAdmin && (
+                        <>
+                            {icon === 1 && <CgSandClock size={25} />}
+                            {icon === 2 && <TiTick size={25} color="green" />}
+                            {icon === 3 && <MdCancel size={25} color="#CB3234" />}
+                        </>
+                    )}
                     <span className="sr-only">Borrar comunicado</span>
                 </div></div>
-                    <div className='float-right mt-1 mr-4'><div onClick={ () => status ?  setSelectedEdit(`sol_${id}`) : setSelectedEdit(`edit_${id}`)} className="text-gray-500 hover:text-yellow-200 cursor-pointer">
-                        <HiOutlinePencilAlt size={25} />
-                        <span className="sr-only">Editar comunicado</span>
-                    </div>
+                    <div className='float-right mt-1 mr-4'>
+                        {!isNoAdmin && <div onClick={ () => status ?  setSelectedEdit(`sol_${id}`) : setSelectedEdit(`edit_${id}`)} className="text-gray-500 hover:text-yellow-200 cursor-pointer">
+                            <HiOutlinePencilAlt size={25} />
+                            <span className="sr-only">Editar comunicado</span>
+                        </div>}
                     </div>
                     {status && <div className='float-right mt-1 mr-4'><a href="#" className="text-gray-500 hover:text-yellow-200 ">
                         <AiOutlineUser size={25} />

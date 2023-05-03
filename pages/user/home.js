@@ -85,7 +85,7 @@ export default function Home({ user }) {
                             {selectedItem === 3 && <Solicitar usuario={usu_id} />}
                             {selectedItem === 4 && (
                                 <div className="md:ml-12 mb-1">
-                                    Mis solicitudes :(
+                                    <SolicitudList status={usu_id} />
                                 </div>
                             )}
                             {selectedItem === 5 && <div className="md:ml-12 mb-1 w-4/5">

@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react"
 import CardAdmin from "./CardAdmin"
 
-export default function SolicitudList() {
+export default function SolicitudList({ status }) {
     const [error, setError] = useState(false)
     const [post, setPost] = useState()
 
-    const URL = 'https://bee-app.herokuapp.com/api/showAll/byUser'
+    const URL = !status ? 'https://bee-app.herokuapp.com/api/showAll/byUser' : `https://bee-app.herokuapp.com/api/showAll/byUser/${status}}`
 
     const fetchUsers = async () => {
         const response = await fetch(URL)
@@ -25,7 +25,7 @@ export default function SolicitudList() {
     return (
         <div className="grid gird-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-5 items-center justify-items-center">
             {!error && post && post.map(post => (
-                <CardAdmin img={post.temp_media} status={true} id={post.temp_id} key={post.temp_id} title={post.temp_titulo} body={post.temp_descripcion} place={post.temp_esp} />
+                <CardAdmin img={post.temp_media} isNoAdmin={true} id={post.temp_id} key={post.temp_id} title={post.temp_titulo} body={post.temp_descripcion} place={post.temp_esp} icon={post.estado_id} />
             ))}
         </div>
     )
