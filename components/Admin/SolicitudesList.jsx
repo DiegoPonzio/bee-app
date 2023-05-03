@@ -5,7 +5,7 @@ export default function SolicitudList({ status }) {
     const [error, setError] = useState(false)
     const [post, setPost] = useState()
 
-    const URL = !status ? 'https://bee-app.herokuapp.com/api/showAll/byUser' : `https://bee-app.herokuapp.com/api/showAll/byUser/${status}}`
+    const URL = !status ? 'http://localhost:3000/api/showAll/byUser' : `https://bee-app.herokuapp.com/api/showAll/byUser/${status}}`
 
     const fetchUsers = async () => {
         const response = await fetch(URL)
