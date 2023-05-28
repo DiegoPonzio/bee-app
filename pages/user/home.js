@@ -54,7 +54,7 @@ export default function Home({ user }) {
                                 <ComentsPerPost />
                                 <PostPerEsp />
                             </div>}
-                            {selectedItem === 2 && <div className=" md:ml-12 mb-1"><SolicitudList /></div>}
+                            {selectedItem === 2 && <div className=" md:ml-12 mb-1"><SolicitudList admin={usu_nombre} /></div>}
                             {selectedItem === 3 && <Solicitud user={usu_id} />}
                             {selectedItem === 4 && (
                                 <div className="md:ml-12 mb-1">
