@@ -18,21 +18,8 @@ import PostPerEsp from "../../components/Charts/PostPerEsp";
 // empresa, egresado y admin
 export default function Home({ user }) {
     const { usu_nombre, usu_id, priv_id } = user
-    const [posts, setPosts] = useState()
     const [error, setError] = useState(false)
     const [selectedItem, setSelectedItem] = useState(priv_id === 1  ? 1 : 4 )
-    const URL = `https://bee-app.herokuapp.com/api/showAll`
-
-    const fetchAll = async () => {
-        const response = await fetch(URL)
-            .then(response => response.json())
-            .then(responseJSON => setPosts(responseJSON.result))
-            .catch(() => setError(true))
-    }
-
-    useEffect(() => {
-        !posts && fetchAll()
-    }, [posts])
 
     return (
         <>
