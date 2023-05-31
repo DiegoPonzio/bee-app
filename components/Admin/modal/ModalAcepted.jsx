@@ -1,16 +1,13 @@
 import { useForm } from 'react-hook-form'
 import {NotificationManager} from "react-notifications";
 import axios from "axios";
-import {sendEmail} from "../../../config/emailPull";
+import {sendEmailDeny} from "../../../config/emailPull";
 
-const ModalDeny = ({ open, handleClose, handleAcepted, id, email, admin }) => {
+const ModalDeny = ({ open, handleClose, handleAcepted, id, email, admin, solName, date, img }) => {
 
     const { register, formState: { errors }, handleSubmit, watch } = useForm();
 
     const onSubmit = async (data) => {
-        console.log(data)
-        console.log(email)
-        console.log(admin)
         const { descripcion } = data
         // se envia el correo con la respuesta
         try {
@@ -21,11 +18,12 @@ const ModalDeny = ({ open, handleClose, handleAcepted, id, email, admin }) => {
             })
             const {usu_clave, usu_nombre} = res.data
 
-            const responseEmail = await sendEmail(usu_clave, admin, usu_nombre, descripcion);
+            const responseEmail = await sendEmailDeny(usu_clave, admin, usu_nombre, descripcion, solName, date, img)
 
             handleAcepted()
             handleClose()
         } catch (error) {
+            console.log(error)
             NotificationManager.error('Ocurrió un problema al negar la solicitud', '¡Error!', 5000)
         }
     }

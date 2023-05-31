@@ -13,6 +13,7 @@ import {TiTick} from "react-icons/ti";
 import {MdCancel} from "react-icons/md";
 import { useState } from 'react'
 import ModalDeny from "./modal/ModalAcepted";
+import {sendEmailAccept} from "../../config/emailPull";
 
 export default function CardAdmin({ status, id, title, body, date, hour, place, img, user, isNoAdmin, icon, email, admin }) {
     const ctx = useContext(useEditPost)
@@ -23,13 +24,30 @@ export default function CardAdmin({ status, id, title, body, date, hour, place, 
         return res
     } 
 
+    const sendEmail = async () => {
+        const response = await axios.post('/api/emailUser', {
+            email,
+            message: "Su solicitud ha sido Acepatada",
+            admin
+        })
+        const {usu_clave, usu_nombre} = response.data
+
+        const responseEmail = await sendEmailAccept(usu_clave, title, usu_nombre, admin, formatDate(date), place)
+    }
     const onAccept = async () => {
-        const res = axios.put("/api/upatePropost", {
+        try {
+            await sendEmail()
+
+            const res = axios.put("/api/upatePropost", {
                 id,
                 status: 2
             })
-            .then(() => NotificationManager.success('Solicitud aceptada', 'Exito!!', 5000))
-            .catch(() => NotificationManager.error('Error!!', 'Ocurrio un problema al aceptar', 5000))
+                .then(() => NotificationManager.success('Solicitud aceptada', 'Exito!!', 5000))
+                .catch(() => NotificationManager.error('Error!!', 'Ocurrio un problema al aceptar', 5000))
+        } catch (error) {
+            console.log(error)
+            NotificationManager.error('Error!!', 'Ocurrio un problema al aceptar', 5000)
+        }
     }
 
     const handleAcept = () => {
@@ -66,6 +84,7 @@ export default function CardAdmin({ status, id, title, body, date, hour, place, 
                             {!isNoAdmin && status && <BsTrash size={23} onClick={ () => setSelectedDelete(`delete_${id}`)} />}
                             {!isNoAdmin && !status && icon === 1 && <ImCross size={20} onClick={handleAcept}/>}
                             {!isNoAdmin && !status && icon === 3 && <MdCancel size={25} color="#CB3234" />}
+                            {!isNoAdmin && !status && icon === 2 && <TiTick size={25} color="green" />}
                             {isNoAdmin && (
                                 <>
                                     {icon === 1 && <CgSandClock size={25} />}
@@ -94,7 +113,7 @@ export default function CardAdmin({ status, id, title, body, date, hour, place, 
             </div>
             {selectedEdit === `edit_${id}` && <Editar id={id} user={user} />}
             {selectedDelete === `delete_${id}` && <DeletePost id={id} />}
-            {open && <ModalDeny open={open} handleAcepted={onDeny} id={id} handleClose={handleAcept} email={email} admin={admin} />}
+            {open && <ModalDeny open={open} handleAcepted={onDeny} id={id} handleClose={handleAcept} email={email} admin={admin} solName={title} date={formatDate(date)} img={img} />}
         </div>
     )
 }
