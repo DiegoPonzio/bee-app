@@ -55,7 +55,34 @@ export default function Home({ user }) {
                     </div>
                 </NavAdmin>
             )}
-            {priv_id === 2 || priv_id === 3 && (
+            {priv_id === 3 && (
+                <NavAdmin>
+                    <NotificationContainer />
+                    {/*<div className="py-10 px-10 pt-20">
+                        <Solicitar usuario={usu_id} />
+                        <Acount user={user} />
+                    </div>*/}
+                    <div className="flex h-full w-full pt-16">
+                        <useAdminItem.Provider value={{ selectedItem, setSelectedItem }}>
+                            <div className="max-sm:hidden w-80">
+                                <Modal userName={usu_nombre} userType={priv_id} />
+                            </div>
+                        </useAdminItem.Provider>
+                        <div className="w-full p-3 text-white grid place-items-center">
+                            {selectedItem === 3 && <Solicitar usuario={usu_id} />}
+                            {selectedItem === 4 && (
+                                <div className="md:ml-12 mb-1">
+                                    <SolicitudList status={usu_id} />
+                                </div>
+                            )}
+                            {selectedItem === 5 && <div className="md:ml-12 mb-1 w-4/5">
+                                <Acount user={user} />
+                            </div>}
+                        </div>
+                    </div>
+                </NavAdmin>
+            )}
+            {priv_id === 2 && (
                 <NavAdmin>
                     <NotificationContainer />
                     {/*<div className="py-10 px-10 pt-20">

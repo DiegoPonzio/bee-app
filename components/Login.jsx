@@ -33,6 +33,7 @@ export default function Loggin() {
                         console.log(data.status.userType)
                         data.userType === 4 ? Router.replace("/") : Router.replace("/user/home")
                     } else if (data.status === 408) {
+                        console.log(data)
                         NotificationManager.error("Usuario no verificado", "Error", 5000);
                     }
                 }
