@@ -29,11 +29,11 @@ export default function PostsList({ user }) {
     useEffect(() => {
         if (selected) {
             setLoader(true)
-            postsList && fetchAll()
+            fetchAll()
             setLoader(false)
         } else {
             setLoader(true)
-            postsList && fetchAllU()
+            fetchAllU()
             setLoader(false)
         }
 
