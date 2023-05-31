@@ -44,7 +44,7 @@ export default function Home({ user }) {
                     <div className="flex h-full w-full pt-16">
                         <useAdminItem.Provider value={{ selectedItem, setSelectedItem }}>
                             <div className="max-sm:hidden w-80">
-                                <Modal userName={usu_nombre} userType={usu_id} />
+                                <Modal userName={usu_nombre} userType={priv_id} />
                             </div>
                         </useAdminItem.Provider>
                         <div className="w-full p-3 text-white grid place-items-center">
