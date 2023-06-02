@@ -4,6 +4,7 @@ import Router from "next/router";
 import { NotificationManager } from "react-notifications";
 import axios from "axios";
 import Spinners from "./Spinners";
+import Link from "next/link";
 
 export default function Loggin() {
     const { register, formState: { errors }, handleSubmit } = useForm();
@@ -79,22 +80,22 @@ export default function Loggin() {
                         <h2>¿Aun no tienes cuenta?</h2>
                         <h2>Registrate</h2>
                     </div>
-                    <div className='flex w-3/5 flex-col gap-2 rounded-md border-2 py-2 px-5'>
+                    <Link href={"/signup"} className='flex w-3/5 flex-col gap-2 rounded-md border-2 py-2 px-5'>
                         <p className='text-lg font-bold text-white'>Empresa</p>
                         <p className='text-white'>
-                            Si tienes tu propia empresa y quieres venir a dar a conocer tu
-                            trabajo o buscar pasantes este es tu usuario
+                            Si vienes de alguna empresa y quieres venir a dar a conocer tu
+                            trabajo o buscar pasantes este es tu usuario.
                         </p>
                         <div className='flex w-full justify-end text-white'>{'--->'}</div>
-                    </div>
-                    <div className='flex w-3/5 flex-col gap-2 rounded-md border-2 py-2 px-5'>
-                        <p className='text-lg font-bold text-white'>Empresa</p>
+                    </Link>
+                    <Link href={"/signup"} className='flex w-3/5 flex-col gap-2 rounded-md border-2 py-2 px-5'>
+                        <p className='text-lg font-bold text-white'>Egresado</p>
                         <p className='text-white'>
-                            Si eres egresadi dek IPN y quisieras dar una platica o curso
-                            dentro de algun CECyT este es tu usuario
+                            Si eres egresado del IPN y te gustaría dar una platica, curso o cualquier otro evento
+                            dentro de algún CECyT este es tu usuario.
                         </p>
                         <div className='flex w-full justify-end text-white'>{'--->'}</div>
-                    </div>
+                    </Link>
                 </div>
             </div>
         </div>
