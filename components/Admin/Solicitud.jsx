@@ -212,7 +212,7 @@ export default function Solicitud({ user }) {
           <div>
             <label htmlFor="desde" className="block mb-2 text-sm font-medium text-white">Desde: </label>
             <input
-              min={hoyString.split(re)[0]}
+              //min={hoyString.split(re)[0]}
               type="datetime-local"
               id="desde"
               className={`bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ${errors.desde && 'border-red-500'}`}
